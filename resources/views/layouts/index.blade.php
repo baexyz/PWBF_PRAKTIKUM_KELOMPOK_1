@@ -100,6 +100,7 @@
  
 
   <main id="main">
+    
     @yield('container')
     
   </main><!-- End #main -->
