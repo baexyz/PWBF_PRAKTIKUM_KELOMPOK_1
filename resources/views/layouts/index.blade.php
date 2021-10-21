@@ -42,13 +42,13 @@
   <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="index">Nurul Fajar</a></h1>
+      <h1 class="logo me-auto"><a href="/">Nurul Fajar</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index" class="logo me-auto"><img src="home/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a class="active" href="index">Home</a></li>
+          <li><a class="active" href="/">Home</a></li>
           
           
           <li class="dropdown"><a href="about"><span>Profil</span> <i class="bi bi-chevron-down"></i></a>

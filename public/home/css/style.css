@@ -355,7 +355,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 80vh;
-  background: url("../img/hero-bg.jpg") top center;
+  background: url("https://th.bing.com/th/id/R.899dc8b1e95825beab72601c8c9d0614?rik=P7C7jX%2fb%2bW5ucA&riu=http%3a%2f%2fdemuttaqin.or.id%2fwp-content%2fuploads%2f2016%2f02%2fsantri-setoran-01.jpg&ehk=JJ9owu8MU6yJj8%2bpqby0RO6Bl1aQUeGYNhPBVlqgKjA%3d&risl=&pid=ImgRaw&r=0") top center;
   background-size: cover;
   position: relative;
 }

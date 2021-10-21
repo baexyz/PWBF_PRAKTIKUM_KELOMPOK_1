@@ -20,7 +20,7 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
-            <img src="home/img/about.jpg" class="img-fluid" alt="">
+            <img src="https://th.bing.com/th/id/R.8b13156ee8395c0993565a9eb19d5c24?rik=hqBs3Jf%2f%2bfEkog&riu=http%3a%2f%2fwww.kaffahcollege.com%2fwp-content%2fuploads%2f2016%2f05%2fprivat-membaca-Al-Quran.jpg&ehk=%2fIOcT99F8XtQMZgkBNMZqCbj%2bhtaRkJCppxG5CADGvc%3d&risl=&pid=ImgRaw&r=0" class="img-fluid" alt="" width="50%" align="right" margin-right:"30%" >
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>

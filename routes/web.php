@@ -17,7 +17,6 @@ Route::get('/', function () {
     return view('home.index');
 });
 
-
 Route::get('/about', function () {
     return view('home.about');
 });
@@ -30,7 +29,15 @@ Route::get('/events', function () {
     return view('home.events');
 });
 
+Route::get('/contact', function () {
+    return view('home.contact');
+});
+
 
 Route::get('/test', function () {
     return view('dashboard.index');
+});
+
+Route::get('/form', function () {
+    return view('form   ');
 });
