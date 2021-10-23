@@ -15,11 +15,12 @@ class Pengurus extends Migration
     {
         Schema::create('pengurus', function (Blueprint $table) {
             $table->id('idpengurus');
-            $table->string('nama',20);
+            $table->string('nama',50);
             $table->string('email',30)->unique();
             $table->string('hp',15);
             $table->char('gender',1);
-            $table->char('password',32);
+            //$table->char('password',32);
+            $table->char('password',100);
             $table->char('aktif',1);
             $table->rememberToken();
             $table->timestamps();
