@@ -26,6 +26,7 @@ class KemajuanFactory extends Factory
         return [
             'idsantri' => Santri::inRandomOrder()->first(),
             'idpengurus' => Pengurus::inRandomOrder()->first(),
+            'tanggal' => now(),
             'status' => 'T',
         ];
     }
