@@ -39,7 +39,7 @@ class SantriFactory extends Factory
             'alamatortu' => substr($this->faker->streetAddress(), 0, 100),
             'hp' => substr($this->faker->unique()->e164PhoneNumber(), 0, 15),
             'email' => $this->faker->unique()->freeEmail(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+            'password' => bcrypt('password'),
             'tanggalmasuk' => $this->faker->date(),
             'aktif' => '1',
         ];

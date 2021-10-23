@@ -21,4 +21,9 @@ class Kemajuan extends Model
         $kolom = 'idsantri';
         return $this->belongsTo(Santri::class, $kolom, $kolom);
     }
+
+    public function detailkemajuan(){
+        $kolom = 'idkemajuan';
+        return $this->hasOne(DetailKemajuan::class, $kolom, $kolom);
+    }
 }
