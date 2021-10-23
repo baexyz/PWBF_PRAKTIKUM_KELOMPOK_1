@@ -3,9 +3,11 @@
 namespace Database\Seeders;
 
 use App\Models\DetailPeran;
+use App\Models\Kemajuan;
 use Illuminate\Database\Seeder;
-use Pengurus;
+use App\Models\Pengurus;
 use App\Models\Peran;
+use App\Models\Santri;
 
 class DatabaseSeeder extends Seeder
 {
@@ -27,6 +29,20 @@ class DatabaseSeeder extends Seeder
             'aktif' => '1',
         ]);
 
-        DetailPeran::factory(20)->create();
+        //Membuat data dari pengurus
+        DetailPeran::factory(10)->create();
+
+        //Membuat data santri
+        Santri::factory(30)->create();
+
+        //Membuat data kemajuan
+        Kemajuan::factory(100)->create();
+
+
+        // Pengurus::factory(10)->create()->each(function ($m) {
+        //     $detailperan = DetailPeran::factory()->make();
+        //     $kemajuan = Kemajuan::factory(5)->make();
+        // });
+        
     }
 }

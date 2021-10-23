@@ -24,8 +24,9 @@ class Santri extends Migration
             $table->string('namaortu',50);
             $table->string('alamatortu',100);
             $table->string('hp',15);
-            $table->string('emailsantri',30)->unique();
-            $table->char('password',32);
+            $table->string('email',50)->unique();
+            //$table->char('password',32);
+            $table->char('password',100);
             $table->date('tanggalmasuk');
             $table->char('aktif',1);
             $table->rememberToken();
