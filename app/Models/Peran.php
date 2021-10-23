@@ -11,4 +11,9 @@ class Peran extends Model
     protected $table = 'peran';
     protected $primaryKey = 'idperan';
     protected $guarded = ['idperan'];
+
+    public function detailperan(){
+        $kolom = 'idperan';
+        return $this->hasMany(DetailPeran::class, $kolom, $kolom);
+    }
 }

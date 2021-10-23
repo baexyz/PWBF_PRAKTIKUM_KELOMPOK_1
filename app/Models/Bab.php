@@ -12,4 +12,13 @@ class Bab extends Model
     protected $primaryKey = 'idbab';
     protected $guarded = ['idbab'];
 
+    public function buku(){
+        $kolom = 'idbuku';
+        return $this->belongsTo(Buku::class, $kolom, $kolom);
+    }
+
+    public function detailkemajuan(){
+        $kolom = 'idbab';
+        return $this->hasMany(DetailKemajuan::class, $kolom, $kolom);
+    }
 }

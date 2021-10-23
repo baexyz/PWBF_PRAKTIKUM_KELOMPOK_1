@@ -11,4 +11,9 @@ class Buku extends Model
     protected $table = 'buku';
     protected $primaryKey = 'idbuku';
     protected $guarded = ['idbuku'];
+
+    public function bab(){
+        $kolom = 'idbuku';
+        return $this->hasMany(Bab::class, $kolom, $kolom);
+    }
 }
