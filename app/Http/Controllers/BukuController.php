@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\detailperan;
+use App\Models\buku;
 use Illuminate\Http\Request;
 
-class detailperancontroller extends Controller
+class BukuController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class detailperancontroller extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\detailperan  $detailperan
+     * @param  \App\Models\buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function show(detailperan $detailperan)
+    public function show(buku $buku)
     {
         //
     }
@@ -52,10 +52,10 @@ class detailperancontroller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\detailperan  $detailperan
+     * @param  \App\Models\buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function edit(detailperan $detailperan)
+    public function edit(buku $buku)
     {
         //
     }
@@ -64,10 +64,10 @@ class detailperancontroller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\detailperan  $detailperan
+     * @param  \App\Models\buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, detailperan $detailperan)
+    public function update(Request $request, buku $buku)
     {
         //
     }
@@ -75,10 +75,10 @@ class detailperancontroller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\detailperan  $detailperan
+     * @param  \App\Models\buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function destroy(detailperan $detailperan)
+    public function destroy(buku $buku)
     {
         //
     }

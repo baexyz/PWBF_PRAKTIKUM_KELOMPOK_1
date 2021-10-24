@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\peran;
 use Illuminate\Http\Request;
 
-class perancontroller extends Controller
+class PeranController extends Controller
 {
     /**
      * Display a listing of the resource.

@@ -2,20 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\santri;
 use Illuminate\Http\Request;
 
-class indexcontroller extends Controller
+class SantriController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function index()
-    {   
-           
-
+    {
+        //
     }
 
     /**
@@ -42,10 +41,10 @@ class indexcontroller extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\santri  $santri
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(santri $santri)
     {
         //
     }
@@ -53,10 +52,10 @@ class indexcontroller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\santri  $santri
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(santri $santri)
     {
         //
     }
@@ -65,10 +64,10 @@ class indexcontroller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\santri  $santri
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, santri $santri)
     {
         //
     }
@@ -76,10 +75,10 @@ class indexcontroller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\santri  $santri
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(santri $santri)
     {
         //
     }

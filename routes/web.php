@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\indexcontroller;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,9 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home.index');
-});
+Route::get('/', [indexcontroller::class, 'index']);
 
 Route::get('/about', function () {
     return view('home.about');
@@ -38,10 +37,10 @@ Route::get('/test', function () {
     return view('dashboard.index');
 });
 
-Route::get('/loginn', function () {
+Route::get('/masuk', function () {
     return view('form.login');
 });
 
-Route::get('/signupp', function () {
+Route::get('/pendaftaran', function () {
     return view('form.signup');
 });

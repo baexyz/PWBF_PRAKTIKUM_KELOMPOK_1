@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\detailkemajuan;
+use App\Models\pengurus;
 use Illuminate\Http\Request;
 
-class detailkemajuancontroller extends Controller
+class PengurusController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class detailkemajuancontroller extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\detailkemajuan  $detailkemajuan
+     * @param  \App\Models\pengurus  $pengurus
      * @return \Illuminate\Http\Response
      */
-    public function show(detailkemajuan $detailkemajuan)
+    public function show(pengurus $pengurus)
     {
         //
     }
@@ -52,10 +52,10 @@ class detailkemajuancontroller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\detailkemajuan  $detailkemajuan
+     * @param  \App\Models\pengurus  $pengurus
      * @return \Illuminate\Http\Response
      */
-    public function edit(detailkemajuan $detailkemajuan)
+    public function edit(pengurus $pengurus)
     {
         //
     }
@@ -64,10 +64,10 @@ class detailkemajuancontroller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\detailkemajuan  $detailkemajuan
+     * @param  \App\Models\pengurus  $pengurus
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, detailkemajuan $detailkemajuan)
+    public function update(Request $request, pengurus $pengurus)
     {
         //
     }
@@ -75,10 +75,10 @@ class detailkemajuancontroller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\detailkemajuan  $detailkemajuan
+     * @param  \App\Models\pengurus  $pengurus
      * @return \Illuminate\Http\Response
      */
-    public function destroy(detailkemajuan $detailkemajuan)
+    public function destroy(pengurus $pengurus)
     {
         //
     }

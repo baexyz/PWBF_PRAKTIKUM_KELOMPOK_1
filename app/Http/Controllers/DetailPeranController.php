@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\bab;
+use App\Models\detailperan;
 use Illuminate\Http\Request;
 
-class babcontroller extends Controller
+class DetailPeranController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class babcontroller extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\bab  $bab
+     * @param  \App\Models\detailperan  $detailperan
      * @return \Illuminate\Http\Response
      */
-    public function show(bab $bab)
+    public function show(detailperan $detailperan)
     {
         //
     }
@@ -52,10 +52,10 @@ class babcontroller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\bab  $bab
+     * @param  \App\Models\detailperan  $detailperan
      * @return \Illuminate\Http\Response
      */
-    public function edit(bab $bab)
+    public function edit(detailperan $detailperan)
     {
         //
     }
@@ -64,10 +64,10 @@ class babcontroller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\bab  $bab
+     * @param  \App\Models\detailperan  $detailperan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, bab $bab)
+    public function update(Request $request, detailperan $detailperan)
     {
         //
     }
@@ -75,10 +75,10 @@ class babcontroller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\bab  $bab
+     * @param  \App\Models\detailperan  $detailperan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(bab $bab)
+    public function destroy(detailperan $detailperan)
     {
         //
     }

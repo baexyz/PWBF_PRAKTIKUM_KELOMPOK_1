@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pengurus;
+use App\Models\bab;
 use Illuminate\Http\Request;
 
-class penguruscontroller extends Controller
+class BabController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class penguruscontroller extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\pengurus  $pengurus
+     * @param  \App\Models\bab  $bab
      * @return \Illuminate\Http\Response
      */
-    public function show(pengurus $pengurus)
+    public function show(bab $bab)
     {
         //
     }
@@ -52,10 +52,10 @@ class penguruscontroller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\pengurus  $pengurus
+     * @param  \App\Models\bab  $bab
      * @return \Illuminate\Http\Response
      */
-    public function edit(pengurus $pengurus)
+    public function edit(bab $bab)
     {
         //
     }
@@ -64,10 +64,10 @@ class penguruscontroller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\pengurus  $pengurus
+     * @param  \App\Models\bab  $bab
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, pengurus $pengurus)
+    public function update(Request $request, bab $bab)
     {
         //
     }
@@ -75,10 +75,10 @@ class penguruscontroller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\pengurus  $pengurus
+     * @param  \App\Models\bab  $bab
      * @return \Illuminate\Http\Response
      */
-    public function destroy(pengurus $pengurus)
+    public function destroy(bab $bab)
     {
         //
     }

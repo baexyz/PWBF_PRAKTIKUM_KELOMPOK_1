@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\kemajuan;
 use Illuminate\Http\Request;
 
-class kemajuancontroller extends Controller
+class KemajuanController extends Controller
 {
     /**
      * Display a listing of the resource.

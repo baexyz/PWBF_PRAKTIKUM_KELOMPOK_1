@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\santri;
+use App\Models\detailkemajuan;
 use Illuminate\Http\Request;
 
-class santricotroller extends Controller
+class DetailKemajuanController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class santricotroller extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\santri  $santri
+     * @param  \App\Models\detailkemajuan  $detailkemajuan
      * @return \Illuminate\Http\Response
      */
-    public function show(santri $santri)
+    public function show(detailkemajuan $detailkemajuan)
     {
         //
     }
@@ -52,10 +52,10 @@ class santricotroller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\santri  $santri
+     * @param  \App\Models\detailkemajuan  $detailkemajuan
      * @return \Illuminate\Http\Response
      */
-    public function edit(santri $santri)
+    public function edit(detailkemajuan $detailkemajuan)
     {
         //
     }
@@ -64,10 +64,10 @@ class santricotroller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\santri  $santri
+     * @param  \App\Models\detailkemajuan  $detailkemajuan
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, santri $santri)
+    public function update(Request $request, detailkemajuan $detailkemajuan)
     {
         //
     }
@@ -75,10 +75,10 @@ class santricotroller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\santri  $santri
+     * @param  \App\Models\detailkemajuan  $detailkemajuan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(santri $santri)
+    public function destroy(detailkemajuan $detailkemajuan)
     {
         //
     }
