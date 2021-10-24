@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\detailperan;
+use App\Models\DetailPeran;
 use Illuminate\Http\Request;
 
 class DetailPeranController extends Controller
@@ -14,7 +14,11 @@ class DetailPeranController extends Controller
      */
     public function index()
     {
-        //
+        return view('pengurus2', [
+            
+            'detailperan' => DetailPeran::all(),
+
+        ]);
     }
 
     /**

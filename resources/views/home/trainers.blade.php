@@ -2,8 +2,6 @@
 
 @section('container')
     
-<main id="main" data-aos="fade-in">
-
   <!-- ======= Breadcrumbs ======= -->
   <div class="breadcrumbs">
     <div class="container">
@@ -78,8 +76,5 @@
 
     </div>
   </section><!-- End Trainers Section -->
-
-</main><!-- End #main -->
-
 
 @endsection

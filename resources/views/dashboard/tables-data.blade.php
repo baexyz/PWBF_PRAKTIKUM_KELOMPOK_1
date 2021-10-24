@@ -2,7 +2,6 @@
 
 @section('container')
 
-<main id="main" class="main">
 
   <div class="pagetitle">
     <h1>Data Tables</h1>
@@ -81,7 +80,5 @@
       </div>
     </div>
   </section>
-
-</main><!-- End #main -->
     
 @endsection

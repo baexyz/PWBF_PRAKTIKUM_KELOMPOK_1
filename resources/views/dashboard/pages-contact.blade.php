@@ -2,8 +2,6 @@
 
 @section('container')
 
-<main id="main" class="main">
-
   <div class="pagetitle">
     <h1>Contact</h1>
     <nav>
@@ -92,7 +90,5 @@
     </div>
 
   </section>
-
-</main><!-- End #main -->
 
 @endsection

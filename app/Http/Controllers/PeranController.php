@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\peran;
+use App\Models\Peran;
 use Illuminate\Http\Request;
 
 class PeranController extends Controller
@@ -14,7 +14,9 @@ class PeranController extends Controller
      */
     public function index()
     {
-        //
+        return view('peran', [ 
+            'peran' => Peran::all(),
+        ]);
     }
 
     /**

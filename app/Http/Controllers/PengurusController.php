@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\pengurus;
+use App\Models\Pengurus;
 use Illuminate\Http\Request;
 
 class PengurusController extends Controller
@@ -14,7 +14,11 @@ class PengurusController extends Controller
      */
     public function index()
     {
-        //
+        return view('pengurus', [
+            
+            'pengurus' => Pengurus::all(),
+
+        ]);
     }
 
     /**
