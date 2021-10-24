@@ -38,6 +38,10 @@ Route::get('/test', function () {
     return view('dashboard.index');
 });
 
-Route::get('/form', function () {
-    return view('form   ');
+Route::get('/loginn', function () {
+    return view('form.login');
+});
+
+Route::get('/signupp', function () {
+    return view('form.signup');
 });
