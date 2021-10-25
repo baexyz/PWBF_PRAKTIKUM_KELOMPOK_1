@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', 'User Profile')
+
 @section('container')
 
   <div class="pagetitle">
@@ -20,9 +22,10 @@
         <div class="card">
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-            <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <h2>Kevin Anderson</h2>
-            <h3>Web Designer</h3>
+            <img src="img/dashboard/profile-img.jpg" alt="Profile" class="rounded-circle">
+            <h2>{{ auth()->user()->nama }}</h2>
+            <h3>{{ auth()->user()->detailperan()->first()
+              ->peran()->first()->peran }}</h3>
             <div class="social-links mt-2">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -68,37 +71,23 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">Kevin Anderson</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Company</div>
-                  <div class="col-lg-9 col-md-8">Lueilwitz, Wisoky and Leuschke</div>
+                  <div class="col-lg-9 col-md-8">{{ auth()->user()->nama }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Job</div>
-                  <div class="col-lg-9 col-md-8">Web Designer</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Country</div>
-                  <div class="col-lg-9 col-md-8">USA</div>
-                </div>
-
-                <div class="row">
-                  <div class="col-lg-3 col-md-4 label">Address</div>
-                  <div class="col-lg-9 col-md-8">A108 Adam Street, New York, NY 535022</div>
+                  <div class="col-lg-9 col-md-8">{{ auth()->user()->detailperan()->first()
+                    ->peran()->first()->peran }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Phone</div>
-                  <div class="col-lg-9 col-md-8">(436) 486-3538 x29071</div>
+                  <div class="col-lg-9 col-md-8">{{ auth()->user()->hp }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Email</div>
-                  <div class="col-lg-9 col-md-8">k.anderson@example.com</div>
+                  <div class="col-lg-9 col-md-8">{{ auth()->user()->email }}</div>
                 </div>
 
               </div>
