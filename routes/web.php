@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DetailPeranController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
@@ -42,9 +43,7 @@ Route::get('/contact', function () {
     return view('home.contact');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard.index');
-})->middleware('auth');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login']);
