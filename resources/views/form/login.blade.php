@@ -1,90 +1,44 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+@extends('layouts.form')
 
-    <link rel="stylesheet" href="fonts/icomoon/style.css">
+@section('title','Halaman Login')
 
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
+@section('form')
+   
 
+<div class="pt-4 pb-2">
+  <h5 class="card-title text-center pb-0 fs-4">Login to Your Account</h5>
+  <p class="text-center small">Enter your username & password to login</p>
+</div>
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="login/css/bootstrap.min.css">
-    
-    <!-- Style -->
-    <link rel="stylesheet" href="login/css/style.css">
+<form class="row g-3 needs-validation" novalidate>
 
-    <title>Login #7</title>
-  </head>
-  <body>
-  
-
-  
-  <div class="content">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <img src="login/images/mosque.png" alt="Image" class="img-fluid" width="500px">
-        </div>
-        <div class="col-md-6 contents">
-          <div class="row justify-content-center">
-            <div class="col-md-8">
-              <div class="mb-4">
-              <h3>Sign In</h3>
-              <p class="mb-4">Lorem ipsum dolor sit amet elit. Sapiente sit aut eos consectetur adipisicing.</p>
-            </div>
-            <form action="#" method="post">
-              <div class="form-group first">
-                <label for="username">Username</label>
-                <input type="text" class="form-control" id="username">
-
-              </div>
-              <div class="form-group last mb-4">
-                <label for="password">Password</label>
-                <input type="password" class="form-control" id="password">
-                
-              </div>
-              
-              <div class="d-flex mb-5 align-items-center">
-                <label class="control control--checkbox mb-0"><span class="caption">Remember me</span>
-                  <input type="checkbox" checked="checked"/>
-                  <div class="control__indicator"></div>
-                </label>
-                <span class="ml-auto"><a href="#" class="forgot-pass">Forgot Password</a></span> 
-              </div>
-
-              <input type="submit" value="Log In" class="btn btn-block btn-primary">
-
-              <span class="d-block text-left my-4 text-muted">&mdash; or login with &mdash;</span>
-              
-              <div class="social-login">
-                <a href="#" class="facebook">
-                  <span class="icon-facebook mr-3"></span> 
-                </a>
-                <a href="#" class="twitter">
-                  <span class="icon-twitter mr-3"></span> 
-                </a>
-                <a href="#" class="google">
-                  <span class="icon-google mr-3"></span> 
-                </a>
-              </div>
-            </form>
-            </div>
-          </div>
-          
-        </div>
-        
-      </div>
+  <div class="col-12">
+    <label for="yourUsername" class="form-label">Username</label>
+    <div class="input-group has-validation">
+      <span class="input-group-text" id="inputGroupPrepend">@</span>
+      <input type="text" name="username" class="form-control" id="yourUsername" required>
+      <div class="invalid-feedback">Please enter your username.</div>
     </div>
   </div>
 
-  
-    <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/main.js"></script>
-  </body>
-</html>
+  <div class="col-12">
+    <label for="yourPassword" class="form-label">Password</label>
+    <input type="password" name="passwword" class="form-control" id="yourPassword" required>
+    <div class="invalid-feedback">Please enter your password!</div>
+  </div>
+
+  <div class="col-12">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberMe">
+      <label class="form-check-label" for="rememberMe">Remember me</label>
+    </div>
+  </div>
+  <div class="col-12">
+    <button class="btn btn-primary w-100" type="submit">Login</button>
+  </div>
+  <div class="col-12">
+    <p class="small mb-0">Don't have account? <a href="pages-register.html">Create an account</a></p>
+  </div>
+</form>
+
+@endsection

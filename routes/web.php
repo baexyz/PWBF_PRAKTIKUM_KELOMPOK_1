@@ -45,15 +45,15 @@ Route::get('/contact', function () {
 });
 
 
-Route::get('/test', function () {
+Route::get('/dashboard', function () {
     return view('dashboard.index');
 });
 
-Route::get('/masuk', function () {
+Route::get('/login', function () {
     return view('form.login');
 });
 
-Route::get('/pendaftaran', function () {
+Route::get('/register', function () {
     return view('form.signup');
 });
 
