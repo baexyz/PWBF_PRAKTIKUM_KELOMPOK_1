@@ -44,6 +44,7 @@ Route::get('/contact', function () {
 });
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/profile', [DashboardController::class, 'profile'])->middleware('auth');
 
 Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
 Route::post('/login', [LoginController::class, 'login']);
