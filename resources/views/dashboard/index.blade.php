@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Dashboard')
+
 @section('container')
     
 
@@ -315,35 +317,35 @@
                   </thead>
                   <tbody>
                     <tr>
-                      <th scope="row"><a href="#"><img src="dashboard/img/product-1.jpg" alt=""></a></th>
+                      <th scope="row"><a href="#"><img src="img/dashboard/product-1.jpg" alt=""></a></th>
                       <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
                       <td>$64</td>
                       <td class="fw-bold">124</td>
                       <td>$5,828</td>
                     </tr>
                     <tr>
-                      <th scope="row"><a href="#"><img src="dashboard/img/product-2.jpg" alt=""></a></th>
+                      <th scope="row"><a href="#"><img src="img/dashboard/product-2.jpg" alt=""></a></th>
                       <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
                       <td>$46</td>
                       <td class="fw-bold">98</td>
                       <td>$4,508</td>
                     </tr>
                     <tr>
-                      <th scope="row"><a href="#"><img src="dashboard/img/product-3.jpg" alt=""></a></th>
+                      <th scope="row"><a href="#"><img src="img/dashboard/product-3.jpg" alt=""></a></th>
                       <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
                       <td>$59</td>
                       <td class="fw-bold">74</td>
                       <td>$4,366</td>
                     </tr>
                     <tr>
-                      <th scope="row"><a href="#"><img src="dashboard/img/product-4.jpg" alt=""></a></th>
+                      <th scope="row"><a href="#"><img src="img/dashboard/product-4.jpg" alt=""></a></th>
                       <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
                       <td>$32</td>
                       <td class="fw-bold">63</td>
                       <td>$2,016</td>
                     </tr>
                     <tr>
-                      <th scope="row"><a href="#"><img src="dashboard/img/product-5.jpg" alt=""></a></th>
+                      <th scope="row"><a href="#"><img src="img/dashboard/product-5.jpg" alt=""></a></th>
                       <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
                       <td>$79</td>
                       <td class="fw-bold">41</td>
@@ -608,31 +610,31 @@
 
             <div class="news">
               <div class="post-item clearfix">
-                <img src="dashboard/img/news-1.jpg" alt="">
+                <img src="img/dashboard/news-1.jpg" alt="">
                 <h4><a href="#">Nihil blanditiis at in nihil autem</a></h4>
                 <p>Sit recusandae non aspernatur laboriosam. Quia enim eligendi sed ut harum...</p>
               </div>
 
               <div class="post-item clearfix">
-                <img src="dashboard/img/news-2.jpg" alt="">
+                <img src="img/dashboard/news-2.jpg" alt="">
                 <h4><a href="#">Quidem autem et impedit</a></h4>
                 <p>Illo nemo neque maiores vitae officiis cum eum turos elan dries werona nande...</p>
               </div>
 
               <div class="post-item clearfix">
-                <img src="dashboard/img/news-3.jpg" alt="">
+                <img src="img/dashboard/news-3.jpg" alt="">
                 <h4><a href="#">Id quia et et ut maxime similique occaecati ut</a></h4>
                 <p>Fugiat voluptas vero eaque accusantium eos. Consequuntur sed ipsam et totam...</p>
               </div>
 
               <div class="post-item clearfix">
-                <img src="dashboard/img/news-4.jpg" alt="">
+                <img src="img/dashboard/news-4.jpg" alt="">
                 <h4><a href="#">Laborum corporis quo dara net para</a></h4>
                 <p>Qui enim quia optio. Eligendi aut asperiores enim repellendusvel rerum cuder...</p>
               </div>
 
               <div class="post-item clearfix">
-                <img src="dashboard/img/news-5.jpg" alt="">
+                <img src="img/dashboard/news-5.jpg" alt="">
                 <h4><a href="#">Et dolores corrupti quae illo quod dolor</a></h4>
                 <p>Odit ut eveniet modi reiciendis. Atque cupiditate libero beatae dignissimos eius...</p>
               </div>
@@ -646,7 +648,4 @@
 
     </div>
   </section>
-
-
-
 @endsection

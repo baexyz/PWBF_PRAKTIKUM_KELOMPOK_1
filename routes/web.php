@@ -7,6 +7,7 @@ use App\Http\Controllers\DetailPeranController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\KemajuanController;
+use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\PeranController;
 use App\Http\Controllers\SantriController;
@@ -36,9 +37,6 @@ Route::get('/kemajuan', [KemajuanController::class, 'index']);
 Route::get('/detailkemajuan', [DetailKemajuanController::class, 'index']);
 
 
-
-
-
 Route::get('/about', function () {
     return view('home.about');
 });
@@ -55,17 +53,16 @@ Route::get('/contact', function () {
     return view('home.contact');
 });
 
-
 Route::get('/dashboard', function () {
     return view('dashboard.index');
-});
+})->middleware('auth');
 
-Route::get('/login', function () {
-    return view('form.login');
-});
+Route::get('/login', [LoginController::class, 'index'])->middleware('guest')->name('login');
+Route::post('/login', [LoginController::class, 'login']);
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/register', function () {
-    return view('form.signup');
+    return view('form.register');
 });
 
 Route::get('/tabeldata', function () {
