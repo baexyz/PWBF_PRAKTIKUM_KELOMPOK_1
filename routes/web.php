@@ -1,16 +1,13 @@
 <?php
+use Illuminate\Support\Facades\Route;
 
-<<<<<<< HEAD
 use App\Http\Controllers\BabController;
 use App\Http\Controllers\BukuController;
 use App\Http\Controllers\DetailKemajuanController;
-=======
-use App\Http\Controllers\DashboardController;
->>>>>>> c2d397b (Update DashboardController)
-use App\Http\Controllers\DetailPeranController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\IndexController;
 use App\Http\Controllers\KemajuanController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DetailPeranController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\PeranController;
