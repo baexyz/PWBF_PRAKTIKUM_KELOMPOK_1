@@ -38,8 +38,16 @@ class DatabaseSeeder extends Seeder
         Santri::factory(30)->create();
 
         //Membuat data buku dan bab
-        Buku::factory(5)->create();
-        Bab::factory(20)->create();
+        $buku = Buku::factory(5)->create();
+        foreach ($buku as $item) {
+            $iter = 1;     
+            $bab_all = Bab::factory(5)->create();
+            foreach ($bab_all as $bab) {
+                $bab->idbuku = $item->idbuku;
+                $bab->bab = $iter++; 
+                $bab->save();
+            }
+        }        
                 
         //Membuat data DetailKemajuan dan Kemajuan
         DetailKemajuan::factory(100)->create();

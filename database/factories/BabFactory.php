@@ -23,8 +23,8 @@ class BabFactory extends Factory
     public function definition()
     {
         return [
-            'idbuku' => Buku::inRandomOrder()->first(),
-            'bab' => $this->faker->sentence(2),
+            'idbuku' => 1,
+            'bab' => '1',
             'judul' => $this->faker->sentence(2),
             'keterangan' => $this->faker->paragraph(4),
         ];

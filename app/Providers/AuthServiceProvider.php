@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Pengurus;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
 
@@ -24,6 +25,16 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        Gate::define('isStaff', function (Pengurus $pengurus){
+            return $pengurus->detailperan()->first()
+            ->peran()->first()->peran == 'Staff';
+        });
+        
+        Gate::define('isGuru', function (Pengurus $pengurus){
+            return $pengurus->detailperan()->first()
+            ->peran()->first()->peran == 'Guru';
+        });
 
         //
     }
