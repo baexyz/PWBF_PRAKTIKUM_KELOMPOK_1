@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bab;
 use App\Models\buku;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,22 @@ class BukuController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.buku', [
+            
+            'buku' => Buku::all(),
+
+        ]);
+    }
+
+
+    public function detailbuku($id)
+    {
+        $buku = Buku::find($id);
+        return view('dashboard.bab', [
+            
+            'bab' => $buku->bab()->get(), 
+
+        ]);
     }
 
     /**

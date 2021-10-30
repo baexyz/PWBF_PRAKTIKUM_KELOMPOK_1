@@ -14,7 +14,11 @@ class BabController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.bab', [
+            
+            'bab' => Bab::all(),
+
+        ]);
     }
 
     /**

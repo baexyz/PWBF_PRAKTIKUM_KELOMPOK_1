@@ -1,10 +1,15 @@
 <?php
 
+use App\Http\Controllers\BabController;
+use App\Http\Controllers\BukuController;
+use App\Http\Controllers\DetailKemajuanController;
 use App\Http\Controllers\DetailPeranController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
+use App\Http\Controllers\KemajuanController;
 use App\Http\Controllers\PengurusController;
 use App\Http\Controllers\PeranController;
+use App\Http\Controllers\SantriController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,12 +23,18 @@ use App\Http\Controllers\PeranController;
 */
 
 Route::get('/', [IndexController::class, 'index']);
-
 Route::get('/peran', [PeranController::class, 'index']);
-
 Route::get('/pengurus', [PengurusController::class, 'index']);
-
 Route::get('/detailperan', [DetailPeranController::class, 'index']);
+Route::get('/bab', [BabController::class, 'index']);
+
+Route::get('/buku', [BukuController::class, 'index']);
+Route::get('/buku/{id}', [BukuController::class, 'detailbuku']);
+
+Route::get('/santri', [SantriController::class, 'index']);
+Route::get('/kemajuan', [KemajuanController::class, 'index']);
+Route::get('/detailkemajuan', [DetailKemajuanController::class, 'index']);
+
 
 
 

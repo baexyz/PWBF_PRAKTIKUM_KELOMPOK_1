@@ -14,7 +14,11 @@ class SantriController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.santri', [
+            
+            'santri' => Santri::all(),
+
+        ]);
     }
 
     /**

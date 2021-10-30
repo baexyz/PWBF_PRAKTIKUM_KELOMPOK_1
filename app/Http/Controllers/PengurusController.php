@@ -14,7 +14,7 @@ class PengurusController extends Controller
      */
     public function index()
     {
-        return view('pengurus', [
+        return view('dashboard.pengurus', [
             
             'pengurus' => Pengurus::all(),
 

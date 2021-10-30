@@ -14,7 +14,11 @@ class KemajuanController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.kemajuan', [
+            
+            'kemajuan' => Kemajuan::all(),
+
+        ]);
     }
 
     /**

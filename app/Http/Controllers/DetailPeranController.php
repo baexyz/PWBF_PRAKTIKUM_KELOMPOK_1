@@ -14,7 +14,7 @@ class DetailPeranController extends Controller
      */
     public function index()
     {
-        return view('pengurus2', [
+        return view('dashboard.detailperan', [
             
             'detailperan' => DetailPeran::all(),
 

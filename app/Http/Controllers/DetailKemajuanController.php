@@ -14,7 +14,11 @@ class DetailKemajuanController extends Controller
      */
     public function index()
     {
-        //
+        return view('dashboard.detailkemajuan', [
+            
+            'detailkemajuan' => DetailKemajuan::all(),
+
+        ]);
     }
 
     /**
