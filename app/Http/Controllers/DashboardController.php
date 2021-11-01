@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kemajuan;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 
@@ -13,6 +14,16 @@ class DashboardController extends Controller
 
     public function profile(){
         return view('dashboard.users-profile');
+    }
+
+    public function raport(){
+        return view('dashboard.kemajuan', [
+            'kemajuan' => Kemajuan::all()
+        ]);
+    }
+
+    public function buku(){
+        return view('dashboard.bab');
     }
 
     public function pengurus(){

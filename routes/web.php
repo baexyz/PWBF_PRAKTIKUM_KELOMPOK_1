@@ -28,10 +28,10 @@ Route::get('/', [IndexController::class, 'index']);
 Route::get('/peran', [PeranController::class, 'index']);
 Route::get('/pengurus', [PengurusController::class, 'index']);
 Route::get('/detailperan', [DetailPeranController::class, 'index']);
-Route::get('/bab', [BabController::class, 'index']);
+// Route::get('/bab', [BabController::class, 'index']);
 
-Route::get('/buku', [BukuController::class, 'index'])->middleware('auth');
-Route::get('/buku/{id}', [BukuController::class, 'detailbuku'])->middleware('auth');
+// Route::get('/buku', [BukuController::class, 'index'])->middleware('auth');
+// Route::get('/buku/{id}', [BukuController::class, 'detailbuku'])->middleware('auth');
 
 Route::get('/santri', [SantriController::class, 'index']);
 Route::get('/kemajuan', [KemajuanController::class, 'index']);
@@ -56,6 +56,8 @@ Route::get('/contact', function () {
 
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->middleware('auth');
+Route::get('/dashboard/kemajuan', [DashboardController::class, 'raport'])->middleware('auth');
+Route::get('/dashboard/buku', [DashboardController::class, 'buku'])->middleware('auth');
 Route::get('/dashboard/pengurus', [DashboardController::class, 'pengurus'])->middleware('auth')->name('profile');
 Route::get('/staff', [DashboardController::class, 'index'])->middleware('auth', 'can:isStaff');
 Route::get('/guru', [DashboardController::class, 'index'])->middleware('auth', 'can:isGuru');

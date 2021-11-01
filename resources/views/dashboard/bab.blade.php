@@ -36,7 +36,7 @@
 
               <tbody>
 
-                  @foreach ($bab as $item)
+                  {{-- @foreach ($bab as $item)
                   
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
@@ -45,8 +45,14 @@
                     <td>{{ $item->keterangan }}</td>
                   </tr>
                   
-                  @endforeach
-
+                  @endforeach --}}
+                  
+                  <tr>
+                    <th scope="row">1</th>
+                    <td> Bab 1 </td>
+                    <td>Lorem ipsum dolor sit.</td>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, similique magni sit nostrum distinctio neque maxime expedita fugit ratione, dicta consectetur architecto inventore, veritatis exercitationem quis cum iure quae a!</td>
+                  </tr>
                 
               </tbody>
             </table>
