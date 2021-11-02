@@ -19,8 +19,8 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Datatables</h5>
-            <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
+            
+            <a href="#" class="btn btn-primary mt-3 mb-1">Tambah Buku</a>
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -29,6 +29,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Buku</th>
                   <th scope="col">Keterangan</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
 
@@ -38,8 +39,16 @@
                   
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td> <a href="/buku/{{ $item->idbuku }}"> {{ $item->buku }} </a> </td>
+                    <td> <a href="/dashboard/buku/{{ $item->idbuku }}"> {{ $item->buku }} </a> </td>
                     <td>{{ $item->keterangan }}</td>
+                    <td>
+                      <a href="#">
+                        <i class="bi bi-pencil-square"></i>
+                      </a>
+                      <a href="#">
+                        <i class="bi bi-x-square"></i>
+                      </a>
+                    </td>
                   </tr>
                   
                   @endforeach

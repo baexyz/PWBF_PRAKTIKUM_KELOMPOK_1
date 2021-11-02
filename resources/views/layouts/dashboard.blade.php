@@ -118,22 +118,29 @@
       </li><!-- End Kemajuan Nav -->
 
       <li class="nav-item">
+        <a class="nav-link{{ request()->is('dashboard/buku') ? '' : ' collapsed' }}" href="/dashboard/buku">
+          <i class="bi bi-journal-bookmark"></i>          
+          <span>Buku</span>
+        </a>
+      </li><!-- End Kemajuan Nav -->
+
+      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-book"></i>Daftar Buku</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            <a href="/dashboard/buku">
+            <a href="/dashboard/buku/1">
               <i class="bi bi-circle"></i><span>Buku Materi1</span>
             </a>
           </li>
           <li>
-            <a href="/dashboard/buku">
+            <a href="/dashboard/buku/2">
               <i class="bi bi-circle"></i><span>Buku Materi2</span>
             </a>
           </li>
           <li>
-            <a href="/dashboard/buku">
+            <a href="/dashboard/buku/3">
               <i class="bi bi-circle"></i><span>Buku Materi3</span>
             </a>
           </li>
@@ -194,3 +201,5 @@
   </footer><!-- End Footer -->
 
 @endsection
+
+  

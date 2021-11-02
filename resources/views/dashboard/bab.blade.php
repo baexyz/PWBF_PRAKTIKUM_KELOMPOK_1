@@ -27,10 +27,10 @@
             <table class="table datatable">
               <thead>
                 <tr>
-                  <th scope="col">#</th>
                   <th scope="col">Bab</th>
                   <th scope="col">Judul</th>
                   <th scope="col">Keterangan</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
 
@@ -48,10 +48,17 @@
                   @endforeach --}}
                   
                   <tr>
-                    <th scope="row">1</th>
-                    <td> Bab 1 </td>
+                    <th scope="row">1</th>  
                     <td>Lorem ipsum dolor sit.</td>
                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, similique magni sit nostrum distinctio neque maxime expedita fugit ratione, dicta consectetur architecto inventore, veritatis exercitationem quis cum iure quae a!</td>
+                    <td>
+                      <a href="#">
+                        <i class="bi bi-pencil-square"></i>
+                      </a>
+                      <a href="#">
+                        <i class="bi bi-x-square"></i>
+                      </a>
+                    </td>
                   </tr>
                 
               </tbody>

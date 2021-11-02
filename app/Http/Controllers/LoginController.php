@@ -8,6 +8,11 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     public function index(){
+        
+        //mengecek jika user masih login
+        if(auth()->check()) {
+            return redirect('/dashboard/profile');
+        }
         return view('form.login');
     }
 

@@ -32,6 +32,13 @@
       <label class="form-check-label" for="rememberMe">Remember me</label>
     </div>
   </div> --}}
+
+   @if (session()->has('loginError'))
+   <div class="alert alert-danger col-12" role="alert">
+     EMAIl ATAU PASSWORD YANG ANDA MASUKKAN SALAH
+  </div>
+   @endif 
+
   <div class="col-12">
     <button class="btn btn-primary w-100" type="submit">Login</button>
   </div>

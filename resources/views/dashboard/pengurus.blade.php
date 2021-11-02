@@ -55,8 +55,6 @@
                   <a href="/remove/{{ $item->idpengurus }}">
                     <i class="bi bi-x-square"></i>
                   </a>
-                  
-                  
                 </td>
               </tr>                  
               @endforeach              
