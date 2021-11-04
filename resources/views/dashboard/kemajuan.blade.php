@@ -20,8 +20,7 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Datatables</h5>
-            <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
+            <a href="#" class="btn btn-primary mt-3 mb-1">Tambah Data</a>
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -32,6 +31,8 @@
                   <th scope="col">Nama Pengurus</th>
                   <th scope="col">Tanggal</th>
                   <th scope="col">Status</th>
+                  <th scope="col">Detail</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
 
@@ -45,6 +46,19 @@
                     <td>{{ $item->pengurus()->first()->nama }}</td>
                     <td>{{ $item->tanggal }}</td>
                     <td>{{ $item->status }}</td>
+                    <td><a href="/dashboard/kemajuan/1" class="btn btn-primary">Detail</a></td>
+                    <td>
+                      <a href="#" class="btn btn-success">
+                        Update
+                      </a>
+
+                      @can('isStaff')
+                      <a href="#" class="btn btn-danger">
+                        Delete
+                      </a>
+                      @endcan
+
+                    </td>
                   </tr>
                   
                   @endforeach

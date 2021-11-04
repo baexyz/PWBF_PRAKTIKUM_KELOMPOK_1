@@ -22,6 +22,10 @@ class DashboardController extends Controller
         ]);
     }
 
+    public function detailraport(){
+        return view('dashboard.detailkemajuan');
+    }
+
     public function buku(){
         return view('dashboard.bab');
     }
@@ -31,6 +35,8 @@ class DashboardController extends Controller
             "pengurus" => Pengurus::with(['detailperan.peran'])->get(),
         ]);
     }
+
+    
 
     public function hapus($id){
         Pengurus::find($id)->delete();

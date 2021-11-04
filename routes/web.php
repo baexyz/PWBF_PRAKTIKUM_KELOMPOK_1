@@ -25,17 +25,20 @@ use App\Http\Controllers\SantriController;
 */
 
 Route::get('/', [IndexController::class, 'index']);
-Route::get('/peran', [PeranController::class, 'index']);
-Route::get('/pengurus', [PengurusController::class, 'index']);
-Route::get('/detailperan', [DetailPeranController::class, 'index']);
-// Route::get('/bab', [BabController::class, 'index']);
+
+// Route::get('/peran', [PeranController::class, 'index']);
+// Route::get('/pengurus', [PengurusController::class, 'index']);
+// Route::get('/detailperan', [DetailPeranController::class, 'index']);
+// // Route::get('/bab', [BabController::class, 'index']);
 
 
-// Route::get('/buku/{id}', [BukuController::class, 'detailbuku'])->middleware('auth');
+// // Route::get('/buku/{id}', [BukuController::class, 'detailbuku'])->middleware('auth');
 
-Route::get( '/santri', [SantriController::class, 'index']);
-Route::get('/kemajuan', [KemajuanController::class, 'index']);
-Route::get('/detailkemajuan', [DetailKemajuanController::class, 'index']);
+// Route::get( '/santri', [SantriController::class, 'index']);
+// Route::get('/kemajuan', [KemajuanController::class, 'index']);
+// // Route::get('/detailkemajuan', [DetailKemajuanController::class, 'index']);
+
+
 
 
 Route::get('/about', function () {
@@ -57,6 +60,7 @@ Route::get('/contact', function () {
 Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->middleware('auth');
 Route::get('/dashboard/kemajuan', [DashboardController::class, 'raport'])->middleware('auth');
+Route::get('/dashboard/kemajuan/{id}', [DashboardController::class, 'detailraport'])->middleware('auth');
 Route::get('/dashboard/buku/{id}', [DashboardController::class, 'buku'])->middleware('auth');
 Route::get('/dashboard/buku', [BukuController::class, 'index'])->middleware('auth');
 Route::get('/dashboard/pengurus', [DashboardController::class, 'pengurus'])->middleware('auth')->name('profile');

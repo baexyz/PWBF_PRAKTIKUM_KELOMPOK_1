@@ -1,7 +1,7 @@
 @extends('layouts.dashboard')
 
 @section('container')
-    
+
 
 <div class="pagetitle">
     <h1>Data Tables</h1>
@@ -20,33 +20,51 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Datatables</h5>
-            <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
-
+            <h5 class="card-title">Detail Kemajuan</h5>
+            <p> Berikut adalah Detail Kemajuan dari siswa <b> NAMA SISWA</b> </p>
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
                 <tr>
                   <th scope="col">#</th>
-                  <th scope="col">Kemajuan</th>
+                  <th scope="col">Guru</th>
+                  <th scope="col">Buku</th>
                   <th scope="col">Bab</th>
                   <th scope="col">Keterangan</th>
+                  <th scope="col" colspan="2">Action</th>
                 </tr>
               </thead>
 
               <tbody>
 
-                  @foreach ($detailkemajuan as $item)
+                  {{-- @foreach ($bab as $item)
                   
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $item->kemajuan()->first()->idkemajuan }}</td>
-                    <td>{{ $item->bab()->first()->judul }}</td>
+                    <td>{{ $item->bab }}</td>
+                    <td>{{ $item->judul }}</td>
                     <td>{{ $item->keterangan }}</td>
                   </tr>
                   
-                  @endforeach
-
+                  @endforeach --}}
+                  
+                  <tr>
+                    <th scope="row">1</th>  
+                    <td>NAMA GURU</td>
+                    <td>Lorem ipsum</td>
+                    <td>1</td>
+                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae odio voluptas aperiam vitae iure repellat harum, voluptatum necessitatibus numquam esse?</td>
+                    <td>
+                      <a href="#" class="btn btn-success">
+                        Update
+                      </a>
+                    </td>
+                    <td>
+                      <a href="#" class="btn btn-danger">
+                        Delete
+                      </a>
+                    </td>
+                  </tr>
                 
               </tbody>
             </table>

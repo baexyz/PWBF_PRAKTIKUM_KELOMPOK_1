@@ -29,7 +29,7 @@
                   <th scope="col">#</th>
                   <th scope="col">Buku</th>
                   <th scope="col">Keterangan</th>
-                  <th scope="col">Action</th>
+                  <th scope="col" colspan="2">Action</th>
                 </tr>
               </thead>
 
@@ -42,13 +42,15 @@
                     <td> <a href="/dashboard/buku/{{ $item->idbuku }}"> {{ $item->buku }} </a> </td>
                     <td>{{ $item->keterangan }}</td>
                     <td>
-                      <a href="#">
-                        <i class="bi bi-pencil-square"></i>
-                      </a>
-                      <a href="#">
-                        <i class="bi bi-x-square"></i>
+                      <a href="#" class="btn btn-success">
+                        Update
                       </a>
                     </td>
+                    <td>
+                      <a href="#" class="btn btn-danger">
+                      Delete
+                    </a>
+                  </td>
                   </tr>
                   
                   @endforeach

@@ -20,9 +20,7 @@
 
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">Datatables</h5>
-            <p>Add lightweight datatables to your project with using the <a href="https://github.com/fiduswriter/Simple-DataTables" target="_blank">Simple DataTables</a> library. Just add <code>.datatable</code> class name to any table you wish to conver to a datatable</p>
-
+           
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
@@ -30,7 +28,7 @@
                   <th scope="col">Bab</th>
                   <th scope="col">Judul</th>
                   <th scope="col">Keterangan</th>
-                  <th scope="col">Action</th>
+                  <th scope="col" colspan="2">Action</th>
                 </tr>
               </thead>
 
@@ -52,11 +50,13 @@
                     <td>Lorem ipsum dolor sit.</td>
                     <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident, similique magni sit nostrum distinctio neque maxime expedita fugit ratione, dicta consectetur architecto inventore, veritatis exercitationem quis cum iure quae a!</td>
                     <td>
-                      <a href="#">
-                        <i class="bi bi-pencil-square"></i>
+                      <a href="#" class="btn btn-success">
+                        Update
                       </a>
-                      <a href="#">
-                        <i class="bi bi-x-square"></i>
+                    </td>
+                    <td>
+                      <a href="#" class="btn btn-danger">
+                        Delete
                       </a>
                     </td>
                   </tr>

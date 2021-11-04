@@ -49,12 +49,13 @@
                 <td>{{ $item->hp }}</td>
                 <td>{{ $item->created_at }}</td>
                 <td>
-                  <a href="#">
-                    <i class="bi bi-pencil-square"></i>
+                  <a href="#" class="btn btn-success">
+                    Update
                   </a>
-                  <a href="/remove/{{ $item->idpengurus }}">
-                    <i class="bi bi-x-square"></i>
+                  <td><a href="/remove/{{ $item->idpengurus }}" class="btn btn-danger">
+                    Delete 
                   </a>
+                  </td>
                 </td>
               </tr>                  
               @endforeach              
