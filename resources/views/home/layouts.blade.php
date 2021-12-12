@@ -74,13 +74,14 @@
 
     
           <li><a href="events">Fasilitas</a></li>
+
           <li><a href="events">Prestasi</a></li>
         
           
           <li class="dropdown"><a href="events"><span>PPDB</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               </li>
-              <li><a href="events">Pendaftaran</a></li>
+              <li><a href="/register">Pendaftaran</a></li>
               <li><a href="events">Jenis Pendaftaran</a></li>
               <li><a href="events">Brosur </a></li>
             </ul>
