@@ -10,10 +10,11 @@
     <p class="text-center small">Masukan Data Diri Santri</p>
   </div>
 
-  <form class="row g-3 needs-validation" novalidate>
+  <form class="row g-3 needs-validation" action="/register" method="post">
+    @csrf
     <div class="col-12">
       <label for="yourName" class="form-label">Nama</label>
-      <input type="text" name="name" class="form-control" id="yourName" required>
+      <input type="text" name="namasantri" class="form-control" id="yourName" required>
       <div class="invalid-feedback">Please, enter your name!</div>
     </div>
 
@@ -22,51 +23,72 @@
       <input type="email" name="email" class="form-control" id="yourEmail" required>
       <div class="invalid-feedback">Please enter a valid Email adddress!</div>
     </div>
-
     
     {{-- jenis kelamin --}}
     <div class="col-12">
       <label for="yourUsername" class="form-label">Jenis Kelamin</label>
     <br>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+        <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="M">
         <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
       </div>
       <div class="form-check form-check-inline">
-        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+        <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="F">
         <label class="form-check-label" for="inlineRadio2">Perempuan</label>
+      </div>
+    </div>
+    
+    <div class="col-12">
+      <label for="yourUsername" class="form-label">Tanggal Lahir</label>
+      <div class="input-group has-validation">
+        <input type="date" name="tanggallhr" class="form-control" id="yourUsername" required>
+        <div class="invalid-feedback">Please enter a city</div>
       </div>
     </div>
     
     <div class="col-12">
       <label for="yourUsername" class="form-label">Kota Lahir</label>
       <div class="input-group has-validation">
-        <input type="text" name="username" class="form-control" id="yourUsername" required>
+        <input type="text" name="kotalhr" class="form-control" id="yourUsername" required>
         <div class="invalid-feedback">Please enter a city</div>
       </div>
     </div>
 
     <div class="col-12">
       <label for="yourPassword" class="form-label">No Handphone</label>
-      <input type="password" name="password" class="form-control" id="yourPassword" required>
+      <input type="text" name="hp" class="form-control" id="yourPassword" required>
       <div class="invalid-feedback">TEMPLATE</div>
+    </div>
+
+    <div class="col-12">
+      <label for="yourUsername" class="form-label">Tanggal Masuk</label>
+      <div class="input-group has-validation">
+        <input type="date" name="tanggalmasuk" class="form-control" id="yourUsername" required>
+        <div class="invalid-feedback">Please enter a city</div>
+      </div>
     </div>
 
     <div class="col-12">
       <label for="yourPassword" class="form-label">Nama Orang Tua</label>
-      <input type="password" name="password" class="form-control" id="yourPassword" required>
+      <input type="text" name="namaortu" class="form-control" id="yourPassword" required>
       <div class="invalid-feedback">TEMPLATE</div>
     </div>
 
     <div class="col-12">
-      <label for="yourPassword" class="form-label">Alamat Orang Tua</label>
-      <input type="password" name="password" class="form-control" id="yourPassword" required>
+    <label for="yourPassword" class="form-label">Alamat Orang Tua</label>
+    <input type="text" name="alamatortu" class="form-control" id="yourPassword" required>
       <div class="invalid-feedback">TEMPLATE</div>
     </div>
-
+    
+    <div class="col-12">
+    <label for="yourPassword" class="form-label">Password</label>
+    <input type="password" name="password" class="form-control" id="yourPassword" required>
+      <div class="invalid-feedback">TEMPLATE</div>
+    </div>
+    
     <div class="col-12">
       <div class="form-check">
-        <input class="form-check-input" name="terms" type="checkbox" value="" id="acceptTerms" required>
+        <input class="form-check-input" type="checkbox" value="" id="acceptTerms" required>
         <label class="form-check-label" for="acceptTerms">I agree and accept the <a href="#">terms and conditions</a></label>
         <div class="invalid-feedback">You must agree before submitting.</div>
       </div>

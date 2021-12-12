@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Santri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -36,5 +37,15 @@ class LoginController extends Controller
         $request->session()->invalidate();    
         $request->session()->regenerateToken();    
         return redirect('/');
+    }
+
+    public function register(Request $request){
+        if ($request->isMethod('get')) {
+            return view('form.register');
+        }
+        if ($request->isMethod('post')) {
+            Santri::create($request->all());
+            return redirect('/login')->with('status', 'Registrasi berhasil, silahkan login');;
+        }
     }
 }

@@ -39,6 +39,12 @@
   </div>
    @endif 
 
+   @if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+   @endif
+
   <div class="col-12">
     <button class="btn btn-primary w-100" type="submit">Login</button>
   </div>

@@ -68,12 +68,10 @@ Route::get('/staff', [DashboardController::class, 'index'])->middleware('auth', 
 Route::get('/guru', [DashboardController::class, 'index'])->middleware('auth', 'can:isGuru');
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
+Route::get('/register', [LoginController::class, 'register'])->middleware('guest')->name('register');
+Route::post('/register', [LoginController::class, 'register']);
 Route::post('/login', [LoginController::class, 'login']);
 Route::get('/logout', [LoginController::class, 'logout']);
-
-Route::get('/register', function () {
-    return view('form.register');
-});
 
 Route::get('/tabeldata', function () {
     return view('dashboard.tables-data');

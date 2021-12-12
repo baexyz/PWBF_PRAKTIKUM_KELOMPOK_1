@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailPeran;
 use App\Models\Kemajuan;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
@@ -31,8 +32,10 @@ class DashboardController extends Controller
     }
 
     public function pengurus(){
+        $pengurus = Pengurus::all();
+        $pengurus->load('detailperan.peran');
         return view('dashboard.pengurus', [
-            "pengurus" => Pengurus::with(['detailperan.peran'])->get(),
+            "pengurus" => $pengurus,
         ]);
     }
 
