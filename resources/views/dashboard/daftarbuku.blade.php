@@ -42,7 +42,7 @@
                     <td> <a href="/dashboard/buku/{{ $item->idbuku }}"> {{ $item->buku }} </a> </td>
                     <td>{{ $item->keterangan }}</td>
                     <td>
-                      <a href="#" class="btn btn-success">
+                      <a href="/updatebuku" class="btn btn-success">
                         Update
                       </a>
                     </td>

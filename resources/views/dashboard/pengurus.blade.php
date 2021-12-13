@@ -15,12 +15,15 @@
 </div><!-- End Page Title -->
 
 <section class="section">
+
   <div class="row">
     <div>
 
       <div class="card">
         <div class="card-body">
           <h5 class="card-title">Seluruh Pengurus</h5>
+          <a href="#" class="btn btn-primary mt-3 mb-1">Tambah Data</a>
+          
 
           <!-- Table with hoverable rows -->
           <table class="table table-hover">
@@ -49,7 +52,7 @@
                 <td>{{ $item->hp }}</td>
                 <td>{{ $item->created_at }}</td>
                 <td>
-                  <a href="#" class="btn btn-success">
+                  <a href="/updatepengurus" class="btn btn-success">
                     Update
                   </a>
                   <td><a href="/remove/{{ $item->idpengurus }}" class="btn btn-danger">

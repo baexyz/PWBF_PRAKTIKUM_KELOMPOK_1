@@ -39,7 +39,15 @@ Route::get('/', [IndexController::class, 'index']);
 // // Route::get('/detailkemajuan', [DetailKemajuanController::class, 'index']);
 
 
-
+Route::get('/updatepengurus', function () {
+    return view('dashboard.updatepengurus');
+});
+Route::get('/updatebuku', function () {
+    return view('dashboard.updatebuku');
+});
+Route::get('/updatebab', function () {
+    return view('dashboard.updatebab');
+});
 
 Route::get('/about', function () {
     return view('home.about');
