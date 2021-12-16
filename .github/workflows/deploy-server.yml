@@ -27,7 +27,7 @@ jobs:
         uses: garygrossgarten/github-action-ssh@v0.6.3
         with:
           # Command to execute on the remote server.
-          command: sudo cat test
+          command: echo ${{ secrets.SERVER_PASSWORD }} | sudo -S cat test
           # Hostname or IP address of the server.
           host: ${{ secrets.SERVER_HOST }}
           # Username for authentication.
@@ -36,4 +36,3 @@ jobs:
           port: 22
           # Password for password-based user authentication.
           password: ${{ secrets.SERVER_PASSWORD }}
-          tryKeyboard: true
