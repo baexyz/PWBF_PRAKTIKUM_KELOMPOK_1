@@ -77,7 +77,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/logout" onclick="alert('Apakah anda yakin untuk Log Out?')">
+              <a class="dropdown-item d-flex align-items-center" role="button" data-bs-toggle="modal" data-bs-target="#logoutModal">
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -184,6 +184,24 @@
 
   <main id="main" class="main">
     @yield('container')
+    <!-- Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Confirmation Dialog</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            Apakah anda yakin untuk Log Out?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" onclick="window.location.href='/logout'">Log Out</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -200,6 +218,12 @@
     </div>
   </footer><!-- End Footer -->
 
+@endsection
+
+@section('customscript')
+    <script>
+      console.log("Log from dashboard blade")
+    </script>
 @endsection
 
   

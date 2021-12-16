@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bab;
-use App\Models\buku;
+use App\Models\Buku;
 use Illuminate\Http\Request;
 
 class BukuController extends Controller
