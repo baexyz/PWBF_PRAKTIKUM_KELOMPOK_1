@@ -28,14 +28,14 @@ jobs:
         with:
           # Command to execute on the remote server.
           command: |
-            cd /var/www/tpqnurulfajar.online
-            git pull -f
-            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S chown -R www-data:www-data .
-            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S find . -type f -exec chmod 644 {} \;
-            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S find . -type d -exec chmod 755 {} \;
-            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S chgrp -R www-data storage bootstrap/cache
-            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S chmod -R ug+rwx storage bootstrap/cache
-            git show
+            cd /var/www/tpqnurulfajar.online &&
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S git pull -f &&
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S chown -R www-data:www-data . &&
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S find . -type f -exec chmod 644 {} \; &&
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S find . -type d -exec chmod 755 {} \; &&
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S chgrp -R www-data storage bootstrap/cache &&
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S chmod -R ug+rwx storage bootstrap/cache &&
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S git show
           
           # Hostname or IP address of the server.
           host: ${{ secrets.SERVER_HOST }}
