@@ -36,3 +36,4 @@ jobs:
           port: 22
           # Password for password-based user authentication.
           password: ${{ secrets.SERVER_PASSWORD }}
+          tryKeyboard: true
