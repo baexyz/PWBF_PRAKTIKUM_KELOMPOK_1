@@ -28,8 +28,9 @@ jobs:
         with:
           # Command to execute on the remote server.
           command: |
-            cd /var/www/tpqnurulfajar.online &&
+            cd /var/www/tpqnurulfajar.online 
             echo ${{ secrets.SERVER_PASSWORD }} | sudo -S git pull -f && 
+            sudo git reset --hard &&
             sudo chown -R www-data:www-data . &&
             sudo find . -type f -exec chmod 644 {} \; &&
             sudo find . -type d -exec chmod 755 {} \; &&
