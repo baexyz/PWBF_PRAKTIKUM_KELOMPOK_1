@@ -35,7 +35,7 @@ jobs:
             sudo find . -type d -exec chmod 755 {} \; &&
             sudo chgrp -R www-data storage bootstrap/cache &&
             sudo chmod -R ug+rwx storage bootstrap/cache &&
-            if ! sudo git show | grep -q migrations; then php artisan migrate:fresh --seed fi
+            if [! sudo git show | grep -q migrations]; then php artisan migrate:fresh --seed; fi
           
           # Hostname or IP address of the server.
           host: ${{ secrets.SERVER_HOST }}
