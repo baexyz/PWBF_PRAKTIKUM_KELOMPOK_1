@@ -8,6 +8,7 @@ use App\Models\Buku;
 use App\Models\DetailKemajuan;
 use App\Models\DetailPeran;
 use App\Models\Peran;
+use App\Models\Pengurus;
 use App\Models\Santri;
 
 class DatabaseSeeder extends Seeder
@@ -30,10 +31,23 @@ class DatabaseSeeder extends Seeder
             'peran' => 'Guru',
             'aktif' => '1',
         ]);
-
+        
+        //Membuat data untuk admin
+        DetailPeran::create([
+            'idperan' => 1,
+            'idpengurus' => Pengurus::create([
+                'nama' => "Administrator",
+                'email' => "admin@gmail.com",
+                'hp' => "0123456789",
+                'gender' => 'M',
+                'password' => bcrypt("password"),
+                'aktif' => '1',
+            ])->idpengurus,
+        ]);
+        
         //Membuat data dari pengurus dan detail peran
         DetailPeran::factory(10)->create();
-
+        
         //Membuat data santri
         Santri::factory(30)->create();
 

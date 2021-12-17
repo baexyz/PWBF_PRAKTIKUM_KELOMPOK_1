@@ -17,7 +17,7 @@ class Pengurus extends Migration
             $table->id('idpengurus');
             $table->string('nama',50);
             $table->string('email',30)->unique();
-            $table->string('hp',15);
+            $table->string('hp',16);
             $table->char('gender',1);
             //$table->char('password',32);
             $table->char('password',100);
