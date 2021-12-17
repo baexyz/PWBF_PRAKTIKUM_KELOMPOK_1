@@ -29,14 +29,13 @@ jobs:
           # Command to execute on the remote server.
           command: |
             cd /var/www/tpqnurulfajar.online &&
-            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S &&
-            git pull -f && 
-            chown -R www-data:www-data . &&
-            find . -type f -exec chmod 644 {} \; &&
-            find . -type d -exec chmod 755 {} \; &&
-            chgrp -R www-data storage bootstrap/cache &&
-            chmod -R ug+rwx storage bootstrap/cache &&
-            if ! git show | grep -q migrations; then
+            echo ${{ secrets.SERVER_PASSWORD }} | sudo -S git pull -f && 
+            sudo chown -R www-data:www-data . &&
+            sudo find . -type f -exec chmod 644 {} \; &&
+            sudo find . -type d -exec chmod 755 {} \; &&
+            sudo chgrp -R www-data storage bootstrap/cache &&
+            sudo chmod -R ug+rwx storage bootstrap/cache &&
+            if ! sudo git show | grep -q migrations; then
               php artisan migrate:fresh --seed
             fi
           
