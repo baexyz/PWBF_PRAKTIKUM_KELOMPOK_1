@@ -193,10 +193,10 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
           <div class="modal-body">
-            Apakah anda yakin untuk Log Out?
+            Apakah anda yakin untuk Sign Out?
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-danger" onclick="window.location.href='/logout'">Log Out</button>
+            <button type="button" class="btn btn-danger" onclick="window.location.href='/logout'">Sign Out</button>
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
           </div>
         </div>
@@ -220,10 +220,10 @@
 
 @endsection
 
-@section('customscript')
+{{-- @section('customscript')
     <script>
       console.log("Log from dashboard blade")
     </script>
-@endsection
+@endsection --}}
 
   
