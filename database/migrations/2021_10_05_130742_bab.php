@@ -20,7 +20,7 @@ class Bab extends Migration
             $table->id('idbab');
 
             //format membuat foreign key (fk)
-            $table->foreignId('idbuku')->constrained('buku', 'idbuku');
+            $table->foreignId('idbuku')->constrained('buku', 'idbuku')->onDelete('cascade');
 
             $table->string('bab',50);
             $table->string('judul',100);

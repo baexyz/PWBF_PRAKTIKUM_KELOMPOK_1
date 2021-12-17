@@ -38,7 +38,6 @@ Route::get('/', [IndexController::class, 'index']);
 // Route::get('/kemajuan', [KemajuanController::class, 'index']);
 // // Route::get('/detailkemajuan', [DetailKemajuanController::class, 'index']);
 
-
 Route::get('/updatepengurus', function () {
     return view('dashboard.updatepengurus');
 });
@@ -65,15 +64,22 @@ Route::get('/contact', function () {
     return view('home.contact');
 });
 
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/profile', [DashboardController::class, 'profile'])->middleware('auth');
-Route::get('/dashboard/kemajuan', [DashboardController::class, 'raport'])->middleware('auth');
-Route::get('/dashboard/kemajuan/{id}', [DashboardController::class, 'detailraport'])->middleware('auth');
-Route::get('/dashboard/buku/{id}', [DashboardController::class, 'buku'])->middleware('auth');
-Route::get('/dashboard/buku', [BukuController::class, 'index'])->middleware('auth');
-Route::get('/dashboard/pengurus', [DashboardController::class, 'pengurus'])->middleware('auth')->name('profile');
-Route::get('/staff', [DashboardController::class, 'index'])->middleware('auth', 'can:isStaff');
-Route::get('/guru', [DashboardController::class, 'index'])->middleware('auth', 'can:isGuru');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/dashboard/profile', [DashboardController::class, 'profile']);
+    Route::get('/dashboard/kemajuan', [DashboardController::class, 'raport']);
+    Route::get('/dashboard/kemajuan/{id}', [DashboardController::class, 'detailraport']);
+    Route::get('/dashboard/buku/list', [BukuController::class, 'list']);
+    Route::post('/dashboard/buku/update/{id}', [BukuController::class, 'update']);
+    Route::get('/dashboard/buku/delete/{id}', [BukuController::class, 'delete']);
+    Route::get('/dashboard/buku/{id}', [BukuController::class, 'show']);
+    Route::get('/dashboard/buku', [BukuController::class, 'index']);
+    Route::post('/dashboard/bab/update/{id}', [BabController::class, 'update']);
+    Route::get('/dashboard/bab/delete/{id}', [BabController::class, 'delete']);
+    Route::get('/dashboard/pengurus', [DashboardController::class, 'pengurus'])->name('profile');
+    // Route::get('/staff', [DashboardController::class, 'index'])->middleware('auth', 'can:isStaff');
+    // Route::get('/guru', [DashboardController::class, 'index'])->middleware('auth', 'can:isGuru');
+});
 
 Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::get('/register', [LoginController::class, 'register'])->middleware('guest')->name('register');
@@ -86,4 +92,3 @@ Route::get('/tabeldata', function () {
 });
 
 Route::get('/hapus/{id}', [DashboardController::class, 'hapus']);
-

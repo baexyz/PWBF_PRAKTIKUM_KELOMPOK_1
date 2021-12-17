@@ -125,25 +125,10 @@
       </li><!-- End Kemajuan Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
+        <a class="nav-link{{ request()->is('dashboard/buku/*') ? '' : ' collapsed' }}" id="daftarBukuList" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
           <i class="bi bi-book"></i>Daftar Buku</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="icons-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-            <a href="/dashboard/buku/1">
-              <i class="bi bi-circle"></i><span>Buku Materi1</span>
-            </a>
-          </li>
-          <li>
-            <a href="/dashboard/buku/2">
-              <i class="bi bi-circle"></i><span>Buku Materi2</span>
-            </a>
-          </li>
-          <li>
-            <a href="/dashboard/buku/3">
-              <i class="bi bi-circle"></i><span>Buku Materi3</span>
-            </a>
-          </li>
+        <ul id="icons-nav" class="nav-content listBuku collapse {{ request()->is('dashboard/buku/*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
         </ul>
       </li><!-- End Icons Nav -->
 
@@ -202,6 +187,7 @@
         </div>
       </div>
     </div>
+    
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -220,10 +206,33 @@
 
 @endsection
 
-{{-- @section('customscript')
+@section('customscript')
     <script>
-      console.log("Log from dashboard blade")
+      var url = '/dashboard/buku/'
+      $.ajax({
+          url: '/dashboard/buku/list',
+          type: 'get',
+          success: function(data){
+            var out = ""
+            var active = ""
+            $.each(data, function(key, obj){
+              if (window.location.pathname == url+obj['idbuku'])
+                active = 'active'
+              else
+              active = ''
+              var id = obj['idbuku']
+              var nama = obj['buku']
+              out += "\
+              <li> \
+                <a class='"+ active +"' href=\'/dashboard/buku/"+id+"\'> \
+                  <i class='bi bi-circle'></i><span>"+nama+"</span> \
+                </a> \
+              </li>"
+            })
+            $('.listBuku').html(out)
+          }
+      });
     </script>
-@endsection --}}
+@endsection
 
   

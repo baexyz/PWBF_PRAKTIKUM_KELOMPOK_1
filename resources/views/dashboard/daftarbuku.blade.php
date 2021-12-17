@@ -21,8 +21,17 @@
 
         <div class="card">
           <div class="card-body">
-            
-            <a href="#" class="btn btn-primary mt-3 mb-1">Tambah Buku</a>
+            @if (session()->has('success'))
+            <div class="alert alert-success mt-2" role="alert">
+              {{ session('success') }}
+            </div>            
+            @endif
+            @if (session()->has('error'))
+            <div class="alert alert-danger mt-2" role="alert">
+              {{ session('error') }}
+            </div>            
+            @endif
+            <a href="#" class="btn btn-primary mt-2 mb-1">Tambah Buku</a>
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -36,9 +45,7 @@
               </thead>
 
               <tbody>
-
                   @foreach ($buku as $item)
-                  
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td> 
@@ -46,20 +53,19 @@
                     </td>
                     <td>{{ $item->keterangan }}</td>
                     <td>
-                      <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" data-bs-target="#updateBukuModal">
+                      <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
+                      data-bs-target="#updateBukuModal" data-id={{ $item->idbuku }}>
                         Update
                       </a>
                     </td>
                     <td>
-                      <a href="#" class="btn btn-danger">
+                      <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBukuModal" 
+                      data-id={{ $item->idbuku }} data-nama="{{ $item->buku }}">
                       Delete
-                    </a>
-                  </td>
+                      </a>
+                    </td>
                   </tr>
-                  
-                  @endforeach
-
-                
+                  @endforeach  
               </tbody>
             </table>
             <!-- End Table with stripped rows -->
@@ -71,6 +77,7 @@
     </div>
   </section>
 
+{{-- Modal Update Buku --}}
 <div class="modal fade" id="updateBukuModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -79,7 +86,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row g-3 needs-validation" action="updatebuku" method="post">
+        <form class="row g-3 needs-validation" id="formUpdate" action="buku/update/id" method="post">
           @csrf
           <div class="col-12">
             <label for="yourName" class="form-label">Judul Buku</label>
@@ -109,18 +116,50 @@
   </div>
 </div>
 
+{{-- Modal Delete Buku --}}
+<div class="modal fade" id="deleteBukuModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Confirmation Dialog</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah anda yakin untuk menghapus buku <b><span></span></b> ?
+      </div>
+      <div class="modal-footer">
+        <a type="button" class="btn btn-danger" href="">Delete</a>
+        {{-- <button type="button" class="btn btn-danger" onclick="window.location.href='/logout'">Delete</button> --}}
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 @endsection
 
 @section('customscript')
   @parent
   <script>
     $('.updateBtn').on('click', function() {
-      var $row = $(this).closest('tr');
-      var $columns = $row.find('td');
-      var judul = $row.find('a')[0].innerHTML;
-      var keterangan = $columns[1].innerHTML;
-      $('#judul').val(judul)
-      $('#keterangan').val(keterangan)
-    });
+        var parent = $(this)
+        var row = parent.closest('tr')
+        var columns = row.find('td')
+        var id = parent.data('id')
+        var judul = row.find('a')[0].innerHTML
+        var keterangan = columns[1].innerHTML
+        $('#judul').val(judul)
+        $('#keterangan').val(keterangan)
+        $('#formUpdate').attr("action", "buku/update/"+id)
+
+    })
+    $('#deleteBukuModal').on('show.bs.modal', function (event) {
+      var button = $(event.relatedTarget)
+      var id = button.data('id')
+      var nama = button.data('nama')
+      var modal = $(this)
+      modal.find('.modal-body span').text(nama)
+      modal.find('.modal-footer a').attr("href", "buku/delete/"+id)
+    })
   </script>
 @endsection

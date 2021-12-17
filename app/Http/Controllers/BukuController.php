@@ -55,47 +55,55 @@ class BukuController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\buku  $buku
-     * @return \Illuminate\Http\Response
-     */
-    public function show(buku $buku)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\buku  $buku
+     * @param  \App\Models\Buku  $buku
      * @return \Illuminate\Http\Response
      */
-    public function edit(buku $buku)
+    public function edit(Buku $buku)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\buku  $buku
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, buku $buku)
+    public function show($id)
     {
-        //
+        $buku = Buku::find($id);
+        $judul = $buku->buku;
+        $bab = $buku->bab()->get();
+        return view('dashboard.bab', [
+            'judul' => $judul,
+            'bab' => $bab
+        ]);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\buku  $buku
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(buku $buku)
+    public function list()
     {
         //
+        $buku = Buku::select('idbuku','buku')->get();
+        $data = $buku->map(function ($item, $key){
+            return collect($item)->flatten();
+        });
+        return response()->json($buku);
+    }
+
+    public function update(Request $request, $id)
+    {
+        //
+        $buku = Buku::find($id);
+        if ($buku) {
+            $buku->update($request->all());
+            return redirect('/dashboard/buku')->with('success', 'Buku berhasil di-update');
+        } else {
+            return redirect('/dashboard/buku')->with('error', 'Buku tidak ditemukan');
+        }
+    }
+
+    public function delete($id)
+    {
+        $delete = Buku::destroy($id);
+        if($delete)
+            return redirect('/dashboard/buku')->with('success', 'Buku berhasil dihapus');
+        else
+            return redirect('/dashboard/buku')->with('error', 'Buku gagal dihapus');
     }
 }
