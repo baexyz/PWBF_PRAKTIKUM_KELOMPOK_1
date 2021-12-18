@@ -77,7 +77,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" style="color: #6ab04c">Update Data Buku</h5>
+        <h5 class="modal-title" style="color: #6ab04c">Update Data Bab</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -111,7 +111,7 @@
   </div>
 </div>
 
-{{-- Modal Delete Buku --}}
+{{-- Modal Delete Bab --}}
 <div class="modal fade" id="deleteBabModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -120,7 +120,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin untuk menghapus buku <b><span></span></b> ?
+        Apakah anda yakin untuk menghapus bab <b><span></span></b> ?
       </div>
       <div class="modal-footer">
         <a type="button" class="btn btn-danger" href="">Delete</a>
