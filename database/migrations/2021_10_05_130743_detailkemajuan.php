@@ -18,7 +18,7 @@ class Detailkemajuan extends Migration
             $table->id('iddetailkemajuan');
 
             //format membuat foreign key (fk)
-            $table->foreignId('idkemajuan')->constrained('kemajuan', 'idkemajuan');
+            $table->foreignId('idkemajuan')->constrained('kemajuan', 'idkemajuan')->onDelete('cascade');
             $table->foreignId('idbab')->nullable()->constrained('bab', 'idbab')->onDelete('set null');;
 
             $table->longText('keterangan');

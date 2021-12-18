@@ -18,7 +18,7 @@ class Kemajuan extends Migration
             $table->id('idkemajuan');
 
             //format membuat foreign key (fk)
-            $table->foreignId('idsantri')->constrained('santri', 'idsantri');
+            $table->foreignId('idsantri')->constrained('santri', 'idsantri')->onDelete('cascade');
             $table->foreignId('idpengurus')->constrained('pengurus', 'idpengurus');
 
             $table->timestamp('tanggal');
