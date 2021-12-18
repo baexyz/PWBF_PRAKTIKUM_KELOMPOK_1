@@ -16,11 +16,13 @@ jobs:
   deploy:
     name: Deploy on Self-Hosted Runner
     runs-on: self-hosted
+    defaults:
+      run:
+        working-directory: /var/www/tpqnurulfajar.online
     steps:
       # Runs a single command using the runners shell
       - name: Running git pull
         run: |
-          cd /var/www/tpqnurulfajar.online 
           echo ${{ secrets.SERVER_PASSWORD }} | sudo -S git pull -f
           sudo git reset --hard
       - name: Setting up file permissions
