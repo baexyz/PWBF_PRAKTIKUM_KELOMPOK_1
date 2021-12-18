@@ -38,7 +38,7 @@ jobs:
             sudo chmod -R ug+rwx storage bootstrap/cache &&
             count=$(git show | grep -q migrations) &&
             exit=$? &&
-            if [[ $exit == 0 ]]; then php artisan migrate:fresh --seed; fi || true
+            if [[ $exit == 1 ]]; then php artisan migrate:fresh --seed; fi || true
           
           # Hostname or IP address of the server.
           host: ${{ secrets.SERVER_HOST }}
