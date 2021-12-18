@@ -25,7 +25,7 @@ jobs:
           sudo git reset --hard
       - name: Setting up file permissions
         run: |
-          sudo chown -R www-data:www-data . 
+          echo ${{ secrets.SERVER_PASSWORD }} | sudo -S chown -R www-data:www-data . 
           sudo find . -type f -exec chmod 644 {} \; 
           sudo find . -type d -exec chmod 755 {} \; 
           sudo chgrp -R www-data storage bootstrap/cache 
