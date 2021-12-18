@@ -31,7 +31,9 @@
               {{ session('error') }}
             </div>            
             @endif
-            <a href="#" class="btn btn-primary mt-2 mb-1">Tambah Buku</a>
+
+            <a role="button" class="btn btn-primary mt-2 mb-1" data-bs-toggle="modal" 
+            data-bs-target="#tambahBukuModal">Tambah Buku</a>
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -76,6 +78,45 @@
       </div>
     </div>
   </section>
+
+{{-- Modal Tambah Buku --}}
+<div class="modal fade" id="tambahBukuModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: #6ab04c">Tambah Data Buku</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 needs-validation" id="formUpdate" action="buku/create" method="post">
+          @csrf
+          <div class="col-12">
+            <label for="yourName" class="form-label">Judul Buku</label>
+            <input type="text" name="buku" class="form-control" id="judul" required>
+            <div class="invalid-feedback">Mohon input nama buku</div>
+          </div>
+      
+          <div class="col-12">
+            <label for="yourEmail" class="form-label">Keterangan</label>
+            <textarea name="keterangan" class="form-control" id="keterangan" rows=3 required></textarea>
+            <div class="invalid-feedback">Mohon input keterangan buku</div>
+          </div>
+          
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="acceptTerms" required>
+              <label class="form-check-label" for="acceptTerms">Apakah anda yakin akan menyimpan perubahan?</label>
+              <div class="invalid-feedback">You must agree before submitting.</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary w-100" type="submit">Tambah</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 {{-- Modal Update Buku --}}
 <div class="modal fade" id="updateBukuModal" tabindex="-1" aria-hidden="true">

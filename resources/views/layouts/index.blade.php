@@ -26,7 +26,9 @@
   <link href="/vendor/dashboard/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="/vendor/dashboard/quill/quill.snow.css" rel="stylesheet">
   <link href="/vendor/dashboard/quill/quill.bubble.css" rel="stylesheet">
-  <link href="/vendor/dashboard/simple-datatables/style.css" rel="stylesheet">
+  {{-- <link href="/vendor/dashboard/simple-datatables/style.css" rel="stylesheet"> --}}
+  <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" type="text/css">
+
 
   <!-- Template Main CSS File -->
   <link href="/css/dashboard/style.css" rel="stylesheet">
@@ -51,7 +53,8 @@
   <script src="/vendor/dashboard/php-email-form/validate.js"></script>
   <script src="/vendor/dashboard/quill/quill.min.js"></script>
   <script src="/vendor/dashboard/tinymce/tinymce.min.js"></script>
-  <script src="/vendor/dashboard/simple-datatables/simple-datatables.js"></script>
+  {{-- <script src="/vendor/dashboard/simple-datatables/simple-datatables.js"></script> --}}
+  <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" type="text/javascript"></script>
   <script src="/vendor/dashboard/chart.js/chart.min.js"></script>
   <script src="/vendor/dashboard/apexcharts/apexcharts.min.js"></script>
   <script src="/vendor/dashboard/echarts/echarts.min.js"></script>

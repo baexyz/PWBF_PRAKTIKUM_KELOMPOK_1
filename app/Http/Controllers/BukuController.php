@@ -38,9 +38,14 @@ class BukuController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $buku = Buku::create($request->all());
+        if ($buku) {
+            return redirect('/dashboard/buku')->with('success', 'Buku berhasil di-tambah');
+        } else {
+            return redirect('/dashboard/buku')->with('error', 'Gagal menambahkan buku');
+        }
     }
 
     /**
@@ -72,6 +77,7 @@ class BukuController extends Controller
         $bab = $buku->bab()->get();
         return view('dashboard.bab', [
             'judul' => $judul,
+            'idbuku' => $id,
             'bab' => $bab
         ]);
     }

@@ -110,6 +110,14 @@
         </a>
       </li><!-- End Pengurus Nav -->
 
+
+      <li class="nav-item">
+        <a class="nav-link{{ request()->is('dashboard/santri') ? '' : ' collapsed' }}" href="/dashboard/santri">
+          <i class="bi bi-people"></i>
+          <span>Santri</span>
+        </a>
+      </li><!-- End Santri Nav -->
+
       <li class="nav-item">
         <a class="nav-link{{ request()->is('dashboard/kemajuan') ? '' : ' collapsed' }}" href="/dashboard/kemajuan">
           <i class="bi bi-bar-chart-line"></i>

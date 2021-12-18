@@ -7,6 +7,20 @@ use Illuminate\Http\Request;
 
 class BabController extends Controller
 {
+
+    public function create(Request $request)
+    {
+        //
+        $bab = Bab::create($request->all());
+        if ($bab) {
+            $bab->update($request->all());
+            return redirect("/dashboard/buku/$request->idbuku")->with('success', 'Bab berhasil di-tambah');
+        } else {
+            return redirect("/dashboard/buku/$request->idbuku")->with('error', 'Bab tidak ditemukan');
+        }
+    }
+
+
     public function update(Request $request, $id)
     {
         //

@@ -59,6 +59,13 @@
                         Update
                       </a>
                     </td>
+
+                    <td>
+                    <a href="#" class="btn btn-warning">
+                      File
+                    </a>
+                  </td>
+
                     <td>
                       <a href="#" class="btn btn-danger">
                         Delete

@@ -51,7 +51,7 @@
                       <a href="#" class="btn btn-success">
                         Update
                       </a>
-
+                      
                       @can('isStaff')
                       <a href="#" class="btn btn-danger">
                         Delete

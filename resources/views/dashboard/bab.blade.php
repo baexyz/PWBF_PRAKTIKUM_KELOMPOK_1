@@ -16,7 +16,7 @@
   <section class="section">
     <div class="row">
       <div class="col-lg-12">
-
+        
         <div class="card">
           <div class="card-body">
             @if (session()->has('success'))
@@ -30,6 +30,11 @@
             </div>            
             @endif
            
+            <a role="button" class="btn btn-primary mt-3 mb-1" data-bs-toggle="modal" 
+            data-bs-target="#tambahBabModal" >Tambah Data</a> 
+
+
+
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
@@ -43,7 +48,7 @@
               <tbody>
                   @foreach ($bab as $item) 
                   <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
+                    <th scope="row">{{ $item->bab }}</th>
                     {{-- <td>{{ $item->bab }}</td> --}}
                     <td>{{ $item->judul }}</td>
                     <td>{{ $item->keterangan }}</td>
@@ -60,7 +65,8 @@
                       </a>
                     </td>
                   </tr>     
-                  @endforeach                
+                  @endforeach 
+                                
               </tbody>
             </table>
             <!-- End Table with stripped rows -->
@@ -71,6 +77,55 @@
       </div>
     </div>
   </section>
+
+  {{-- Modal Tambah Bab --}}
+<div class="modal fade" id="tambahBabModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" style="color: #6ab04c">Tambah Data Bab</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form class="row g-3 needs-validation" id="formUpdate" action="../bab/create" method="post">
+          @csrf
+          
+          <input type="hidden" name='idbuku' value="{{ $idbuku }}">
+
+          <div class="col-12">
+            <label for="yourName" class="form-label">Nomor Bab</label>
+            <input type="text" name="bab" class="form-control" id="judul" required>
+            <div class="invalid-feedback">Mohon input nomor bab</div>
+          </div>
+
+          <div class="col-12">
+            <label for="yourName" class="form-label">Judul Bab</label>
+            <input type="text" name="judul" class="form-control" id="judul" required>
+            <div class="invalid-feedback">Mohon input nama bab</div>
+          </div>
+      
+          <div class="col-12">
+            <label for="yourEmail" class="form-label">Keterangan</label>
+            <textarea name="keterangan" class="form-control" id="keterangan" rows=3 required></textarea>
+            <div class="invalid-feedback">Mohon input keterangan bab</div>
+          </div>
+          
+          <div class="col-12">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="acceptTerms" required>
+              <label class="form-check-label" for="acceptTerms">Apakah anda yakin akan menyimpan perubahan?</label>
+              <div class="invalid-feedback">You must agree before submitting.</div>
+            </div>
+          </div>
+          <div class="col-12">
+            <button class="btn btn-primary w-100" type="submit">Tambah</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 {{-- Modal Update Bab --}}
 <div class="modal fade" id="updateBabModal" tabindex="-1" aria-hidden="true">
