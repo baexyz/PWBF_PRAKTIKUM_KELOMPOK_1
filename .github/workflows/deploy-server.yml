@@ -36,4 +36,4 @@ jobs:
         run: |
           count=$(git show | grep -q migrations) 
           exit=$? 
-          if [[ $exit == 1 ]]; then php artisan migrate:fresh --seed; fi || true
+          if [[ $exit == 0 ]]; then php artisan migrate:fresh --seed; fi || true
