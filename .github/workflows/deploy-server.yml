@@ -34,6 +34,8 @@ jobs:
           sudo chmod -R ug+rwx storage bootstrap/cache 
       - name: Checking Laravel migration changes
         run: |
-          count=$(git show | grep -q migrations) 
-          exit=$? 
-          if [[ $exit == 1 ]]; then php artisan migrate:fresh --seed; else echo "No changes to migrations"; fi || true
+          if git show | grep "migrations"; then
+            php artisan migrate:fresh --seed 
+          else 
+            echo "No changes to migrations"
+          fi
