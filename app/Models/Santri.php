@@ -20,4 +20,9 @@ class Santri extends Authenticatable
         $kolom = 'idsantri';
         return $this->hasMany(Kemajuan::class, $kolom, $kolom);
     }
+
+    public function getHasRoleAttribute()
+    {
+        return 'Santri';
+    }
 }

@@ -35,6 +35,10 @@ class AuthServiceProvider extends ServiceProvider
             return $pengurus->detailperan()->first()
             ->peran()->first()->peran == 'Guru';
         });
+        
+        Gate::define('isSantri', function ($user){
+            return $user->has_role == 'Santri';
+        });
 
         //
     }
