@@ -46,11 +46,12 @@ class SantriController extends Controller
 
     public function delete($id)
     {
-        $santri = Santri::find($id);
-        $delete = $santri->delete();
-        if($delete)
+        try {
+            $santri = Santri::find($id);
+            $santri->delete();
             return redirect("/dashboard/santri")->with('success', 'Santri berhasil dihapus');
-        else
+        } catch (\Throwable $th) {
             return redirect("/dashboard/santri")->with('error', 'Santri gagal dihapus');
+        }    
     }
 }

@@ -2,6 +2,15 @@
 
 @section('container')
 
+@php
+    function isAktif($aktif) {
+      if ($aktif)
+        return 'Aktif';
+      else
+        return 'Tidak Aktif';          
+    }
+@endphp
+
 <div class="pagetitle">
     <h1>Data Santri</h1>
     <nav>
@@ -67,7 +76,7 @@
                     <td>{{ $item->hp }}</td>
                     <td>{{ $item->email }}</td>
                     <td>{{ $item->tanggalmasuk }}</td>
-                    <td>{{ $item->aktif }}</td>
+                    <td>{{ isAktif($item->aktif) }}</td>
 
                     <td>
                       <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
@@ -77,7 +86,7 @@
                     </td>
                     <td>
                       <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSantriModal" 
-                      data-id={{ $item->idbab }} data-nama="{{ $item->judul }}">
+                      data-id={{ $item->idsantri }} data-nama="{{ $item->namasantri }}">
                         Delete
                       </a>
                     </td>
@@ -313,7 +322,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin untuk menghapus data santri? <b><span></span></b> 
+        Apakah anda yakin untuk menghapus data santri <b><span></span></b> ?
       </div>
       <div class="modal-footer">
         <a type="button" class="btn btn-danger" href="">Delete</a>
@@ -332,6 +341,14 @@
       const dataTable = new simpleDatatables.DataTable("#tablesantri", {
 	    searchable: true,
     	fixedHeight: false,
+      })
+      $('#deleteSantriModal').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget)
+        var id = button.data('id')
+        var nama = button.data('nama')
+        var modal = $(this)
+        modal.find('.modal-body span').text(nama)
+        modal.find('.modal-footer a').attr("href", "santri/delete/"+id)
       })
     </script>
 @endsection

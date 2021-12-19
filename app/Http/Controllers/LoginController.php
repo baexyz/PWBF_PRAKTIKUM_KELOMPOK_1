@@ -44,7 +44,9 @@ class LoginController extends Controller
             return view('form.register');
         }
         if ($request->isMethod('post')) {
-            Santri::create($request->all());
+            $data = $request->all();
+            $data = array_replace($data, array('password' => bcrypt($data['password'])));
+            Santri::create($data);
             return redirect('/login')->with('status', 'Registrasi berhasil, silahkan login');;
         }
     }

@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use App\Models\Santri;
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class SantriFactory extends Factory
@@ -33,7 +34,7 @@ class SantriFactory extends Factory
         return [
             'namasantri' => substr($this->faker->name($gender), 0, 50),
             'gender' => $gen,
-            'tanggallhr' => $this->faker->date(),
+            'tanggallhr' => Carbon::parse($this->faker->dateTimeBetween('-22 years', '-19 years'))->format('Y-m-d'),
             'kotalhr' => $this->faker->city(),
             'namaortu' => substr($this->faker->name(), 0, 50),
             'alamatortu' => substr($this->faker->streetAddress(), 0, 100),
