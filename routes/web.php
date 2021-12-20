@@ -63,7 +63,7 @@ Route::get('/contact', function () {
     return view('home.contact');
 });
 
-Route::middleware('auth')->group(function () {
+Route::middleware('auth:web,santri')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/profile', [DashboardController::class, 'profile']);
     Route::get('/dashboard/kemajuan', [DashboardController::class, 'raport']);

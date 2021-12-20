@@ -38,9 +38,10 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{ auth()->user()->nama }}</h6>
-              <span>{{ auth()->user()->detailperan()->first()
-                ->peran()->first()->peran }}</span>
+              <h6>{{ auth()->user()->nama ?: auth()->user()->namasantri }}</h6>
+              <span>{{ auth()->user()->has_role ?: auth()->user()->detailperan()->first()
+                ->peran()->first()->peran }}
+              </span>
             </li>
             <li>
               <hr class="dropdown-divider">

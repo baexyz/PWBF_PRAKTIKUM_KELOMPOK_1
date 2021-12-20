@@ -22,9 +22,9 @@
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
             <img src="/img/dashboard/profile-img.jpg" alt="Profile" class="rounded-circle">
-            <h2>{{ auth()->user()->nama }}</h2>
-            <h3>{{ auth()->user()->detailperan()->first()
-              ->peran()->first()->peran }}</h3>
+            <h2>{{ auth()->user()->nama ?: auth()->user()->namasantri }}</h2>
+            <h3>{{ auth()->user()->has_role ?: 
+              auth()->user()->detailperan()->first()->peran()->first()->peran }}</h3>
             <div class="social-links mt-2">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -60,13 +60,19 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">{{ auth()->user()->nama }}</div>
+                  <div class="col-lg-9 col-md-8">{{ auth()->user()->nama ?: auth()->user()->namasantri }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Job</div>
-                  <div class="col-lg-9 col-md-8">{{ auth()->user()->detailperan()->first()
-                    ->peran()->first()->peran }}</div>
+                  <div class="col-lg-9 col-md-8">
+                    @if (auth()->user()->has_role == 'Santri')
+                      Santri
+                    @else
+                      {{ auth()->user()->detailperan()->first()
+                        ->peran()->first()->peran }}
+                    @endif
+                    </div>
                 </div>
 
                 <div class="row">
@@ -101,15 +107,15 @@
                   <div class="row mb-3">
                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{ auth()->user()->nama }}">
+                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{ auth()->user()->nama ?: auth()->user()->namasantri }}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="about" class="col-md-4 col-lg-3 col-form-label">Detail Peran</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{ auth()->user()->detailperan()->first()
-                        ->peran()->first()->peran }}">
+                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{ auth()->user()->has_role ?: 
+                        auth()->user()->detailperan()->first()->peran()->first()->peran }}">
                     </div>
                   </div>
 
