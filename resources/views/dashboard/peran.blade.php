@@ -2,7 +2,6 @@
 
 @section('container')
     
-
     <div class="pagetitle">
       <h1>Data Tables</h1>
       <nav>
@@ -13,7 +12,7 @@
         </ol>
       </nav>
     </div><!-- End Page Title -->
-
+    
     <section class="section">
       <div class="row">
         <div class="col-lg-12">
