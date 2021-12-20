@@ -122,6 +122,11 @@
           </div>
 
           <div class="col-12">
+            <label for="yourName" class="form-label">Keterangan</label>
+            <textarea class="form-control" id="message-text" name="keterangan"></textarea>
+          </div>
+
+          <div class="col-12">
             <label for="yourUsername" class="form-label">Status</label>
           <br>
             <div class="form-check form-check-inline">

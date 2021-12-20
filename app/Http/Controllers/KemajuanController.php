@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\kemajuan;
+use App\Models\DetailKemajuan;
+use App\Models\Kemajuan;
 use Illuminate\Http\Request;
 
 class KemajuanController extends Controller
@@ -21,69 +22,26 @@ class KemajuanController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
+    public function store(Request $request) {
+        $data = $request->all();
+        $pengurus = $request->user()->idpengurus;
+        $santri = $data['idsantri'];
+        $kemajuan = Kemajuan::create([
+            'idpengurus' => $pengurus,
+            'idsantri' => $santri,
+            'tanggal' => now(),
+            'status' => $data['status']
+        ]);
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\kemajuan  $kemajuan
-     * @return \Illuminate\Http\Response
-     */
-    public function show(kemajuan $kemajuan)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\kemajuan  $kemajuan
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(kemajuan $kemajuan)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\kemajuan  $kemajuan
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, kemajuan $kemajuan)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\kemajuan  $kemajuan
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(kemajuan $kemajuan)
-    {
-        //
+        $detail = DetailKemajuan::create([
+            'idkemajuan' => $kemajuan->idkemajuan,
+            'idbab' => $data['idbab'],
+            'keterangan' => $data['keterangan']
+        ]);
+        if ($detail) {
+            return redirect('/dashboard/kemajuan')->with('success', 'Kemajuan berhasil di-tambah');
+        } else {
+            return redirect('/dashboard/kemajuan')->with('error', 'Gagal menambahkan kemajuan');
+        }
     }
 }
