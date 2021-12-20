@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\santri;
+use App\Models\Santri;
 use Illuminate\Http\Request;
 
 class SantriController extends Controller
