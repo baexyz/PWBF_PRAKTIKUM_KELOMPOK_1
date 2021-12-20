@@ -41,7 +41,6 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Nama Santri</th>
-                  <th scope="col">Nama Pengurus</th>
                   <th scope="col">Tanggal</th>
                   <th scope="col">Status</th>
                   <th scope="col">Detail</th>
@@ -56,7 +55,6 @@
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>{{ $item->santri()->first()->namasantri }}</td>
-                    <td>{{ $item->pengurus()->first()->nama }}</td>
                     <td>{{ $item->tanggal }}</td>
                     <td>{{ $item->status }}</td>
                     <td><a href="/dashboard/kemajuan/1" class="btn btn-primary">Detail</a></td>
@@ -90,7 +88,7 @@
     </div>
   </section>
 
-  {{-- Modal Tambah Pengurus --}}
+  {{-- Modal Tambah Kemajuan --}}
 <div class="modal fade" id="tambahKemajuanModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -99,31 +97,44 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row g-3 needs-validation" id="formUpdate" action="kemajuan/create" method="post">
+        <form class="row g-3 needs-validation" id="formCreate" action="kemajuan/create" method="post">
           @csrf
           
           <div class="col-12">
             <label for="yourName" class="form-label">Nama Santri</label>
-            <input type="text" name="namasantri" class="form-control" id="" required>
-            <div class="invalid-feedback">Silahkan input nama santri</div>
+            <select class="form-select" id="listsantri" name="idsantri" aria-label="List Bab">
+              <option selected>Input Santri</option>
+            </select>
           </div>
 
           <div class="col-12">
-            <label for="yourName" class="form-label">Nama Pengurus</label>
-            <input type="text" name="namasantri" class="form-control" id="" required>
-            <div class="invalid-feedback">Silahkan input nama pengurus</div>
+            <label for="yourName" class="form-label">Pilih Buku</label>
+            <select class="form-select" id="listbuku" onchange="getDataBab(this);" aria-label="List Buku">
+              <option selected>Input Buku</option>
+            </select>
           </div>
-      
+
+          <div class="col-12">
+            <label for="yourName" class="form-label">Pilih Bab</label>
+            <select class="form-select" id="listbab" name="idbab" aria-label="List Bab">
+              <option selected>Input Bab</option>
+            </select>
+          </div>
+
           <div class="col-12">
             <label for="yourUsername" class="form-label">Status</label>
           <br>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="gender" id="" value="M">
-              <label class="form-check-label" for="inlineRadio1">Naik</label>
+              <input class="form-check-input" type="radio" name="status" value="N">
+              <label class="form-check-label">Naik</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="gender" id="" value="F">
-              <label class="form-check-label" for="inlineRadio2">Turun</label>
+              <input class="form-check-input" type="radio" name="status" value="T">
+              <label class="form-check-label">Turun</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="status" value="M">
+              <label class="form-check-label">Mundur</label>
             </div>
           </div>
           
@@ -144,7 +155,7 @@
 </div>
 
 
-{{-- Modal Update Pengurus --}}
+{{-- Modal Update Kemajuan --}}
 <div class="modal fade" id="updateKemajuanModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -197,7 +208,7 @@
   </div>
 </div>
 
-{{-- Modal Delete Pengurus --}}
+{{-- Modal Delete Kemajuan --}}
 <div class="modal fade" id="deleteKemajuanModal" tabindex="-1" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -217,4 +228,65 @@
   </div>
 </div>
 
+@endsection
+
+@section('customscript')
+  @parent
+  <script>
+    var urlsantri = '/dashboard/santri/list'
+    var urlbuku = '/dashboard/buku/list'
+    var urlbab = '/dashboard/buku/listbab/'
+    //Get Santri
+    $.ajax({
+        url: urlsantri,
+        type: 'get',
+        success: function(data){
+          $.each(data, function(key, obj){
+            var id = obj['idsantri']
+            var nama = obj['namasantri']
+            $('#listsantri').append($('<option>', {
+                value: id,
+                text: nama
+            }))
+          })
+        }
+    })
+
+
+    //Get buku
+    $.ajax({
+        url: urlbuku,
+        type: 'get',
+        success: function(data){
+          $.each(data, function(key, obj){
+            var id = obj['idbuku']
+            var nama = obj['buku']
+            $('#listbuku').append($('<option>', {
+                value: id,
+                text: nama
+            }))
+          })
+        }
+    })
+
+    function getDataBab(sel) {
+      // alert( this.value );
+      var idbuku = sel.value
+      $.ajax({
+        url: urlbab + idbuku,
+        type: 'get',
+        success: function(data){
+          $('#listbab').html("<option selected>Input Bab</option>")     
+          $.each(data, function(key, obj){
+            var id = obj['idbab']
+            var nama = obj['judul']
+            $('#listbab').append($('<option>', {
+                value: id,
+                text: nama
+            }))
+          })
+        }
+      });
+    }   
+  </script>    
 @endsection

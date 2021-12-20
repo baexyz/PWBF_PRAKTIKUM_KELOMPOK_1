@@ -21,6 +21,16 @@ class SantriController extends Controller
         ]);
     }
 
+    public function list()
+    {
+        //
+        $santri = Santri::select('idsantri','namasantri')->get();
+        // $data = $buku->map(function ($item, $key){
+        //     return collect($item)->flatten();
+        // });
+        return response()->json($santri);
+    }
+
     public function create(Request $request)
     {
         $santri = Santri::create($request->all());

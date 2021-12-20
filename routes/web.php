@@ -71,6 +71,7 @@ Route::middleware('auth:web,santri')->group(function () {
     
     Route::post('/dashboard/buku/create', [BukuController::class, 'create']);
     Route::get('/dashboard/buku/list', [BukuController::class, 'list']);
+    Route::get('/dashboard/buku/listbab/{id}', [BukuController::class, 'listBab']);
     Route::post('/dashboard/buku/update/{id}', [BukuController::class, 'update']);
     Route::get('/dashboard/buku/delete/{id}', [BukuController::class, 'delete']);
     Route::get('/dashboard/buku/{id}', [BukuController::class, 'show']);
@@ -85,6 +86,7 @@ Route::middleware('auth:web,santri')->group(function () {
     Route::get('/dashboard/pengurus/delete/{id}', [PengurusController::class, 'delete']);
     Route::get('/dashboard/pengurus', [DashboardController::class, 'pengurus'])->name('profile');
 
+    Route::get('/dashboard/santri/list', [SantriController::class, 'list']);
     Route::post('/dashboard/santri/create', [SantriController::class, 'create']);
     Route::post('/dashboard/santri/update/{id}', [SantriController::class, 'update']);
     Route::get('/dashboard/santri/delete/{id}', [SantriController::class, 'delete']);

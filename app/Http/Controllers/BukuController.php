@@ -33,11 +33,6 @@ class BukuController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create(Request $request)
     {
         $buku = Buku::create($request->all());
@@ -46,28 +41,6 @@ class BukuController extends Controller
         } else {
             return redirect('/dashboard/buku')->with('error', 'Gagal menambahkan buku');
         }
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Buku  $buku
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Buku $buku)
-    {
-        //
     }
 
     public function show($id)
@@ -86,10 +59,21 @@ class BukuController extends Controller
     {
         //
         $buku = Buku::select('idbuku','buku')->get();
-        $data = $buku->map(function ($item, $key){
-            return collect($item)->flatten();
-        });
+        // $data = $buku->map(function ($item, $key){
+        //     return collect($item)->flatten();
+        // });
         return response()->json($buku);
+    }
+
+    public function listBab($id)
+    {
+        //
+        $buku = Buku::find($id);
+        $bab = $buku->bab()->get();
+        // $data = $buku->map(function ($item, $key){
+        //     return collect($item)->flatten();
+        // });
+        return response()->json($bab);
     }
 
     public function update(Request $request, $id)

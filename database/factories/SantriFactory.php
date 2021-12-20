@@ -32,7 +32,7 @@ class SantriFactory extends Factory
         }
 
         return [
-            'namasantri' => substr($this->faker->name($gender), 0, 50),
+            'namasantri' => substr($this->faker->firstName($gender), 0, 50) + substr($this->faker->firstName($gender), 0, 50),
             'gender' => $gen,
             'tanggallhr' => Carbon::parse($this->faker->dateTimeBetween('-22 years', '-19 years'))->format('Y-m-d'),
             'kotalhr' => $this->faker->city(),
