@@ -2,6 +2,8 @@
 
 @section('container')
 
+@section('title', 'Detail Kemajuan')
+
 
 <div class="pagetitle">
     <h1>Data Tables</h1>
@@ -31,12 +33,9 @@
               {{ session('error') }}
             </div>            
             @endif
-
-            <a role="button" class="btn btn-primary mt-3 mb-1" data-bs-toggle="modal" 
+            <h5 class="card-title">Detail Kemajuan santri <b>{{ $namasantri }}</b></h5>
+            <a role="button" class="btn btn-primary mb-2" data-bs-toggle="modal" 
             data-bs-target="#tambahDetailKemajuanModal" >Tambah Data</a> 
-
-            <h5 class="card-title">Detail Kemajuan</h5>
-            <p> Berikut adalah Detail Kemajuan dari siswa <b> NAMA SISWA</b> </p>
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
@@ -45,49 +44,41 @@
                   <th scope="col">Buku</th>
                   <th scope="col">Bab</th>
                   <th scope="col">Keterangan</th>
-                  <th scope="col" colspan="2">Action</th>
+                  <th scope="col">Tanggal Input</th>
+                  <th scope="col">Action</th>
                 </tr>
               </thead>
 
               <tbody>
-
-                  {{-- @foreach ($bab as $item)
-                  
+                @foreach ($kemajuan as $item)
+                  @php
+                    $bab = $item->detailkemajuan()->first()->bab()->first();
+                    $buku = $bab->buku()->first();
+                  @endphp
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $item->bab }}</td>
-                    <td>{{ $item->judul }}</td>
-                    <td>{{ $item->keterangan }}</td>
-                  </tr>
-                  
-                  @endforeach --}}
-                  
-                  <tr>
-                    <th scope="row">1</th>
-                    <td>Lorem ipsum</td>
-                    <td>1</td>
-                    <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae odio voluptas aperiam vitae iure repellat harum, voluptatum necessitatibus numquam esse?</td>
-                    <td>
-                      <a href="#" class="btn btn-success" data-bs-toggle="modal" 
+                    <td>{{ $buku->buku }}</td>
+                    <td>{{ $bab->bab }}</td>
+                    <td>{{ $item->detailkemajuan()->first()->keterangan }}</td>
+                    <td style='white-space: nowrap'>{{ $item->detailkemajuan()->first()->created_at }}</td>
+                    <td style='white-space: nowrap'>
+                      <a href="#" class="btn btn-success btn-block" data-bs-toggle="modal" 
                       data-bs-target="#updateDetailKemajuanModal">
                         Update
                       </a>
-                    </td>
-
-                    <td>
-                    <a href="#" class="btn btn-warning" data-bs-toggle="modal" 
-                    data-bs-target="#fileDetailKemajuanModal">
-                      File
-                    </a>
-                  </td>
-
-                    <td>
-                      <a href="#" class="btn btn-danger" data-bs-toggle="modal" 
+                      <a href="#" class="btn btn-warning btn-block" data-bs-toggle="modal" 
+                      data-bs-target="#fileDetailKemajuanModal">
+                        File
+                      </a>
+                      <a href="#" class="btn btn-danger btn-block" data-bs-toggle="modal" 
                       data-bs-target="#deleteDetailKemajuanModal">
                         Delete
                       </a>
                     </td>
                   </tr>
+                @endforeach
+                  
+
                 
               </tbody>
             </table>
@@ -136,7 +127,6 @@
           <div class="col-12">
             <label for="yourName" class="form-label">Keterangan</label>
             <textarea class="form-control" id="message-text"></textarea>
-            </select>
           </div>
 
           <div class="col-12">

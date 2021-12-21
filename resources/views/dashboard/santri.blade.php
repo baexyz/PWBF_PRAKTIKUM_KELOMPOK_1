@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Santri')
+
 @section('container')
 
 @php
@@ -43,62 +45,64 @@
             data-bs-target="#tambahSantriModal" >Tambah Data</a> 
 
             <!-- Table with stripped rows -->
-            <table class="table" id="tablesantri">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Nama Santri</th>
-                  <th scope="col">Jenis Kelamin</th>
-                  <th scope="col">Tanggal Lahir</th>
-                  <th scope="col">Kota</th>
-                  <th scope="col">Nama Walisiswa</th>
-                  <th scope="col">Alamat Walisiswa</th>
-                  <th scope="col">No Handphone</th>
-                  <th scope="col">Email</th>
-                  <th scope="col">Tanggal Masuk</th>
-                  <th scope="col">Status</th>
-                  <th scope="col" colspan="2">Action</th>
-                </tr>
-              </thead>
-
-              <tbody>
-
-                  @foreach ($santri as $item)
-                  
+            <div style="overflow-x: scroll">
+              <table class="table" id="tablesantri">
+                <thead>
                   <tr>
-                    <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $item->namasantri }}</td>
-                    <td>{{ $item->gender }}</td>
-                    <td>{{ $item->tanggallhr }}</td>
-                    <td>{{ $item->kotalhr }}</td>
-                    <td>{{ $item->namaortu }}</td>
-                    <td>{{ $item->alamatortu }}</td>
-                    <td>{{ $item->hp }}</td>
-                    <td>{{ $item->email }}</td>
-                    <td>{{ $item->tanggalmasuk }}</td>
-                    <td>{{ isAktif($item->aktif) }}</td>
-
-                    <td>
-                      <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
-                      data-bs-target="#updateSantriModal" data-id={{ $item->idsantri }}>
-                        Update
-                      </a>
-                    </td>
-                    <td>
-                      <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSantriModal" 
-                      data-id={{ $item->idsantri }} data-nama="{{ $item->namasantri }}">
-                        Delete
-                      </a>
-                    </td>
-                    
-
+                    <th scope="col">#</th>
+                    <th scope="col">Nama Santri</th>
+                    <th scope="col">Jenis Kelamin</th>
+                    <th scope="col">Tanggal Lahir</th>
+                    <th scope="col">Kota</th>
+                    <th scope="col">Nama Walisiswa</th>
+                    <th scope="col">Alamat Walisiswa</th>
+                    <th scope="col">No Handphone</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Tanggal Masuk</th>
+                    <th scope="col">Status</th>
+                    <th scope="col" colspan="2">Action</th>
                   </tr>
-                  
-                  @endforeach
+                </thead>
 
-                
-              </tbody>
-            </table>
+                <tbody>
+
+                    @foreach ($santri as $item)
+                    
+                    <tr>
+                      <th scope="row">{{ $loop->iteration }}</th>
+                      <td>{{ $item->namasantri }}</td>
+                      <td>{{ $item->gender }}</td>
+                      <td>{{ $item->tanggallhr }}</td>
+                      <td>{{ $item->kotalhr }}</td>
+                      <td>{{ $item->namaortu }}</td>
+                      <td>{{ $item->alamatortu }}</td>
+                      <td>{{ $item->hp }}</td>
+                      <td>{{ $item->email }}</td>
+                      <td>{{ $item->tanggalmasuk }}</td>
+                      <td>{{ isAktif($item->aktif) }}</td>
+
+                      <td>
+                        <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
+                        data-bs-target="#updateSantriModal" data-id={{ $item->idsantri }}>
+                          Update
+                        </a>
+                      </td>
+                      <td>
+                        <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteSantriModal" 
+                        data-id={{ $item->idsantri }} data-nama="{{ $item->namasantri }}">
+                          Delete
+                        </a>
+                      </td>
+                      
+
+                    </tr>
+                    
+                    @endforeach
+
+                  
+                </tbody>
+              </table>
+            </div>
             <!-- End Table with stripped rows -->
 
           </div>

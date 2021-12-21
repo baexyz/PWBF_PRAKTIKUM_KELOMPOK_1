@@ -1,5 +1,7 @@
 @extends('layouts.dashboard')
 
+@section('title', 'Kemajuan')
+
 @section('container')
 
 
@@ -41,37 +43,47 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Nama Santri</th>
-                  <th scope="col">Tanggal</th>
+                  <th scope="col">Input Data Terakhir</th>
                   <th scope="col">Status</th>
                   <th scope="col">Detail</th>
-                  <th scope="col">Action</th>
+                  {{-- <th scope="col">Action</th> --}}
                 </tr>
               </thead>
 
               <tbody>
 
-                  @foreach ($kemajuan as $item)
+                  @foreach ($kemajuan as $i)
+                    @php
+                        $item = $i[0];
+                        $santri = $item->santri()->first();
+                    @endphp
                   
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
-                    <td>{{ $item->santri()->first()->namasantri }}</td>
+                    <td>{{ $santri->namasantri }}</td>
                     <td>{{ $item->tanggal }}</td>
                     <td>{{ $item->status }}</td>
-                    <td><a href="/dashboard/kemajuan/1" class="btn btn-primary">Detail</a></td>
                     <td>
+                      <a href="/dashboard/santri/{{ $santri->idsantri }}" class="btn btn-primary">Detail</a>
+                      {{-- <a role="button" class="btn btn-primary detailBtn" data-bs-toggle="modal" 
+                        data-bs-target="#detailKemajuanModal" data-id={{ $item->idkemajuan }}>
+                        Detail
+                      </a> --}}
+                    </td>
+                    {{-- <td>
                       <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
-                        data-bs-target="#updateKemajuanModal" data-id={{ $item->idsantri }}>
+                        data-bs-target="#updateKemajuanModal" data-id={{ $item->idkemajuan }}>
                         Update
                       </a>
                       
                       @can('isStaff')
                       <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteKemajuanModal" 
-                      data-id={{ $item->idbab }} data-nama="{{ $item->judul }}">
+                      data-id={{ $item->idkemajuan }} data-nama="{{ $santri->namasantri }}">
                       Delete
                       </a>
                       @endcan
 
-                    </td>
+                    </td> --}}
                   </tr>
                   
                   @endforeach
@@ -222,7 +234,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        Apakah anda yakin untuk menghapus data kemajuan? <b><span></span></b> 
+        Apakah anda yakin untuk menghapus data kemajuan dari santri <b><span></span></b> ?
       </div>
       <div class="modal-footer">
         <a type="button" class="btn btn-danger" href="">Delete</a>
@@ -241,6 +253,32 @@
     var urlsantri = '/dashboard/santri/list'
     var urlbuku = '/dashboard/buku/list'
     var urlbab = '/dashboard/buku/listbab/'
+    var urlkemajuan = '/dashboard/kemajuan/'
+
+    // $('.detailBtn').on('click', function() {
+    //     var id = $(this).data('id')
+    //     $.ajax({
+    //       url: urlkemajuan + id,
+    //       type: 'get',
+    //       success: function(data){
+
+    //       }
+    //     })        
+    //     $('#judul').val(judul)
+    //     $('#keterangan').val(keterangan)
+    //     $('#formUpdate').attr("action", "buku/update/"+id)
+
+    // })
+
+    // $('#detailKemajuanModal').on('show.bs.modal', function (event) {
+    //   var button = $(event.relatedTarget)
+    //   var id = button.data('id')
+    //   var nama = button.data('nama')
+    //   var modal = $(this)
+    //   modal.find('.modal-body span').text(nama)
+    //   modal.find('.modal-footer a').attr("href", "kemajuan/delete/"+id)
+    // })
+
     //Get Santri
     $.ajax({
         url: urlsantri,
@@ -256,7 +294,6 @@
           })
         }
     })
-
 
     //Get buku
     $.ajax({
@@ -292,6 +329,15 @@
           })
         }
       });
-    }   
+    }
+    
+    // $('#deleteKemajuanModal').on('show.bs.modal', function (event) {
+    //   var button = $(event.relatedTarget)
+    //   var id = button.data('id')
+    //   var nama = button.data('nama')
+    //   var modal = $(this)
+    //   modal.find('.modal-body span').text(nama)
+    //   modal.find('.modal-footer a').attr("href", "kemajuan/delete/"+id)
+    // })
   </script>    
 @endsection

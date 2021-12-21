@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\DetailKemajuan;
 use App\Models\Kemajuan;
+use App\Models\Santri;
 use Illuminate\Http\Request;
 
 class KemajuanController extends Controller
@@ -43,5 +44,14 @@ class KemajuanController extends Controller
         } else {
             return redirect('/dashboard/kemajuan')->with('error', 'Gagal menambahkan kemajuan');
         }
+    }
+
+    public function show($id) {
+        $namasantri = Santri::find($id)->namasantri;
+        $kemajuan = Kemajuan::where('idsantri', $id)->orderBy('created_at', 'desc')->get();
+        return view('dashboard.detailkemajuan', [
+            'namasantri' => $namasantri,
+            'kemajuan' => $kemajuan
+        ]);
     }
 }

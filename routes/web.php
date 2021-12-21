@@ -91,6 +91,7 @@ Route::middleware('auth:web,santri')->group(function () {
     Route::post('/dashboard/santri/create', [SantriController::class, 'create']);
     Route::post('/dashboard/santri/update/{id}', [SantriController::class, 'update']);
     Route::get('/dashboard/santri/delete/{id}', [SantriController::class, 'delete']);
+    Route::get('/dashboard/santri/{id}', [KemajuanController::class, 'show']);
     Route::get( '/dashboard/santri', [SantriController::class, 'index']);
 
     // Route::get('/staff', [DashboardController::class, 'index'])->middleware('auth', 'can:isStaff');

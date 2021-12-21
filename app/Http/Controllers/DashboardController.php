@@ -18,8 +18,10 @@ class DashboardController extends Controller
     }
 
     public function raport(){
+        $kemajuan = Kemajuan::orderBy('created_at', 'desc')->get()->groupBy('idsantri');
+        // ddd($kemajuan);
         return view('dashboard.kemajuan', [
-            'kemajuan' => Kemajuan::all()
+            'kemajuan' => $kemajuan
         ]);
     }
 
