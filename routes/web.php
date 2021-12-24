@@ -66,6 +66,8 @@ Route::get('/contact', function () {
 Route::middleware('auth:web,santri')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/dashboard/profile', [DashboardController::class, 'profile']);
+    Route::post('/dashboard/kemajuan/update/{id}', [KemajuanController::class, 'update']);
+    Route::get('/dashboard/kemajuan/delete/{id}', [KemajuanController::class, 'destroy']);
     Route::post('/dashboard/kemajuan/create', [KemajuanController::class, 'store']);
     Route::get('/dashboard/kemajuan/{id}', [DashboardController::class, 'detailraport']);
     Route::get('/dashboard/kemajuan', [DashboardController::class, 'raport']);

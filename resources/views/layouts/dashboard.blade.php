@@ -215,7 +215,7 @@
 
 @endsection
 
-@section('customscript')
+@section('scripts')
     <script>
       var url = '/dashboard/buku/'
       $.ajax({

@@ -247,7 +247,7 @@
 
 @endsection
 
-@section('customscript')
+@section('scripts')
   @parent
   <script>
     var urlsantri = '/dashboard/santri/list'

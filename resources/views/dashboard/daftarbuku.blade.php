@@ -92,13 +92,13 @@
           @csrf
           <div class="col-12">
             <label for="yourName" class="form-label">Judul Buku</label>
-            <input type="text" name="buku" class="form-control" id="judul" required>
+            <input type="text" name="buku" class="form-control" required>
             <div class="invalid-feedback">Mohon input nama buku</div>
           </div>
       
           <div class="col-12">
             <label for="yourEmail" class="form-label">Keterangan</label>
-            <textarea name="keterangan" class="form-control" id="keterangan" rows=3 required></textarea>
+            <textarea name="keterangan" class="form-control" rows=3 required></textarea>
             <div class="invalid-feedback">Mohon input keterangan buku</div>
           </div>
           
@@ -179,7 +179,7 @@
 
 @endsection
 
-@section('customscript')
+@section('scripts')
   @parent
   <script>
     $('.updateBtn').on('click', function() {
@@ -192,8 +192,8 @@
         $('#judul').val(judul)
         $('#keterangan').val(keterangan)
         $('#formUpdate').attr("action", "buku/update/"+id)
-
     })
+
     $('#deleteBukuModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget)
       var id = button.data('id')

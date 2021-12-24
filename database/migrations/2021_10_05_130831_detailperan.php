@@ -18,7 +18,7 @@ class Detailperan extends Migration
             $table->id('iddetailperan');
 
             // //format membuat foreign key (fk)
-            $table->foreignId('idperan')->constrained('peran', 'idperan');
+            $table->foreignId('idperan')->constrained('peran', 'idperan')->onDelete('cascade');
             $table->foreignId('idpengurus')->constrained('pengurus', 'idpengurus');
 
             $table->timestamps();

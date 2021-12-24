@@ -87,26 +87,26 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row g-3 needs-validation" id="formUpdate" action="../bab/create" method="post">
+        <form class="row g-3 needs-validation" action="../bab/create" method="post">
           @csrf
           
           <input type="hidden" name='idbuku' value="{{ $idbuku }}">
 
           <div class="col-12">
             <label for="yourName" class="form-label">Nomor Bab</label>
-            <input type="text" name="bab" class="form-control" id="judul" required>
+            <input type="text" name="bab" class="form-control" required>
             <div class="invalid-feedback">Mohon input nomor bab</div>
           </div>
 
           <div class="col-12">
             <label for="yourName" class="form-label">Judul Bab</label>
-            <input type="text" name="judul" class="form-control" id="judul" required>
+            <input type="text" name="judul" class="form-control" required>
             <div class="invalid-feedback">Mohon input nama bab</div>
           </div>
       
           <div class="col-12">
             <label for="yourEmail" class="form-label">Keterangan</label>
-            <textarea name="keterangan" class="form-control" id="keterangan" rows=3 required></textarea>
+            <textarea name="keterangan" class="form-control" rows=3 required></textarea>
             <div class="invalid-feedback">Mohon input keterangan bab</div>
           </div>
           
@@ -188,7 +188,7 @@
 
 @endsection
 
-@section('customscript')
+@section('scripts')
   @parent
   <script>
     $('.updateBtn').on('click', function() {

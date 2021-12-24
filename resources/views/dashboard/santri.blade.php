@@ -339,7 +339,7 @@
     
 @endsection
 
-@section('customscript')
+@section('scripts')
     @parent
     <script>
       const dataTable = new simpleDatatables.DataTable("#tablesantri", {
