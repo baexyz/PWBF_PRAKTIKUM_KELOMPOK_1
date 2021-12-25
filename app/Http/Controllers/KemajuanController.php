@@ -61,6 +61,7 @@ class KemajuanController extends Controller
         $kemajuan = Kemajuan::where('idsantri', $id)->orderBy('created_at', 'desc')->get();
         return view('dashboard.detailkemajuan', [
             'namasantri' => $namasantri,
+            'idsantri' => $id,
             'kemajuan' => $kemajuan
         ]);
     }

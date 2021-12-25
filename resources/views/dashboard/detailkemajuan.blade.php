@@ -44,6 +44,7 @@
                   <th scope="col">Buku</th>
                   <th scope="col">Bab</th>
                   <th scope="col">Keterangan</th>
+                  <th scope="col">Status</th>
                   <th scope="col">Tanggal Input</th>
                   <th scope="col">Action</th>
                 </tr>
@@ -60,6 +61,7 @@
                     <td>{{ $buku->buku }}</td>
                     <td>{{ $bab->bab }}</td>
                     <td>{{ $item->detailkemajuan()->first()->keterangan }}</td>
+                    <td>{{ $item->status }}</td>
                     <td style='white-space: nowrap'>{{ $item->detailkemajuan()->first()->created_at }}</td>
                     <td style='white-space: nowrap'>
                       <a role="button" class="btn btn-success btn-block updateBtn" data-bs-toggle="modal"
@@ -102,29 +104,29 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row g-3 needs-validation" id="formCreate" action="kemajuan/create" method="post">
+        <form class="row g-3 needs-validation" id="formCreate" action="../kemajuan/create" method="post">
           @csrf
-
+          <input type="hidden" name="idsantri" value="{{ $idsantri }}">
           <div class="col-12">
             <label for="yourName" class="form-label">Pilih Buku</label>
-            <select class="form-select listbuku">
+            <select class="form-select listbuku" onchange="getDataBab(this);">
               <option selected></option>
             </select>
           </div>
 
           <div class="col-12">
             <label for="yourName" class="form-label">Pilih Bab</label>
-            <select class="form-select" aria-label="Default select example">
+            <select class="form-select" id="listbab" name="idbab">
               <option selected></option>
             </select>
           </div>
 
           <div class="col-12">
             <label for="yourName" class="form-label">Keterangan</label>
-            <textarea class="form-control" id="message-text"></textarea>
+            <textarea class="form-control" id="message-text" name="keterangan"></textarea>
           </div>
 
-          <div class="col-12">
+          {{-- <div class="col-12">
             <label for="yourName" class="form-label">Upload File</label>
             <br>
             <form action="/action_page.php">
@@ -132,9 +134,24 @@
             </form>
             </select>
           </div>
+          <br> --}}    
+
+          <div class="col-12">
+            <label for="yourUsername" class="form-label">Status</label>
           <br>
-          <br>
-          
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="status" value="N">
+              <label class="form-check-label">Naik</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="status" value="T">
+              <label class="form-check-label">Turun</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="status" value="M">
+              <label class="form-check-label">Mundur</label>
+            </div>
+          </div>
           
           <div class="col-12">
             <div class="form-check">
@@ -199,12 +216,12 @@
           <div class="col-12">
             <div class="form-check">
               <input class="form-check-input" type="checkbox" value="" id="acceptTerms" required>
-              <label class="form-check-label" for="acceptTerms">Apakah anda yakin akan menambahkan data?</label>
+              <label class="form-check-label" for="acceptTerms">Apakah anda yakin akan menyimpan perubahan?</label>
               <div class="invalid-feedback">Silahkan klik kolom persetujuan terlebih dahulu</div>
             </div>
           </div>
           <div class="col-12">
-            <button class="btn btn-primary w-100" type="submit">Tambah</button>
+            <button class="btn btn-primary w-100" type="submit">Update</button>
           </div>
         </form>
       </div>
