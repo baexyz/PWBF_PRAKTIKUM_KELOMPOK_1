@@ -226,14 +226,14 @@
             var active = ""
             $.each(data, function(key, obj){
               if (window.location.pathname == url+obj['idbuku'])
-                active = 'active'
+                active = "class='active'"
               else
               active = ''
               var id = obj['idbuku']
               var nama = obj['buku']
               out += "\
               <li> \
-                <a class='"+ active +"' href=\'/dashboard/buku/"+id+"\'> \
+                <a "+ active +" href=\'/dashboard/buku/"+id+"\'> \
                   <i class='bi bi-circle'></i><span>"+nama+"</span> \
                 </a> \
               </li>"

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Santri;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class SantriController extends Controller
 {
@@ -12,8 +13,7 @@ class SantriController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
+    public function index() {
         return view('dashboard.santri', [
             
             'santri' => Santri::all(),
@@ -21,8 +21,7 @@ class SantriController extends Controller
         ]);
     }
 
-    public function list()
-    {
+    public function list() {
         //
         $santri = Santri::select('idsantri','namasantri')->get();
         // $data = $buku->map(function ($item, $key){
@@ -31,8 +30,9 @@ class SantriController extends Controller
         return response()->json($santri);
     }
 
-    public function create(Request $request)
-    {
+    public function create(Request $request) {
+        if (!Gate::allows('isStaff')) 
+            abort(403);
         $santri = Santri::create($request->all());
         if ($santri) {
             $santri->update($request->all());
@@ -42,9 +42,9 @@ class SantriController extends Controller
         }
     }
 
-    public function update(Request $request, $id)
-    {
-        //
+    public function update(Request $request, $id) {
+        if (!Gate::allows('isStaff')) 
+            abort(403);
         $santri = Santri::find($id);
         if ($santri) {
             $santri->update($request->all());
@@ -54,8 +54,9 @@ class SantriController extends Controller
         }
     }
 
-    public function delete($id)
-    {
+    public function delete($id) {
+        if (!Gate::allows('isStaff')) 
+            abort(403);
         try {
             $santri = Santri::find($id);
             $santri->delete();

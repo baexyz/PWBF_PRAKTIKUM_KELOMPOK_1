@@ -34,9 +34,10 @@
             </div>            
             @endif
 
-            <a role="button" class="btn btn-primary mt-3 mb-1" data-bs-toggle="modal" 
-            data-bs-target="#tambahPengurusModal" >Tambah Data</a> 
-          
+            @can('isStaff')
+              <a role="button" class="btn btn-primary mt-3 mb-1" data-bs-toggle="modal" 
+              data-bs-target="#tambahPengurusModal" >Tambah Data</a> 
+            @endcan
 
           <!-- Table with hoverable rows -->
           <table class="table table-hover">
@@ -49,7 +50,9 @@
                 <th scope="col">Email</th>
                 <th scope="col">HP</th>
                 <th scope="col">Created at</th>
-                <th scope="col">Action</th>
+                @can('isStaff')
+                  <th scope="col">Action</th>
+                @endcan
               </tr>
             </thead>
             <tbody>
@@ -64,21 +67,22 @@
                 <td>{{ $item->email }}</td>
                 <td>{{ $item->hp }}</td>
                 <td>{{ $item->created_at }}</td>
+
+                @can('isStaff')
+                  <td>
+                    <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
+                    data-bs-target="#updatePengurusModal" data-id={{ $item->idsantri }}>
+                      Update
+                    </a>
+                  </td>
+                  <td>
+                    <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePengurusModal" 
+                    data-id={{ $item->idbab }} data-nama="{{ $item->judul }}">
+                      Delete
+                    </a>
+                  </td>
+                @endcan
                 
-                <td>
-                  <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
-                  data-bs-target="#updatePengurusModal" data-id={{ $item->idsantri }}>
-                    Update
-                  </a>
-                </td>
-                <td>
-                  <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deletePengurusModal" 
-                  data-id={{ $item->idbab }} data-nama="{{ $item->judul }}">
-                    Delete
-                  </a>
-                </td>
-                
-                </td>
               </tr>                  
               @endforeach              
             </tbody>

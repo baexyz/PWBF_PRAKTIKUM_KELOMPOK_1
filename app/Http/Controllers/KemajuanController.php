@@ -49,6 +49,9 @@ class KemajuanController extends Controller
     public function destroy($id) {
         $kemajuan = Kemajuan::find($id);
         $santri = $kemajuan->idsantri;
+        $pengurus = $kemajuan->idpengurus;
+        if ($pengurus != auth()->user()->idpengurus)
+            abort(403);
         $delete = $kemajuan->delete();
         if($delete)
             return redirect("/dashboard/santri/$santri")->with('success', 'Data kemajuan berhasil dihapus');

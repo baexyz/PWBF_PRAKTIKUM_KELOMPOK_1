@@ -34,8 +34,10 @@
             </div>            
             @endif
 
-            <a role="button" class="btn btn-primary mt-3 mb-1" data-bs-toggle="modal" 
-            data-bs-target="#tambahKemajuanModal" >Tambah Data</a> 
+            @can('isGuru')
+              <a role="button" class="btn btn-primary mt-3 mb-1" data-bs-toggle="modal" 
+              data-bs-target="#tambahKemajuanModal" >Tambah Data</a> 
+            @endcan
 
             <!-- Table with stripped rows -->
             <table class="table datatable">

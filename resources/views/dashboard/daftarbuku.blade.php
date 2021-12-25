@@ -32,8 +32,10 @@
             </div>            
             @endif
 
+            @can('isStaff')
             <a role="button" class="btn btn-primary mt-2 mb-1" data-bs-toggle="modal" 
             data-bs-target="#tambahBukuModal">Tambah Buku</a>
+            @endcan
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -42,7 +44,9 @@
                   <th scope="col">#</th>
                   <th scope="col">Buku</th>
                   <th scope="col">Keterangan</th>
-                  <th scope="col" colspan="2">Action</th>
+                  @can('isStaff')
+                    <th scope="col" colspan="2">Action</th>
+                  @endcan
                 </tr>
               </thead>
 
@@ -54,18 +58,20 @@
                       <a href="/dashboard/buku/{{ $item->idbuku }}">{{ $item->buku }}</a> 
                     </td>
                     <td>{{ $item->keterangan }}</td>
-                    <td>
-                      <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
-                      data-bs-target="#updateBukuModal" data-id={{ $item->idbuku }}>
-                        Update
-                      </a>
-                    </td>
-                    <td>
-                      <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBukuModal" 
-                      data-id={{ $item->idbuku }} data-nama="{{ $item->buku }}">
-                      Delete
-                      </a>
-                    </td>
+                    @can('isStaff')
+                      <td>
+                        <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
+                        data-bs-target="#updateBukuModal" data-id={{ $item->idbuku }}>
+                          Update
+                        </a>
+                      </td>
+                      <td>
+                        <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBukuModal" 
+                        data-id={{ $item->idbuku }} data-nama="{{ $item->buku }}">
+                        Delete
+                        </a>
+                      </td>
+                    @endcan
                   </tr>
                   @endforeach  
               </tbody>

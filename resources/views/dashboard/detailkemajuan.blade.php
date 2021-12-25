@@ -34,19 +34,24 @@
             </div>            
             @endif
             <h5 class="card-title">Detail kemajuan santri <b>{{ $namasantri }}</b></h5>
+            @can('isGuru')
             <a role="button" class="btn btn-primary mb-2" data-bs-toggle="modal" 
             data-bs-target="#tambahDetailKemajuanModal" >Tambah Data</a> 
+            @endcan
             <!-- Table with stripped rows -->
             <table class="table datatable">
               <thead>
                 <tr>
                   <th scope="col">#</th>
+                  <th scope="col">Pengurus</th>
                   <th scope="col">Buku</th>
                   <th scope="col">Bab</th>
                   <th scope="col">Keterangan</th>
                   <th scope="col">Status</th>
                   <th scope="col">Tanggal Input</th>
+                  @can('isGuru')
                   <th scope="col">Action</th>
+                  @endcan
                 </tr>
               </thead>
 
@@ -58,26 +63,33 @@
                   @endphp
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
+                    <td>{{ $item->pengurus()->first()->nama }}</td>
                     <td>{{ $buku->buku }}</td>
                     <td>{{ $bab->bab }}</td>
                     <td>{{ $item->detailkemajuan()->first()->keterangan }}</td>
                     <td>{{ $item->status }}</td>
                     <td style='white-space: nowrap'>{{ $item->detailkemajuan()->first()->created_at }}</td>
-                    <td style='white-space: nowrap'>
-                      <a role="button" class="btn btn-success btn-block updateBtn" data-bs-toggle="modal"
-                      data-id={{ $item->idkemajuan }} data-idbab={{ $bab->idbab }} 
-                      data-idbuku={{ $bab->idbuku }} data-bs-target="#updateDetailKemajuanModal">
-                        Update
-                      </a>
-                      <a role="button" class="btn btn-warning btn-block" data-bs-toggle="modal" 
-                      data-bs-target="#fileDetailKemajuanModal">
-                        File
-                      </a>
-                      <a role="button" class="btn btn-danger btn-block" data-bs-toggle="modal" 
-                      data-id={{ $item->idkemajuan }} data-bs-target="#deleteDetailKemajuanModal">
-                        Delete
-                      </a>
-                    </td>
+                    @can('isGuru')
+                      @if ($item->idpengurus == auth()->user()->idpengurus)
+                        <td style='white-space: nowrap'>
+                          <a role="button" class="btn btn-success btn-block updateBtn" data-bs-toggle="modal"
+                          data-id={{ $item->idkemajuan }} data-idbab={{ $bab->idbab }} 
+                          data-idbuku={{ $bab->idbuku }} data-bs-target="#updateDetailKemajuanModal">
+                            Update
+                          </a>
+                          <a role="button" class="btn btn-warning btn-block" data-bs-toggle="modal" 
+                          data-bs-target="#fileDetailKemajuanModal">
+                            File
+                          </a>
+                          <a role="button" class="btn btn-danger btn-block" data-bs-toggle="modal" 
+                          data-id={{ $item->idkemajuan }} data-bs-target="#deleteDetailKemajuanModal">
+                            Delete
+                          </a>
+                        </td>                      
+                      @else
+                        <td>No Action</td>
+                      @endif
+                    @endcan
                   </tr>
                 @endforeach
                   

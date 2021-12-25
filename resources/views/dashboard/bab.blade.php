@@ -29,11 +29,11 @@
               {{ session('error') }}
             </div>            
             @endif
-           
+
+            @can('isStaff')
             <a role="button" class="btn btn-primary mt-3 mb-1" data-bs-toggle="modal" 
             data-bs-target="#tambahBabModal" >Tambah Data</a> 
-
-
+            @endcan
 
             <!-- Table with stripped rows -->
             <table class="table datatable">
@@ -42,7 +42,9 @@
                   <th scope="col">Bab</th>
                   <th scope="col">Judul</th>
                   <th scope="col">Keterangan</th>
-                  <th scope="col" colspan="2">Action</th>
+                  @can('isStaff')
+                    <th scope="col" colspan="2">Action</th>
+                  @endcan
                 </tr>
               </thead>
               <tbody>
@@ -52,18 +54,20 @@
                     {{-- <td>{{ $item->bab }}</td> --}}
                     <td>{{ $item->judul }}</td>
                     <td>{{ $item->keterangan }}</td>
-                    <td>
-                      <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
-                      data-bs-target="#updateBabModal" data-id={{ $item->idbab }}>
-                        Update
-                      </a>
-                    </td>
-                    <td>
-                      <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBabModal" 
-                      data-id={{ $item->idbab }} data-nama="{{ $item->judul }}">
-                        Delete
-                      </a>
-                    </td>
+                    @can('isStaff')
+                      <td>
+                        <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
+                        data-bs-target="#updateBabModal" data-id={{ $item->idbab }}>
+                          Update
+                        </a>
+                      </td>
+                      <td>
+                        <a role="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteBabModal" 
+                        data-id={{ $item->idbab }} data-nama="{{ $item->judul }}">
+                          Delete
+                        </a>
+                      </td>
+                    @endcan
                   </tr>     
                   @endforeach 
                                 
