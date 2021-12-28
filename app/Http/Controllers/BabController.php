@@ -13,10 +13,10 @@ class BabController extends Controller
         //
         $bab = Bab::create($request->all());
         if ($bab) {
-            $bab->update($request->all());
-            return redirect("/dashboard/buku/$request->idbuku")->with('success', 'Bab berhasil di-tambah');
+            // $bab->update($request->all());
+            return redirect()->back()->with('success', 'Bab berhasil di-tambah');
         } else {
-            return redirect("/dashboard/buku/$request->idbuku")->with('error', 'Bab tidak ditemukan');
+            return redirect()->back()->with('error', 'Bab tidak ditemukan');
         }
     }
 
@@ -25,23 +25,21 @@ class BabController extends Controller
     {
         //
         $bab = Bab::find($id);
-        $idbuku = $bab->idbuku;
         if ($bab) {
             $bab->update($request->all());
-            return redirect("/dashboard/buku/$idbuku")->with('success', 'Bab berhasil di-update');
+            return redirect()->back()->with('success', 'Bab berhasil di-update');
         } else {
-            return redirect("/dashboard/buku/$idbuku")->with('error', 'Bab tidak ditemukan');
+            return redirect()->back()->with('error', 'Bab tidak ditemukan');
         }
     }
 
     public function delete($id)
     {
         $bab = Bab::find($id);
-        $idbuku = $bab->idbuku;
         $delete = $bab->delete();
         if($delete)
-            return redirect("/dashboard/buku/$idbuku")->with('success', 'Bab berhasil dihapus');
+            return redirect()->back()->with('success', 'Bab berhasil dihapus');
         else
-            return redirect("/dashboard/buku/$idbuku")->with('error', 'Bab gagal dihapus');
+            return redirect()->back()->with('error', 'Bab gagal dihapus');
     }
 }

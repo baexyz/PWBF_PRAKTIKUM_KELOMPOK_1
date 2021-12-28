@@ -40,23 +40,22 @@ class KemajuanController extends Controller
             'keterangan' => $data['keterangan']
         ]);
         if ($detail) {
-            return redirect('/dashboard/kemajuan')->with('success', 'Kemajuan berhasil di-tambah');
+            return redirect()->back()->with('success', 'Kemajuan berhasil di-tambah');
         } else {
-            return redirect('/dashboard/kemajuan')->with('error', 'Gagal menambahkan kemajuan');
+            return redirect()->back()->with('error', 'Gagal menambahkan kemajuan');
         }
     }
 
     public function destroy($id) {
         $kemajuan = Kemajuan::find($id);
-        $santri = $kemajuan->idsantri;
         $pengurus = $kemajuan->idpengurus;
         if ($pengurus != auth()->user()->idpengurus)
             abort(403);
         $delete = $kemajuan->delete();
         if($delete)
-            return redirect("/dashboard/santri/$santri")->with('success', 'Data kemajuan berhasil dihapus');
+            return redirect()->back()->with('success', 'Data kemajuan berhasil dihapus');
         else
-            return redirect("/dashboard/santri/$santri")->with('error', 'Data kemajuan gagal dihapus');
+            return redirect()->back()->with('error', 'Data kemajuan gagal dihapus');
     }
 
     public function show($id) {

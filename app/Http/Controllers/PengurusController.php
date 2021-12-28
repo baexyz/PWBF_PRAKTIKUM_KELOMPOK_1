@@ -26,9 +26,9 @@ class PengurusController extends Controller
         $pengurus = Pengurus::create($request->all());
         if ($pengurus) {
             $pengurus->update($request->all());
-            return redirect("/dashboard/pengurus")->with('success', 'Pengurus berhasil di-tambah');
+            return redirect()->back()->with('success', 'Pengurus berhasil di-tambah');
         } else {
-            return redirect("/dashboard/santri")->with('error', 'Gagal menambahkan data');
+            return redirect()->back()->with('error', 'Gagal menambahkan data');
         }
     }
 
@@ -38,9 +38,9 @@ class PengurusController extends Controller
         $pengurus = Pengurus::find($id);
         if ($pengurus) {
             $pengurus->update($request->all());
-            return redirect("/dashboard/pengurus")->with('success', 'Pengurus berhasil di-update');
+            return redirect()->back()->with('success', 'Pengurus berhasil di-update');
         } else {
-            return redirect("/dashboard/pengurus")->with('error', 'Pengurus gagal di-update');
+            return redirect()->back()->with('error', 'Pengurus gagal di-update');
         }
     }
 
@@ -49,8 +49,8 @@ class PengurusController extends Controller
         $pengurus = Pengurus::find($id);
         $delete = $pengurus->delete();
         if($delete)
-            return redirect("/dashboard/pengurus")->with('success', 'Pengurus berhasil dihapus');
+            return redirect()->back()->with('success', 'Pengurus berhasil dihapus');
         else
-            return redirect("/dashboard/pengurus")->with('error', 'Pengurus gagal dihapus');
+            return redirect()->back()->with('error', 'Pengurus gagal dihapus');
     }
 }

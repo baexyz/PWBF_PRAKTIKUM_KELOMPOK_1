@@ -36,9 +36,9 @@ class SantriController extends Controller
         $santri = Santri::create($request->all());
         if ($santri) {
             $santri->update($request->all());
-            return redirect("/dashboard/santri")->with('success', 'Santri berhasil di-tambah');
+            return redirect()->back()->with('success', 'Santri berhasil di-tambah');
         } else {
-            return redirect("/dashboard/santri")->with('error', 'Gagal menambahkan data');
+            return redirect()->back()->with('error', 'Gagal menambahkan data');
         }
     }
 
@@ -48,9 +48,9 @@ class SantriController extends Controller
         $santri = Santri::find($id);
         if ($santri) {
             $santri->update($request->all());
-            return redirect("/dashboard/santri")->with('success', 'Santri berhasil di-update');
+            return redirect()->back()->with('success', 'Santri berhasil di-update');
         } else {
-            return redirect("/dashboard/santri")->with('error', 'Santri gagal di-update');
+            return redirect()->back()->with('error', 'Santri gagal di-update');
         }
     }
 
@@ -60,9 +60,9 @@ class SantriController extends Controller
         try {
             $santri = Santri::find($id);
             $santri->delete();
-            return redirect("/dashboard/santri")->with('success', 'Santri berhasil dihapus');
+            return redirect()->back()->with('success', 'Santri berhasil dihapus');
         } catch (\Throwable $th) {
-            return redirect("/dashboard/santri")->with('error', 'Santri gagal dihapus');
+            return redirect()->back()->with('error', 'Santri gagal dihapus');
         }    
     }
 }

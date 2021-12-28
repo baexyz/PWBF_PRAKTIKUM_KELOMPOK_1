@@ -37,9 +37,9 @@ class BukuController extends Controller
     {
         $buku = Buku::create($request->all());
         if ($buku) {
-            return redirect('/dashboard/buku')->with('success', 'Buku berhasil di-tambah');
+            return redirect()->back()->with('success', 'Buku berhasil di-tambah');
         } else {
-            return redirect('/dashboard/buku')->with('error', 'Gagal menambahkan buku');
+            return redirect()->back()->with('error', 'Gagal menambahkan buku');
         }
     }
 
@@ -82,9 +82,9 @@ class BukuController extends Controller
         $buku = Buku::find($id);
         if ($buku) {
             $buku->update($request->all());
-            return redirect('/dashboard/buku')->with('success', 'Buku berhasil di-update');
+            return redirect()->back()->with('success', 'Buku berhasil di-update');
         } else {
-            return redirect('/dashboard/buku')->with('error', 'Buku tidak ditemukan');
+            return redirect()->back()->with('error', 'Buku tidak ditemukan');
         }
     }
 

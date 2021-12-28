@@ -22,6 +22,7 @@ class Pengurus extends Migration
             //$table->char('password',32);
             $table->char('password',100);
             $table->char('aktif',1);
+            $table->string('profile_pic')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

@@ -61,6 +61,41 @@ class DashboardController extends Controller
         Pengurus::find($id)->delete();
     }
 
+    public function uploadPhoto(Request $request) {
+        //return storage_path('app');
+        
+        if (Auth::guard('santri')->check()) {
+            $id = Auth::guard('santri')->user()->idsantri;
+            $userModel = Santri::find($id);
+        }
+        else {
+            $id = auth()->user()->idpengurus;
+            $userModel = Pengurus::find($id);
+        }
+
+        // //
+        // $request->validate([
+        //     'image.*' => 'mimes:doc,pdf,docx,zip,jpeg,png,jpg,gif,svg',
+        // ]);
+        if($request->hasFile('image')) {
+                
+            $file = $request->file('image');
+            $fileName = $file->hashName();
+            // $fileName = $file->getClientOriginalName();
+            $destinationPath = public_path().'/img/profile_pic' ;
+            $file->move($destinationPath,$fileName);
+        }
+        try {
+            $userModel->update([
+                'profile_pic' => '/img/profile_pic/' . $fileName
+            ]);
+            return redirect()->back()->with('success', 'Foto telah tersimpan');
+        } catch (\Throwable $th) {
+            return redirect()->back()->with('error', $th);
+            //throw $th;
+        }
+    }
+
     // public function remove(){
     //     Pengurus::find(11)->delete();
     // }

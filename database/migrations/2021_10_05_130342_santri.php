@@ -29,6 +29,7 @@ class Santri extends Migration
             $table->char('password',100);
             $table->date('tanggalmasuk');
             $table->char('aktif',1)->default("0");
+            $table->string('profile_pic')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

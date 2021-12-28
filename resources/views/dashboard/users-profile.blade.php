@@ -21,7 +21,8 @@
         <div class="card">
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-            <img src="/img/dashboard/profile-img.jpg" alt="Profile" class="rounded-circle">
+            {{-- <img src="/img/dashboard/profile-img.jpg" alt="Profile" class="rounded-circle"> --}}
+            <img src="{{ auth()->user()->profile_pic ?: "/img/dashboard/profile-img.jpg"}}" alt="Profile" class="rounded-circle">
             <h2>{{ auth()->user()->nama ?: auth()->user()->namasantri }}</h2>
             <h3>{{ auth()->user()->has_role ?: 
               auth()->user()->detailperan()->first()->peran()->first()->peran }}</h3>
@@ -40,6 +41,17 @@
 
         <div class="card">
           <div class="card-body pt-3">
+            @if (session()->has('success'))
+            <div class="alert alert-success mt-2" role="alert">
+              {{ session('success') }}
+            </div>            
+            @endif
+            @if (session()->has('error'))
+            <div class="alert alert-danger mt-2" role="alert">
+              {{ session('error') }}
+            </div>            
+            @endif
+
             <!-- Bordered Tabs -->
             <ul class="nav nav-tabs nav-tabs-bordered">
 
@@ -49,6 +61,10 @@
 
               <li class="nav-item">
                 <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-edit">Edit Profile</button>
+              </li>
+              
+              <li class="nav-item">
+                <button class="nav-link" data-bs-toggle="tab" data-bs-target="#profile-photo">Upload Photo</button>
               </li>
 
             </ul>
@@ -143,6 +159,22 @@
                     <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
                   </div>
                 </form><!-- End Profile Edit Form -->
+
+              </div>
+
+              <div class="tab-pane fade profile-photo pt-3" id="profile-photo">
+
+                <!-- Profile Photo Form -->
+                <form method="post" action="profile/photo" enctype="multipart/form-data">
+                  @csrf
+                  <div class="mb-3">
+                    <input class="form-control" type="file" id="formFile" name="image" >
+                  </div>
+       
+                  <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Upload Photo</button>
+                  </div>
+                </form><!-- End Profile photo Form -->
 
               </div>
 
