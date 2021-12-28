@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\DetailPeran;
 use App\Models\Kemajuan;
+use App\Models\Santri;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
@@ -18,11 +21,22 @@ class DashboardController extends Controller
     }
 
     public function raport(){
-        $kemajuan = Kemajuan::orderBy('created_at', 'desc')->get()->groupBy('idsantri');
-        // ddd($kemajuan);
-        return view('dashboard.kemajuan', [
-            'kemajuan' => $kemajuan
-        ]);
+        if (Auth::guard('santri')->check()) {
+            $id = Auth::guard('santri')->user()->idsantri;
+            $namasantri = Auth::guard('santri')->user()->namasantri;
+            $kemajuan = Kemajuan::where('idsantri', $id)->orderBy('created_at', 'desc')->get();
+            return view('dashboard.detailkemajuan', [
+                'namasantri' => $namasantri,
+                'idsantri' => $id,
+                'kemajuan' => $kemajuan
+            ]);
+        } else {
+            $kemajuan = Kemajuan::orderBy('created_at', 'desc')->get()->groupBy('idsantri');
+            // ddd($kemajuan);
+            return view('dashboard.kemajuan', [
+                'kemajuan' => $kemajuan
+            ]);
+        }
     }
 
     public function detailraport(){

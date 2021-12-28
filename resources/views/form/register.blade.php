@@ -10,7 +10,7 @@
     <p class="text-center small">Masukan Data Diri Santri</p>
   </div>
 
-  <form class="row g-3 needs-validation" action="/register" method="post">
+  <form class="row g-3 needs-validation" action="/register" method="post" enctype="multipart/form-data">
     @csrf
     <div class="col-12">
       <label for="yourName" class="form-label">Nama</label>
@@ -84,6 +84,11 @@
     <label for="yourPassword" class="form-label">Password</label>
     <input type="password" name="password" class="form-control" id="yourPassword" required>
       <div class="invalid-feedback">TEMPLATE</div>
+    </div>
+
+    <div class="mb-3">
+      <label for="formFile" class="form-label">Pilih Foto</label>
+      <input class="form-control" type="file" id="formFile">
     </div>
     
     <div class="col-12">

@@ -26,14 +26,22 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        Gate::define('isStaff', function (Pengurus $pengurus){
-            return $pengurus->detailperan()->first()
-            ->peran()->first()->peran == 'Staff';
+        Gate::define('isStaff', function ($pengurus){
+            try {
+                return $pengurus->detailperan()->first()
+                ->peran()->first()->peran == 'Staff';
+            } catch (\Throwable $th) {
+                return false;
+            }
         });
         
-        Gate::define('isGuru', function (Pengurus $pengurus){
-            return $pengurus->detailperan()->first()
-            ->peran()->first()->peran == 'Guru';
+        Gate::define('isGuru', function ($pengurus){
+            try {
+                return $pengurus->detailperan()->first()
+                ->peran()->first()->peran == 'Guru';
+            } catch (\Throwable $th) {
+                return false;
+            }
         });
         
         Gate::define('isSantri', function ($user){

@@ -97,12 +97,14 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      <li class="nav-item">
+      @cannot('isSantri')
+        
+      {{-- <li class="nav-item">
         <a class="nav-link{{ request()->is('dashboard') ? '' : ' collapsed' }}" href="/dashboard">
           <i class="bi bi-grid"></i>
           <span>Dashboard</span>
         </a>
-      </li><!-- End Dashboard Nav -->
+      </li><!-- End Dashboard Nav --> --}}
 
       <li class="nav-item">
         <a class="nav-link{{ request()->is('dashboard/pengurus') ? '' : ' collapsed' }}" href="/dashboard/pengurus">
@@ -111,20 +113,12 @@
         </a>
       </li><!-- End Pengurus Nav -->
 
-
       <li class="nav-item">
         <a class="nav-link{{ request()->is('dashboard/santri') ? '' : ' collapsed' }}" href="/dashboard/santri">
           <i class="bi bi-people"></i>
           <span>Santri</span>
         </a>
       </li><!-- End Santri Nav -->
-
-      <li class="nav-item">
-        <a class="nav-link{{ request()->is('dashboard/kemajuan') ? '' : ' collapsed' }}" href="/dashboard/kemajuan">
-          <i class="bi bi-bar-chart-line"></i>
-          <span>Kemajuan</span>
-        </a>
-      </li><!-- End Kemajuan Nav -->
 
       <li class="nav-item">
         <a class="nav-link{{ request()->is('dashboard/buku') ? '' : ' collapsed' }}" href="/dashboard/buku">
@@ -140,6 +134,15 @@
         <ul id="icons-nav" class="nav-content listBuku collapse {{ request()->is('dashboard/buku/*') ? 'show' : '' }}" data-bs-parent="#sidebar-nav">
         </ul>
       </li><!-- End Icons Nav -->
+
+      @endcannot
+
+      <li class="nav-item">
+        <a class="nav-link{{ request()->is('dashboard/kemajuan') ? '' : ' collapsed' }}" href="/dashboard/kemajuan">
+          <i class="bi bi-bar-chart-line"></i>
+          <span>Kemajuan</span>
+        </a>
+      </li><!-- End Kemajuan Nav -->
 
       {{-- <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
