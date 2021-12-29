@@ -6,9 +6,9 @@
 <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex justify-content-center align-items-center">
     <div class="container position-relative" data-aos="zoom-in" data-aos-delay="100">
-      <h1>TPQ TOP,<br>Leading Tomorrow</h1>
-      <h2>We are team of talented designers making websites with Bootstrap</h2>
-      <a href="courses.html" class="btn-get-started">Get Started</a>
+      <h1>TPQ Nurul Fajar</h1>
+      <h2>Bermasa TPQ Nurul Fajar, meraih keberkahan</h2>
+      <a href="/form/login" class="btn-get-started">Daftar</a>
     </div>
   </section><!-- End Hero -->
 
@@ -23,19 +23,16 @@
             <img src="https://th.bing.com/th/id/R.8b13156ee8395c0993565a9eb19d5c24?rik=hqBs3Jf%2f%2bfEkog&riu=http%3a%2f%2fwww.kaffahcollege.com%2fwp-content%2fuploads%2f2016%2f05%2fprivat-membaca-Al-Quran.jpg&ehk=%2fIOcT99F8XtQMZgkBNMZqCbj%2bhtaRkJCppxG5CADGvc%3d&risl=&pid=ImgRaw&r=0" class="img-fluid" alt="" width="50%" align="right" margin-right:"30%" >
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
-            <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
+            <h3>Keutamaan Belajar di TPQ Nurul Fajar</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              Taman Pendidikan Al-Qur'an Nurul Fajar merupakan lembaga pendidikan yang mengutaman pembelajaran Al-Qur'an dan Pendidikan Agama Islam. Dengan mengaplikasikan Al-Qur'an dan sunnah dalam pembelajaran dan kehidupan sehari-hari, sehingga menghasilkan generasi Qur'ani dan Berakhlakul Karimah.
             </p>
             <ul>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circle"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circle"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+              <li><i class="bi bi-check-circle"></i> Tenaga Pendidik yang Kompeten</li>
+              <li><i class="bi bi-check-circle"></i> Fasilitas yang memadai</li>
+              <li><i class="bi bi-check-circle"></i> Mencetak lulusan yang terampil dan berbakat</li>
             </ul>
-            <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-            </p>
+            
 
           </div>
         </div>
