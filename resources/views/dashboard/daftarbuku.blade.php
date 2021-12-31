@@ -94,7 +94,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form class="row g-3 needs-validation" id="formUpdate" action="buku/create" method="post">
+        <form class="row g-3 needs-validation" action="buku/create" method="post">
           @csrf
           <div class="col-12">
             <label for="yourName" class="form-label">Judul Buku</label>
@@ -197,6 +197,7 @@
         var keterangan = columns[1].innerHTML
         $('#judul').val(judul)
         $('#keterangan').val(keterangan)
+        console.log(id)
         $('#formUpdate').attr("action", "buku/update/"+id)
     })
 

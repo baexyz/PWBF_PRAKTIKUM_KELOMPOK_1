@@ -121,14 +121,14 @@
           <input type="hidden" name="idsantri" value="{{ $idsantri }}">
           <div class="col-12">
             <label for="yourName" class="form-label">Pilih Buku</label>
-            <select class="form-select listbuku" onchange="getDataBab(this);">
+            <select class="form-select listbuku" onchange="getDataBab(this, 'tambah');">
               <option selected></option>
             </select>
           </div>
 
           <div class="col-12">
             <label for="yourName" class="form-label">Pilih Bab</label>
-            <select class="form-select" id="listbab" name="idbab">
+            <select class="form-select" id="tambah" name="idbab">
               <option selected></option>
             </select>
           </div>
@@ -195,14 +195,14 @@
           @csrf
           <div class="col-12">
             <label for="yourName" class="form-label">Pilih Buku</label>
-            <select class="form-select listbuku" id="bukuedit" onchange="getDataBab(this);">
+            <select class="form-select listbuku" id="bukuedit" onchange="getDataBab(this, 'edit');">
               <option value="0" selected></option>
             </select>
           </div>
 
           <div class="col-12">
             <label for="yourName" class="form-label">Pilih Bab</label>
-            <select class="form-select babedit" name="idbab" id="listbab">
+            <select class="form-select" name="idbab" id="edit">
               <option selected></option>
             </select>
           </div>
@@ -302,23 +302,24 @@
       }
     })
 
-    function getDataBab(sel) {
+    function getDataBab(sel, idbab) {
       // alert( this.value );
       var idbuku = sel.value
+      var a = "#" + idbab
       $.ajax({
         url: urlbab + idbuku,
         type: 'get',
         success: function(data){
-          $('#listbab').html("")     
+          $(a).html("")     
           $.each(data, function(key, obj){
             var id = obj['idbab']
             var nama = obj['judul']
-            $('#listbab').append($('<option>', {
+            $(a).append($('<option>', {
               value: id,
               text: nama
             }))            
           })
-          $('#listbab option[value='+idbab+']').prop('selected', true)
+          $(a + ' option[value='+idbab+']').prop('selected', true)
         }
       });
     }
@@ -330,7 +331,7 @@
         var id = parent.data('id')
         var idbuku = parent.data('idbuku').toString()
         idbab = parent.data('idbab')
-        var keterangan = columns[2].innerHTML
+        var keterangan = columns[3].innerHTML
         $('#keterangan').val(keterangan)
         $('#bukuedit option[value='+idbuku+']').prop('selected', true).trigger('change')
         $('#formUpdate').attr("action", "../kemajuan/update/"+id)
