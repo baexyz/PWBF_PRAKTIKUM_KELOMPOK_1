@@ -30,10 +30,20 @@
         </li><!-- End Search Icon-->
 
         <li class="nav-item dropdown pe-3">
+          @php
+              $fullname = auth()->user()->nama ?: auth()->user()->namasantri;
+              $pieces = explode(" ", $fullname);
+              if (count($pieces) > 1) {
+                $first = $pieces[0];
+                $last = $pieces[1][0] . '.';
+                $fullname = $first . " " . $last;
+              } else
+                $fullname = $pieces[0];
+          @endphp
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" role="button" data-bs-toggle="dropdown">
             <img src="{{ auth()->user()->profile_pic ?: "/img/dashboard/profile-img.jpg"}}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->nama ?: auth()->user()->namasantri }}</span>
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ $fullname }}</span>
           </a><!-- End Profile Image Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
