@@ -31,14 +31,14 @@
 
         <li class="nav-item dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" role="button" data-bs-toggle="dropdown">
             <img src="{{ auth()->user()->profile_pic ?: "/img/dashboard/profile-img.jpg"}}" alt="Profile" class="rounded-circle">
-            <span class="d-none d-md-block dropdown-toggle ps-2"> </span>
-          </a><!-- End Profile Iamge Icon -->
+            <span class="d-none d-md-block dropdown-toggle ps-2">{{ auth()->user()->nama ?: auth()->user()->namasantri }}</span>
+          </a><!-- End Profile Image Icon -->
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{ auth()->user()->nama ?: auth()->user()->namasantri }}</h6>
+              <h6>Login as:</h6>
               <span>{{ auth()->user()->has_role ?: auth()->user()->detailperan()->first()
                 ->peran()->first()->peran }}
               </span>
@@ -48,7 +48,7 @@
             </li>
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="/profile">
+              <a class="dropdown-item d-flex align-items-center" href="/dashboard/profile">
                 <i class="bi bi-person"></i>
                 <span>My Profile</span>
               </a>
@@ -57,7 +57,7 @@
               <hr class="dropdown-divider">
             </li>
 
-            <li>
+            {{-- <li>
               <a class="dropdown-item d-flex align-items-center" href="/profile">
                 <i class="bi bi-gear"></i>
                 <span>Account Settings</span>
@@ -65,7 +65,7 @@
             </li>
             <li>
               <hr class="dropdown-divider">
-            </li>
+            </li> --}}
 
             <li>
               <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">

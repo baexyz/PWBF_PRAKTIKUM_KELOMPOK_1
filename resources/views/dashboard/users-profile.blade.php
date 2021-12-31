@@ -22,10 +22,10 @@
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
             {{-- <img src="/img/dashboard/profile-img.jpg" alt="Profile" class="rounded-circle"> --}}
-            <img src="{{ auth()->user()->profile_pic ?: "/img/dashboard/profile-img.jpg"}}" alt="Profile" class="rounded-circle">
-            <h2>{{ auth()->user()->nama ?: auth()->user()->namasantri }}</h2>
-            <h3>{{ auth()->user()->has_role ?: 
-              auth()->user()->detailperan()->first()->peran()->first()->peran }}</h3>
+            <img src="{{ $user->profile_pic ?: "/img/dashboard/profile-img.jpg"}}" alt="Profile" class="rounded-circle">
+            <h2>{{ $user->nama ?: $user->namasantri }}</h2>
+            <h3>{{ $user->has_role ?: 
+              $user->detailperan()->first()->peran()->first()->peran }}</h3>
             <div class="social-links mt-2">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -76,16 +76,16 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">{{ auth()->user()->nama ?: auth()->user()->namasantri }}</div>
+                  <div class="col-lg-9 col-md-8">{{ $user->nama ?: $user->namasantri }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Job</div>
                   <div class="col-lg-9 col-md-8">
-                    @if (auth()->user()->has_role == 'Santri')
+                    @if ($user->has_role == 'Santri')
                       Santri
                     @else
-                      {{ auth()->user()->detailperan()->first()
+                      {{ $user->detailperan()->first()
                         ->peran()->first()->peran }}
                     @endif
                     </div>
@@ -93,12 +93,12 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Phone</div>
-                  <div class="col-lg-9 col-md-8">{{ auth()->user()->hp }}</div>
+                  <div class="col-lg-9 col-md-8">{{ $user->hp }}</div>
                 </div>
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label">Email</div>
-                  <div class="col-lg-9 col-md-8">{{ auth()->user()->email }}</div>
+                  <div class="col-lg-9 col-md-8">{{ $user->email }}</div>
                 </div>
 
               </div>
@@ -107,7 +107,7 @@
 
                 <!-- Profile Edit Form -->
                 <form>
-                  <div class="row mb-3">
+                  {{-- <div class="row mb-3">
                     <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Foto Profile</label>
                     <div class="col-md-8 col-lg-9">
                       <img src="assets/img/profile-img.jpg" alt="Foto Profile">
@@ -117,42 +117,48 @@
                         </form>
                       </div>
                     </div>
-                  </div>
+                  </div> --}}
 
                   <div class="row mb-3">
                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{ auth()->user()->nama ?: auth()->user()->namasantri }}">
+                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{ $user->nama ?: $user->namasantri }}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="about" class="col-md-4 col-lg-3 col-form-label">Detail Peran</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{ auth()->user()->has_role ?: 
-                        auth()->user()->detailperan()->first()->peran()->first()->peran }}">
+                      <input name="fullName" type="text" class="form-control" id="fullName" disabled value="{{ $user->has_role ?: 
+                        $user->detailperan()->first()->peran()->first()->peran }}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="company" class="col-md-4 col-lg-3 col-form-label">Email</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="company" type="text" class="form-control" id="company" value="{{ auth()->user()->email }}">
+                      <input name="company" type="text" class="form-control" id="company" value="{{ $user->email }}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Job" class="col-md-4 col-lg-3 col-form-label">Nomor Hp</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="job" type="text" class="form-control" id="Job" value="{{ auth()->user()->hp }}">
+                      <input name="job" type="text" class="form-control" id="Job" value="{{ $user->hp }}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Country" class="col-md-4 col-lg-3 col-form-label">Gender</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="country" type="text" class="form-control" id="Country" value="{{ auth()->user()->gender }}">
+                      <select class="form-select" id="tambah" name="gender">
+                        <option value='M' {{ $user->gender == 'M' ? 'selected' : ''}}>Male</option>
+                        <option value='F' {{ $user->gender == 'F' ? 'selected' : ''}}>Female</option>
+                      </select>
                     </div>
+                    {{-- <div class="col-md-8 col-lg-9">
+                      <input name="country" type="text" class="form-control" id="Country" value="{{ $user->gender }}">
+                    </div> --}}
                   </div>
        
                   <div class="text-center">

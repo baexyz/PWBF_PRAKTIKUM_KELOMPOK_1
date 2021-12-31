@@ -16,8 +16,25 @@ class DashboardController extends Controller
         return view('dashboard.index');
     }
 
-    public function profile(){
-        return view('dashboard.users-profile');
+    public function profile(Request $request){
+        if ($request->isMethod('get')) {
+            $user = auth()->user();
+            return view('dashboard.users-profile', [
+                'user' => $user
+            ]);
+        }
+
+        if ($request->isMethod('post')) {
+            // $data = $request->all();
+            // $data = array_replace($data, array('password' => bcrypt($data['password'])));
+            // Santri::create($data);
+            // if ($bab) {
+            //     // $bab->update($request->all());
+            //     return redirect()->back()->with('success', 'Bab berhasil di-tambah');
+            // } else {
+            //     return redirect()->back()->with('error', 'Bab tidak ditemukan');
+            // }
+        }
     }
 
     public function raport(){
