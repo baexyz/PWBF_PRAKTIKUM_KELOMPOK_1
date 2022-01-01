@@ -23,8 +23,8 @@ jobs:
       # Runs a single command using the runners shell
       - name: Running git pull
         run: |
-          echo ${{ secrets.SERVER_PASSWORD }} | sudo -S git reset --hard
-          sudo -S -u www-data git pull 
+          echo ${{ secrets.SERVER_PASSWORD }} | sudo -S -u www-data -H git reset --hard
+          sudo -S -u www-data -H git pull 
       # - name: Setting up file permissions
       #   run: |
       #     echo ${{ secrets.SERVER_PASSWORD }} | sudo -S chown -R www-data:www-data . 
