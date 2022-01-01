@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\DetailPeran;
 use App\Models\Kemajuan;
 use App\Models\Santri;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -18,22 +16,36 @@ class DashboardController extends Controller
 
     public function profile(Request $request){
         if ($request->isMethod('get')) {
-            $user = auth()->user();
-            return view('dashboard.users-profile', [
-                'user' => $user
-            ]);
+            if (Auth::guard('santri')->check()) {
+                $user = Auth::guard('santri')->user();
+                return view('dashboard.profile-santri', [
+                    'user' => $user
+                ]);
+
+            } else {
+                $user = auth()->user();
+                return view('dashboard.profile-pengurus', [
+                    'user' => $user
+                ]);
+            }
         }
 
         if ($request->isMethod('post')) {
-            // $data = $request->all();
-            // $data = array_replace($data, array('password' => bcrypt($data['password'])));
-            // Santri::create($data);
-            // if ($bab) {
-            //     // $bab->update($request->all());
-            //     return redirect()->back()->with('success', 'Bab berhasil di-tambah');
-            // } else {
-            //     return redirect()->back()->with('error', 'Bab tidak ditemukan');
-            // }
+            try {
+                if (Auth::guard('santri')->check()) {
+                    $user = Santri::find(Auth::guard('santri')->id());
+                    $user->update($request->all());
+    
+                } else {
+                    $user = Pengurus::find(auth()->id());
+                    $user->update($request->all());
+                }
+                return redirect()->back()->with('success', 'Profil berhasil di update');
+            } catch(\Illuminate\Database\QueryException $e){
+                return redirect()->back()->with('error', $e);
+            } catch (\Throwable $e) {
+                return redirect()->back()->with('error', $e);              
+            }      
         }
     }
 
@@ -107,7 +119,6 @@ class DashboardController extends Controller
             return redirect()->back()->with('success', 'Foto telah tersimpan');
         } catch (\Throwable $th) {
             return redirect()->back()->with('error', $th);
-            //throw $th;
         }
     }
 

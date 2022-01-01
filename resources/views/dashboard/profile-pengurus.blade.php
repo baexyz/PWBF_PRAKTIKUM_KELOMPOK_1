@@ -23,15 +23,14 @@
 
             {{-- <img src="/img/dashboard/profile-img.jpg" alt="Profile" class="rounded-circle"> --}}
             <img src="{{ $user->profile_pic ?: "/img/dashboard/profile-img.jpg"}}" alt="Profile" class="rounded-circle">
-            <h2>{{ $user->nama ?: $user->namasantri }}</h2>
-            <h3>{{ $user->has_role ?: 
-              $user->detailperan()->first()->peran()->first()->peran }}</h3>
-            <div class="social-links mt-2">
+            <h2>{{ $user->nama }}</h2>
+            <h3>{{ $user->detailperan()->first()->peran()->first()->peran }}</h3>
+            {{-- <div class="social-links mt-2">
               <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
               <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
               <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
               <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
-            </div>
+            </div> --}}
           </div>
         </div>
 
@@ -76,7 +75,7 @@
 
                 <div class="row">
                   <div class="col-lg-3 col-md-4 label ">Full Name</div>
-                  <div class="col-lg-9 col-md-8">{{ $user->nama ?: $user->namasantri }}</div>
+                  <div class="col-lg-9 col-md-8">{{ $user->nama }}</div>
                 </div>
 
                 <div class="row">
@@ -101,36 +100,23 @@
                   <div class="col-lg-9 col-md-8">{{ $user->email }}</div>
                 </div>
 
+                <div class="row">
+                  <div class="col-lg-3 col-md-4 label">Gender</div>
+                  <div class="col-lg-9 col-md-8">{{ $user->gender == 'M' ? 'Male' : 'Female' }}</div>
+                </div>
+
               </div>
 
               <div class="tab-pane fade profile-edit pt-3" id="profile-edit">
 
                 <!-- Profile Edit Form -->
-                <form>
-                  {{-- <div class="row mb-3">
-                    <label for="profileImage" class="col-md-4 col-lg-3 col-form-label">Foto Profile</label>
-                    <div class="col-md-8 col-lg-9">
-                      <img src="assets/img/profile-img.jpg" alt="Foto Profile">
-                      <div class="pt-2">
-                        <form action="/action_page.php">
-                          <input type="file" id="myFile" name="filename">
-                        </form>
-                      </div>
-                    </div>
-                  </div> --}}
+                <form method="post">
+                  @csrf
 
                   <div class="row mb-3">
                     <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{ $user->nama ?: $user->namasantri }}">
-                    </div>
-                  </div>
-
-                  <div class="row mb-3">
-                    <label for="about" class="col-md-4 col-lg-3 col-form-label">Detail Peran</label>
-                    <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" disabled value="{{ $user->has_role ?: 
-                        $user->detailperan()->first()->peran()->first()->peran }}">
+                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{ $user->nama }}">
                     </div>
                   </div>
 
