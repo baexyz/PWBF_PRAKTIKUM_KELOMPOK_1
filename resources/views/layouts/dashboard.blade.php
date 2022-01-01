@@ -42,7 +42,7 @@
           @endphp
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" role="button" data-bs-toggle="dropdown">
-            <img src="{{ auth()->user()->profile_pic ?: "/img/dashboard/profile-img.jpg"}}" alt="Profile" class="rounded-circle">
+            <img src="{{ auth()->user()->profile_pic ?: "/img/dashboard/profile-img-" . $user->gender . ".jpg"}}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{ $fullname }}</span>
           </a><!-- End Profile Image Icon -->
 

@@ -32,24 +32,31 @@ class DatabaseSeeder extends Seeder
             'aktif' => '1',
         ]);
         
-        //Membuat data untuk admin
         DetailPeran::create([
             'idperan' => 1,
-            'idpengurus' => Pengurus::create([
+            'idpengurus' => Pengurus::factory()->create([
                 'nama' => "Administrator",
                 'email' => "admin@gmail.com",
-                'hp' => "0123456789",
-                'gender' => 'M',
-                'password' => bcrypt("password"),
-                'aktif' => '1',
+            ])->idpengurus,
+        ]);
+
+        //Membuat data untuk guru
+        DetailPeran::create([
+            'idperan' => 2,
+            'idpengurus' => Pengurus::factory()->create([
+                'email' => "guru@gmail.com",
             ])->idpengurus,
         ]);
         
         //Membuat data dari pengurus dan detail peran
-        DetailPeran::factory(10)->create();
+        DetailPeran::factory(5)->create();
         
         //Membuat data santri
-        Santri::factory(30)->create();
+        Santri::factory()->create([
+            'email' => 'santri@gmail.com'
+        ]);
+        
+        Santri::factory(20)->create();
 
         //Membuat data buku dan bab
         $buku = Buku::factory(5)->create();
@@ -65,11 +72,6 @@ class DatabaseSeeder extends Seeder
                 
         //Membuat data DetailKemajuan dan Kemajuan
         DetailKemajuan::factory(100)->create();
-
-        // Pengurus::factory(10)->create()->each(function ($m) {
-        //     $detailperan = DetailPeran::factory()->make();
-        //     $kemajuan = Kemajuan::factory(5)->make();
-        // });
         
     }
 }

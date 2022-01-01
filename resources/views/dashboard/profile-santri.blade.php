@@ -21,7 +21,7 @@
         <div class="card">
           <div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 
-            <img src="{{ $user->profile_pic ?: "/img/dashboard/profile-img.jpg"}}" alt="Profile" class="rounded-circle">
+            <img src="{{ $user->profile_pic ?: "/img/dashboard/profile-img-" . $user->gender . ".jpg"}}" alt="Profile" class="rounded-circle">
             <h2>{{ $user->namasantri }}</h2>
             <h3>Santri</h3>
           </div>
