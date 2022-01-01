@@ -24,14 +24,14 @@ jobs:
       - name: Running git pull
         run: |
           echo ${{ secrets.SERVER_PASSWORD }} | sudo -S git reset --hard
-          sudo git pull
-      - name: Setting up file permissions
-        run: |
-          echo ${{ secrets.SERVER_PASSWORD }} | sudo -S chown -R www-data:www-data . 
-          sudo find . -type f -exec chmod 644 {} \; 
-          sudo find . -type d -exec chmod 755 {} \; 
-          sudo chgrp -R www-data storage bootstrap/cache 
-          sudo chmod -R ug+rwx storage bootstrap/cache 
+          sudo -S -u www-data git pull 
+      # - name: Setting up file permissions
+      #   run: |
+      #     echo ${{ secrets.SERVER_PASSWORD }} | sudo -S chown -R www-data:www-data . 
+      #     sudo find . -type f -exec chmod 644 {} \; 
+      #     sudo find . -type d -exec chmod 755 {} \; 
+      #     sudo chgrp -R www-data storage bootstrap/cache 
+      #     sudo chmod -R ug+rwx storage bootstrap/cache 
       - name: Checking Laravel migration changes
         run: |
           if git show | grep "migrations"; then
