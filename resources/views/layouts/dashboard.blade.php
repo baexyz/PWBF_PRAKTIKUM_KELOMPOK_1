@@ -78,9 +78,9 @@
             </li> --}}
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="pages-faq.html">
-                <i class="bi bi-question-circle"></i>
-                <span>Need Help?</span>
+              <a class="dropdown-item d-flex align-items-center" role="button" data-bs-toggle="modal" data-bs-target="#changePasswordModal">
+                <i class="bi bi-key"></i>
+                <span>Change Password</span>
               </a>
             </li>
             <li>
@@ -191,7 +191,7 @@
 
   <main id="main" class="main">
     @yield('container')
-    <!-- Modal -->
+    <!-- Sign Out Modal -->
     <div class="modal fade" id="logoutModal" tabindex="-1" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -209,7 +209,39 @@
         </div>
       </div>
     </div>
-    
+
+    <!-- Change Password Modal -->
+    <div class="modal fade" id="changePasswordModal" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Change Password</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form class="row g-3" action="profile/password" method="post" id="change-password">
+              @csrf
+              <div class="col-12">
+                <label for="yourName" class="form-label">Password Lama</label>
+                <input type="password" name="password" class="form-control" required>
+                <div class="invalid-feedback">Mohon input password lama</div>
+              </div>
+          
+              <div class="col-12">
+                <label for="yourEmail" class="form-label">Password Baru</label>
+                <input type="password" name="new_password" class="form-control" required>
+                <div class="invalid-feedback">Mohon input password baru</div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" onclick="submitForm()">Change</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -254,6 +286,10 @@
             $('.listBuku').html(out)
           }
       });
+
+      function submitForm() {
+        $("#change-password").submit()
+      }
     </script>
 @endsection
 

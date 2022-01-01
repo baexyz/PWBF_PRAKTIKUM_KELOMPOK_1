@@ -65,6 +65,7 @@ Route::get('/contact', function () {
 
 Route::middleware('auth:web,santri')->group(function () {
     // Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::post('/dashboard/profile/password', [DashboardController::class, 'password']);
     Route::post('/dashboard/profile/photo', [DashboardController::class, 'uploadPhoto']);
     Route::get('/dashboard/profile', [DashboardController::class, 'profile']);
     Route::post('/dashboard/profile', [DashboardController::class, 'profile']);
