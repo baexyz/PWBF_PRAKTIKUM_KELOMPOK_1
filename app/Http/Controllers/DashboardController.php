@@ -72,8 +72,6 @@ class DashboardController extends Controller
         ]);
     }
 
-    
-
     public function hapus($id){
         Pengurus::find($id)->delete();
     }

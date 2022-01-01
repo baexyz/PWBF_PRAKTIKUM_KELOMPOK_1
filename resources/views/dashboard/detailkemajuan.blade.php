@@ -302,10 +302,10 @@
       }
     })
 
-    function getDataBab(sel, idbab) {
+    function getDataBab(sel, idb) {
       // alert( this.value );
       var idbuku = sel.value
-      var a = "#" + idbab
+      var a = "#" + idb
       $.ajax({
         url: urlbab + idbuku,
         type: 'get',
@@ -319,7 +319,9 @@
               text: nama
             }))            
           })
-          $(a + ' option[value='+idbab+']').prop('selected', true)
+          if (idb == 'edit') {
+            $(a + ' option[value='+idbab+']').prop('selected', true)
+          }
         }
       });
     }

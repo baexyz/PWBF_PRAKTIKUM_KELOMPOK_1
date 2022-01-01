@@ -2,8 +2,8 @@
 
 namespace App\Providers;
 
-use App\Models\Pengurus;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -27,27 +27,23 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         Gate::define('isStaff', function ($pengurus){
-            try {
+            if (Auth::guard('web')->check()) {
                 return $pengurus->detailperan()->first()
                 ->peran()->first()->peran == 'Staff';
-            } catch (\Throwable $th) {
-                return false;
             }
         });
         
         Gate::define('isGuru', function ($pengurus){
-            try {
+            if (Auth::guard('web')->check()) {
                 return $pengurus->detailperan()->first()
                 ->peran()->first()->peran == 'Guru';
-            } catch (\Throwable $th) {
-                return false;
             }
         });
         
         Gate::define('isSantri', function ($user){
-            return $user->has_role == 'Santri';
+            if (Auth::guard('santri')->check()) {
+                return $user->has_role == 'Santri';
+            }
         });
-
-        //
     }
 }
