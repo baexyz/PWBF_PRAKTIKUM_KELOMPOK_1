@@ -7,6 +7,7 @@ use App\Models\Santri;
 use App\Models\Pengurus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class DashboardController extends Controller
 {
@@ -48,6 +49,65 @@ class DashboardController extends Controller
             }      
         }
     }
+
+    public function password(Request $request){
+        try {
+            if (Auth::guard('santri')->check()) {
+                $user = Santri::find(Auth::guard('santri')->id());
+            } else {
+                $user = Pengurus::find(auth()->id());
+            }
+
+            if (Hash::check($request->password, $user->password)) { 
+                $user->fill([
+                    'password' => Hash::make($request->new_password)
+                    ])->save();
+                return redirect()->back()->with('success', 'Password berhasil di update');
+            } else {
+                return redirect()->back()->with('error', 'Password lama salah');
+            }
+        } catch(\Illuminate\Database\QueryException $e){
+            return redirect()->back()->with('error', $e);
+        } catch (\Throwable $e) {
+            return redirect()->back()->with('error', $e);              
+        }  
+        
+
+
+        if ($request->isMethod('get')) {
+            if (Auth::guard('santri')->check()) {
+                $user = Auth::guard('santri')->user();
+                return view('dashboard.profile-santri', [
+                    'user' => $user
+                ]);
+
+            } else {
+                $user = auth()->user();
+                return view('dashboard.profile-pengurus', [
+                    'user' => $user
+                ]);
+            }
+        }
+
+        if ($request->isMethod('post')) {
+            try {
+                if (Auth::guard('santri')->check()) {
+                    $user = Santri::find(Auth::guard('santri')->id());
+                    $user->update($request->all());
+    
+                } else {
+                    $user = Pengurus::find(auth()->id());
+                    $user->update($request->all());
+                }
+                return redirect()->back()->with('success', 'Profil berhasil di update');
+            } catch(\Illuminate\Database\QueryException $e){
+                return redirect()->back()->with('error', $e);
+            } catch (\Throwable $e) {
+                return redirect()->back()->with('error', $e);              
+            }      
+        }
+    }
+
 
     public function raport(){
         if (Auth::guard('santri')->check()) {
