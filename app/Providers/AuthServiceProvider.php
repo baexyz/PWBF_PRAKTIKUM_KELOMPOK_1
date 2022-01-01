@@ -41,9 +41,10 @@ class AuthServiceProvider extends ServiceProvider
         });
         
         Gate::define('isSantri', function ($user){
-            if (Auth::guard('santri')->check()) {
-                return $user->has_role == 'Santri';
-            }
+            return Auth::guard('santri')->check();
+            // if (Auth::guard('santri')->check()) {
+            //     return $user->has_role == 'Santri';
+            // }
         });
     }
 }
