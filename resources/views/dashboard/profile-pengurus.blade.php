@@ -114,30 +114,30 @@
                   @csrf
 
                   <div class="row mb-3">
-                    <label for="fullName" class="col-md-4 col-lg-3 col-form-label">Full Name</label>
+                    <label class="col-md-4 col-lg-3 col-form-label">Full Name</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="fullName" type="text" class="form-control" id="fullName" value="{{ $user->nama }}">
+                      <input name="nama" type="text" class="form-control" value="{{ $user->nama }}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="company" class="col-md-4 col-lg-3 col-form-label">Email</label>
+                    <label class="col-md-4 col-lg-3 col-form-label">Email</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="company" type="text" class="form-control" id="company" value="{{ $user->email }}">
+                      <input name="email" type="text" class="form-control" value="{{ $user->email }}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
-                    <label for="Job" class="col-md-4 col-lg-3 col-form-label">Nomor Hp</label>
+                    <label class="col-md-4 col-lg-3 col-form-label">Nomor Hp</label>
                     <div class="col-md-8 col-lg-9">
-                      <input name="job" type="text" class="form-control" id="Job" value="{{ $user->hp }}">
+                      <input name="hp" type="text" class="form-control" value="{{ $user->hp }}">
                     </div>
                   </div>
 
                   <div class="row mb-3">
                     <label for="Country" class="col-md-4 col-lg-3 col-form-label">Gender</label>
                     <div class="col-md-8 col-lg-9">
-                      <select class="form-select" id="tambah" name="gender">
+                      <select class="form-select" name="gender">
                         <option value='M' {{ $user->gender == 'M' ? 'selected' : ''}}>Male</option>
                         <option value='F' {{ $user->gender == 'F' ? 'selected' : ''}}>Female</option>
                       </select>
