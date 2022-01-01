@@ -125,18 +125,18 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form class="row g-3 needs-validation" id="formUpdate" action="santri/create" method="post">
+          <form class="row g-3 needs-validation" action="santri/create" method="post">
             @csrf
             
             <div class="col-12">
               <label for="yourName" class="form-label">Nama Santri</label>
-              <input type="text" name="namasantri" class="form-control" id="" required>
+              <input type="text" name="namasantri" class="form-control"  required>
               <div class="invalid-feedback">Silahkan input nama santri</div>
             </div>
         
             <div class="col-12">
               <label for="yourEmail" class="form-label">Email Santri</label>
-              <input type="email" name="email" class="form-control" id="" required>
+              <input type="email" name="email" class="form-control"  required>
               <div class="invalid-feedback">Silahkan input email santri</div>
             </div>
             
@@ -145,11 +145,11 @@
               <label for="yourUsername" class="form-label">Jenis Kelamin</label>
             <br>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="" value="M">
+                <input class="form-check-input" type="radio" name="gender"  value="M">
                 <label class="form-check-label" for="inlineRadio1">Laki-Laki</label>
               </div>
               <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="gender" id="" value="F">
+                <input class="form-check-input" type="radio" name="gender"  value="F">
                 <label class="form-check-label" for="inlineRadio2">Perempuan</label>
               </div>
             </div>
@@ -157,7 +157,7 @@
             <div class="col-12">
               <label for="yourUsername" class="form-label">Tanggal Lahir</label>
               <div class="input-group has-validation">
-                <input type="date" name="tanggallhr" class="form-control" id="" required>
+                <input type="date" name="tanggallhr" class="form-control"  required>
                 <div class="invalid-feedback">Silahkan input tanggal lahir santri</div>
               </div>
             </div>
@@ -165,40 +165,40 @@
             <div class="col-12">
               <label for="yourUsername" class="form-label">Kota Lahir</label>
               <div class="input-group has-validation">
-                <input type="text" name="kotalhr" class="form-control" id="" required>
+                <input type="text" name="kotalhr" class="form-control"  required>
                 <div class="invalid-feedback">Silahkan input kota lahir santri</div>
               </div>
             </div>
         
             <div class="col-12">
               <label for="yourPassword" class="form-label">No Handphone</label>
-              <input type="text" name="hp" class="form-control" id="" required>
+              <input type="text" name="hp" class="form-control"  required>
               <div class="invalid-feedback">Silahkan input nomor handphone santri</div>
             </div>
         
             <div class="col-12">
               <label for="yourUsername" class="form-label">Tanggal Masuk</label>
               <div class="input-group has-validation">
-                <input type="date" name="tanggalmasuk" class="form-control" id="" required>
+                <input type="date" name="tanggalmasuk" class="form-control"  required>
                 <div class="invalid-feedback">Silahkan input tanggal masuk santri</div>
               </div>
             </div>
         
             <div class="col-12">
               <label for="yourPassword" class="form-label">Nama Orang Tua</label>
-              <input type="text" name="namaortu" class="form-control" id="" required>
+              <input type="text" name="namaortu" class="form-control"  required>
               <div class="invalid-feedback">Silahkan input nama orang tua santri</div>
             </div>
         
             <div class="col-12">
             <label for="yourPassword" class="form-label">Alamat Orang Tua</label>
-            <input type="text" name="alamatortu" class="form-control" id="" required>
+            <input type="text" name="alamatortu" class="form-control"  required>
               <div class="invalid-feedback">Silahkan input alamat orang tua santri</div>
             </div>
             
             <div class="col-12">
             <label for="yourPassword" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="" required>
+            <input type="password" name="password" class="form-control"  required>
               <div class="invalid-feedback">Silahkan input password santri</div>
             </div>
             
@@ -351,6 +351,18 @@
     	fixedHeight: false,
       })
       @can('isStaff')
+        $('.updateBtn').on('click', function() {
+          var parent = $(this)
+          var row = parent.closest('tr')
+          var columns = row.find('td')
+          var id = parent.data('id')
+          // var idbuku = parent.data('idbuku').toString()
+          // idbab = parent.data('idbab')
+          // var keterangan = columns[3].innerHTML
+          // $('#keterangan').val(keterangan)
+          // $('#bukuedit option[value='+idbuku+']').prop('selected', true).trigger('change')
+          $('#formUpdate').attr("action", "santri/update/"+id)
+        })
         $('#deleteSantriModal').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget)
           var id = button.data('id')

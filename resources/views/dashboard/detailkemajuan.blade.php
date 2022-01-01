@@ -142,7 +142,7 @@
             <label for="yourName" class="form-label">Upload File</label>
             <br>
             <form action="/action_page.php">
-              <input type="file" id="myFile" name="filename">
+              <input type="file " id="myFile" name="filename">
             </form>
             </select>
           </div>
@@ -339,14 +339,14 @@
         $('#formUpdate').attr("action", "../kemajuan/update/"+id)
     })
 
-    $('#updateDetailKemajuanModal').on('show.bs.modal', function (event) {
-      var button = $(event.relatedTarget)
-      var id = button.data('id')
-      var idbuku = button.data('idbuku')
-      var idbab = button.data('idbab')
-      var modal = $(this)
-      modal.find('.modal-footer a').attr("href", "../kemajuan/delete/"+id)
-    })
+    // $('#updateDetailKemajuanModal').on('show.bs.modal', function (event) {
+    //   var button = $(event.relatedTarget)
+    //   var id = button.data('id')
+    //   var idbuku = button.data('idbuku')
+    //   var idbab = button.data('idbab')
+    //   var modal = $(this)
+    //   modal.find('.modal-footer a').attr("href", "../kemajuan/delete/"+id)
+    // })
 
     $('#deleteDetailKemajuanModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget)
