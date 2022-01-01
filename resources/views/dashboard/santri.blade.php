@@ -74,20 +74,20 @@
                     
                     <tr>
                       <th scope="row">{{ $loop->iteration }}</th>
-                      <td>{{ $item->namasantri }}</td>
-                      <td>{{ $item->gender }}</td>
-                      <td>{{ $item->tanggallhr }}</td>
-                      <td>{{ $item->kotalhr }}</td>
-                      <td>{{ $item->namaortu }}</td>
-                      <td>{{ $item->alamatortu }}</td>
-                      <td>{{ $item->hp }}</td>
-                      <td>{{ $item->email }}</td>
+                      <td class="namasantri">{{ $item->namasantri }}</td>
+                      <td class="gender">{{ $item->gender }}</td>
+                      <td class="tanggallhr">{{ $item->tanggallhr }}</td>
+                      <td class="kotalhr">{{ $item->kotalhr }}</td>
+                      <td class="namaortu">{{ $item->namaortu }}</td>
+                      <td class="alamatortu">{{ $item->alamatortu }}</td>
+                      <td class="hp">{{ $item->hp }}</td>
+                      <td class="email">{{ $item->email }}</td>
                       <td>{{ $item->tanggalmasuk }}</td>
                       <td>{{ isAktif($item->aktif) }}</td>
                       @can('isStaff')
                         <td>
                           <a role="button" class="btn btn-success updateBtn" data-bs-toggle="modal" 
-                          data-bs-target="#updateSantriModal" data-id={{ $item->idsantri }}>
+                          data-bs-target="#updateSantriModal"  data-id={{ $item->idsantri }}>
                             Update
                           </a>
                         </td>
@@ -337,29 +337,29 @@
     	fixedHeight: false,
       })
       @can('isStaff')
-        $('.updateBtn').on('click', function() {
-          var parent = $(this)
-          var row = parent.closest('tr')
-          var columns = row.find('td')
-          var id = parent.data('id')
-          // var idbuku = parent.data('idbuku').toString()
-          // idbab = parent.data('idbab')
-          // var keterangan = columns[3].innerHTML
-          $('#namasantri').val(columns[0].innerHTML)
-          $('#tanggallhr').val(columns[2].innerHTML)
-          $('#kotalhr').val(columns[3].innerHTML)
-          $('#namaortu').val(columns[4].innerHTML)
-          $('#alamatortu').val(columns[5].innerHTML)
-          $('#hp').val(columns[6].innerHTML)
-          $('#email').val(columns[7].innerHTML)
-          // console.log(columns[1].innerHTML)
-          if (columns[1].innerHTML == 'M') 
-            $('#lakilaki').prop('checked', true)
-          else
-            $('#perempuan').prop('checked', true)
-          // $('#bukuedit option[value='+idbuku+']').prop('selected', true).trigger('change')
-          $('#formUpdate').attr("action", "santri/update/"+id)
-        })
+        $(function(){
+          $(document).ready(function(){
+            $(document).on('click', '.updateBtn', function(){
+              var parent = $(this)
+              var row = parent.closest('tr')
+              var columns = row.find('td')
+              var id = parent.data('id')
+              $('#namasantri').val(columns[0].innerHTML)
+              $('#tanggallhr').val(columns[2].innerHTML)
+              $('#kotalhr').val(columns[3].innerHTML)
+              $('#namaortu').val(columns[4].innerHTML)
+              $('#alamatortu').val(columns[5].innerHTML)
+              $('#hp').val(columns[6].innerHTML)
+              $('#email').val(columns[7].innerHTML)
+              if (columns[1].innerHTML == 'M') 
+                $('#lakilaki').prop('checked', true)
+              else
+                $('#perempuan').prop('checked', true)
+              $('#formUpdate').attr("action", "santri/update/"+id)
+            });
+          });
+        });
+
         $('#deleteSantriModal').on('show.bs.modal', function (event) {
           var button = $(event.relatedTarget)
           var id = button.data('id')

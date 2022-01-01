@@ -55,7 +55,7 @@
                   <tr>
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td> 
-                      <a href="/dashboard/buku/{{ $item->idbuku }}">{{ $item->buku }}</a> 
+                      <a href="buku/{{ $item->idbuku }}">{{ $item->buku }}</a> 
                     </td>
                     <td>{{ $item->keterangan }}</td>
                     @can('isStaff')
@@ -188,18 +188,22 @@
 @section('scripts')
   @parent
   <script>
-    $('.updateBtn').on('click', function() {
-        var parent = $(this)
-        var row = parent.closest('tr')
-        var columns = row.find('td')
-        var id = parent.data('id')
-        var judul = row.find('a')[0].innerHTML
-        var keterangan = columns[1].innerHTML
-        $('#judul').val(judul)
-        $('#keterangan').val(keterangan)
-        console.log(id)
-        $('#formUpdate').attr("action", "buku/update/"+id)
-    })
+    $(function(){
+      $(document).ready(function(){
+        $(document).on('click', '.updateBtn', function(){
+          var parent = $(this)
+          var row = parent.closest('tr')
+          var columns = row.find('td')
+          var id = parent.data('id')
+          var judul = row.find('a')[0].innerHTML
+          var keterangan = columns[1].innerHTML
+          $('#judul').val(judul)
+          $('#keterangan').val(keterangan)
+          console.log(id)
+          $('#formUpdate').attr("action", "buku/update/"+id)
+        });
+      });
+    });
 
     $('#deleteBukuModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget)

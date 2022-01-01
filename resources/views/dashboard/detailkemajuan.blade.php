@@ -77,10 +77,6 @@
                           data-idbuku={{ $bab->idbuku }} data-bs-target="#updateDetailKemajuanModal">
                             Update
                           </a>
-                          <a role="button" class="btn btn-warning btn-block" data-bs-toggle="modal" 
-                          data-bs-target="#fileDetailKemajuanModal">
-                            File
-                          </a>
                           <a role="button" class="btn btn-danger btn-block" data-bs-toggle="modal" 
                           data-id={{ $item->idkemajuan }} data-bs-target="#deleteDetailKemajuanModal">
                             Delete
@@ -138,16 +134,6 @@
             <textarea class="form-control" id="message-text" name="keterangan"></textarea>
           </div>
 
-          {{-- <div class="col-12">
-            <label for="yourName" class="form-label">Upload File</label>
-            <br>
-            <form action="/action_page.php">
-              <input type="file " id="myFile" name="filename">
-            </form>
-            </select>
-          </div>
-          <br> --}}    
-
           <div class="col-12">
             <label for="yourUsername" class="form-label">Status</label>
           <br>
@@ -196,14 +182,12 @@
           <div class="col-12">
             <label for="yourName" class="form-label">Pilih Buku</label>
             <select class="form-select listbuku" id="bukuedit" onchange="getDataBab(this, 'edit');">
-              <option value="0" selected></option>
             </select>
           </div>
 
           <div class="col-12">
             <label for="yourName" class="form-label">Pilih Bab</label>
             <select class="form-select" name="idbab" id="edit">
-              <option selected></option>
             </select>
           </div>
 
@@ -212,15 +196,6 @@
             <textarea class="form-control" id="keterangan" name="keterangan"></textarea>
             </select>
           </div>
-
-          <!-- <div class="col-12">
-            <label for="yourName" class="form-label">Upload File</label>
-            <br>
-            <form action="/action_page.php">
-              <input type="file" id="myFile" name="filename">
-            </form>
-            </select>
-          </div> -->
           <br>
           <br>
           
@@ -237,23 +212,6 @@
           </div>
         </form>
       </div>
-    </div>
-  </div>
-</div>
-
-
-{{-- Modal File DetailKemajuan --}}
-<div class="modal fade" id="fileDetailKemajuanModal" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" style="color: #6ab04c">File Detail Kemajuan</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <p> Silahkan klik tombol download untuk mengunduh file<a href="#" role="button" class="btn btn-secondary popover-test" title="Popover title" data-bs-content="Popover body content is set in this attribute.">Download</a></p>
-        <hr>
-        </div>
     </div>
   </div>
 </div>
@@ -284,8 +242,8 @@
   @parent
   <script>
     var idbab
-    var urlbuku = '/dashboard/buku/list'
-    var urlbab = '/dashboard/buku/listbab/'
+    var urlbuku = '../buku/list'
+    var urlbab = '../buku/listbab/'
     //Get buku
     $.ajax({
       url: urlbuku,
@@ -326,27 +284,22 @@
       });
     }
 
-    $('.updateBtn').on('click', function() {
-        var parent = $(this)
-        var row = parent.closest('tr')
-        var columns = row.find('td')
-        var id = parent.data('id')
-        var idbuku = parent.data('idbuku').toString()
-        idbab = parent.data('idbab')
-        var keterangan = columns[3].innerHTML
-        $('#keterangan').val(keterangan)
-        $('#bukuedit option[value='+idbuku+']').prop('selected', true).trigger('change')
-        $('#formUpdate').attr("action", "../kemajuan/update/"+id)
-    })
-
-    // $('#updateDetailKemajuanModal').on('show.bs.modal', function (event) {
-    //   var button = $(event.relatedTarget)
-    //   var id = button.data('id')
-    //   var idbuku = button.data('idbuku')
-    //   var idbab = button.data('idbab')
-    //   var modal = $(this)
-    //   modal.find('.modal-footer a').attr("href", "../kemajuan/delete/"+id)
-    // })
+    $(function(){
+      $(document).ready(function(){
+        $(document).on('click', '.updateBtn', function(){
+          var parent = $(this)
+          var row = parent.closest('tr')
+          var columns = row.find('td')
+          var id = parent.data('id')
+          var idbuku = parent.data('idbuku').toString()
+          idbab = parent.data('idbab')
+          var keterangan = columns[3].innerHTML
+          $('#keterangan').val(keterangan)
+          $('#bukuedit option[value='+idbuku+']').prop('selected', true).trigger('change')
+          $('#formUpdate').attr("action", "../kemajuan/update/"+id)
+        });
+      });
+    });
 
     $('#deleteDetailKemajuanModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget)

@@ -195,18 +195,22 @@
 @section('scripts')
   @parent
   <script>
-    $('.updateBtn').on('click', function() {
-        var parent = $(this)
-        var row = parent.closest('tr')
-        var columns = row.find('td')
-        var id = parent.data('id')
-        var judul = columns[0].innerHTML
-        var keterangan = columns[1].innerHTML
-        $('#judul').val(judul)
-        $('#keterangan').val(keterangan)
-        $('#formUpdate').attr("action", "../bab/update/"+id)
+    $(function(){
+      $(document).ready(function(){
+        $(document).on('click', '.updateBtn', function(){
+          var parent = $(this)
+          var row = parent.closest('tr')
+          var columns = row.find('td')
+          var id = parent.data('id')
+          var judul = columns[0].innerHTML
+          var keterangan = columns[1].innerHTML
+          $('#judul').val(judul)
+          $('#keterangan').val(keterangan)
+          $('#formUpdate').attr("action", "../bab/update/"+id)
+        });
+      });
+    });
 
-    })
     $('#deleteBabModal').on('show.bs.modal', function (event) {
       var button = $(event.relatedTarget)
       var id = button.data('id')

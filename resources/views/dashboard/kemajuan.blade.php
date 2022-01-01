@@ -66,7 +66,7 @@
                     <td>{{ $item->tanggal }}</td>
                     <td>{{ $item->status }}</td>
                     <td>
-                      <a href="/dashboard/santri/{{ $santri->idsantri }}" class="btn btn-primary">Detail</a>
+                      <a href="santri/{{ $santri->idsantri }}" class="btn btn-primary">Detail</a>
                       {{-- <a role="button" class="btn btn-primary detailBtn" data-bs-toggle="modal" 
                         data-bs-target="#detailKemajuanModal" data-id={{ $item->idkemajuan }}>
                         Detail
@@ -252,10 +252,9 @@
 @section('scripts')
   @parent
   <script>
-    var urlsantri = '/dashboard/santri/list'
-    var urlbuku = '/dashboard/buku/list'
-    var urlbab = '/dashboard/buku/listbab/'
-    var urlkemajuan = '/dashboard/kemajuan/'
+    var urlsantri = 'santri/list'
+    var urlbuku = 'buku/list'
+    var urlbab = 'buku/listbab/'
 
     // $('.detailBtn').on('click', function() {
     //     var id = $(this).data('id')
